@@ -1,0 +1,24 @@
+# main links links
+main:
+  - title: "Projects"
+    url: /projects/ 
+
+  # - title: "Publications"
+  #   url: /publications/
+
+     
+
+  # - title: "Teaching"
+  # #   url: /teaching/    
+    
+  # - title: "Portfolio"
+  #   url: /portfolio/
+        
+  - title: "Blog"
+    url: /blog/
+    
+  - title: "Resume"
+    url: /resume/
+    
+  # - title: "Guide"
+  #   url: /markdown/
