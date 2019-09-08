@@ -1,12 +1,1 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-09-08T11:51:36-07:00</updated><id>/feed.xml</id><title type="html">Sudarshan Sharma</title><subtitle>Senior Undergraduate at IIT Kharagpur</subtitle><author><name>Sudarshan Sharma</name><email>sudarshansharma04@gmail.com</email></author><entry><title type="html">Setting up the Website</title><link href="/posts/2019/09/blog-post-1/" rel="alternate" type="text/html" title="Setting up the Website" /><published>2019-09-11T00:00:00-07:00</published><updated>2019-09-11T00:00:00-07:00</updated><id>/posts/2019/09/blog-post-1</id><content type="html" xml:base="/posts/2019/09/blog-post-1/">&lt;hr /&gt;
-&lt;p&gt;This website is a fork of academicpages.github.io created by Michael Rose released under the MIT license, I have modified a lot of layout and the content of the website, but would like to thank the creators for making the job super easy. In this blog I will try to jot down my personal experience setting up the website the instructions and the problems associated with it. Feel free to shoot an email if you need some help, make sure you have checked the fork from my github handle first.&lt;/p&gt;
-
-&lt;!-- 
-Headings are cool
-======
-
-You can have many headings
-======
-
-Aren't headings cool?
------- --&gt;</content><author><name>Sudarshan Sharma</name><email>sudarshansharma04@gmail.com</email></author><category term="website" /><category term="jekyll" /><category term="acade,icpages.github.io" /><summary type="html">This website is a fork of academicpages.github.io created by Michael Rose released under the MIT license, I have modified a lot of layout and the content of the website, but would like to thank the creators for making the job super easy. In this blog I will try to jot down my personal experience setting up the website the instructions and the problems associated with it. Feel free to shoot an email if you need some help, make sure you have checked the fork from my github handle first.</summary></entry></feed>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-09-08T12:05:18-07:00</updated><id>/feed.xml</id><title type="html">Sudarshan Sharma</title><subtitle>Senior Undergraduate at IIT Kharagpur</subtitle><author><name>Sudarshan Sharma</name><email>sudarshansharma04@gmail.com</email></author></feed>
