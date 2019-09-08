@@ -11,6 +11,7 @@ redirect_from:
 
 Link to my [Curriculum Vitae](https://sudo-sh.github.io/files/Sudarshan_Resume__2019.pdf), it holds more information on my experiences and skillsets.
 
+##### Last Updated : March 2019
 <!-- Education
 ======
 * B.S. in GitHub, GitHub University, 2012
