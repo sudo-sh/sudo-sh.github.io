@@ -9,7 +9,7 @@ redirect_from:
 
 {% include base_path %}
 
-Link to my [Curriculum Vitae](https://github.com/sudo-sh/academicpages.github.io/tree/master/files/Sudarshan_Resume__2019.pdf), it holds more information on my experiences and skillsets.
+Link to my [Curriculum Vitae](https://github.com/sudo-sh/sudo-sh.github.io/blob/master/files/Sudarshan_Resume__2019.pdf), it holds more information on my experiences and skillsets.
 
 <!-- Education
 ======
