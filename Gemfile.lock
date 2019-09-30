@@ -249,6 +249,7 @@ DEPENDENCIES
   hawkins
   jekyll-feed
   jekyll-sitemap
+  jemoji
 
 BUNDLED WITH
    1.11.2
