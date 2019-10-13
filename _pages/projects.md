@@ -16,11 +16,11 @@ redirect_from:
 
 
 ## Qualcomm, Bangalore Design Center, India
-<p>
+
 <img style="float: left;" src="/images/qualcomm.png" width="300" height="300" hspace="30">
 
-In Summers of 2019 I was with the Memory Design Team, [Qualcomm](https://www.qualcomm.com/company/locations/india) Bangalore where I worked on the detection of Electromigration prone structures from layouts and reviewed the read/write assist and current/voltage sense amplifier ciruits. I was offered pre-placement job opportunity based on my performance.
-</p>
+In Summers of 2019 I was with the Memory Design Team at [Qualcomm Bangalore](https://www.qualcomm.com/company/locations/india) where I worked on the detection of Electromigration prone structures from layouts and reviewed the read/write assist and current/voltage sense amplifier ciruits. I was offered pre-placement job opportunity based on my performance.
+
 <br/><br/>
 <br/><br/>
 
