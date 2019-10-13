@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Hi!"
+title: ""
 excerpt: "Sudarshan Sharma | IIT Kharagpur"
 author_profile: true
 redirect_from: 
