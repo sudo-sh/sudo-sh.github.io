@@ -37,7 +37,7 @@
 
 
 
-  <meta property="og:description" content="Coming Soon">
+  <meta property="og:description" content="The prerequisites for this blog are Digital VLSI Design, RTL Design using Verilog and FPGA structure the knowledge of CLBs and Slices.">
 
 
 
@@ -252,7 +252,7 @@
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     <meta itemprop="headline" content="Writing  LUT level design">
-    <meta itemprop="description" content="Coming Soon">
+    <meta itemprop="description" content="The prerequisites for this blog are Digital VLSI Design, RTL Design using Verilog and FPGA structure the knowledge of CLBs and Slices.">
     <meta itemprop="datePublished" content="September 28, 2019">
     
 
@@ -266,7 +266,7 @@
 
 
   
-	  less than 1 minute read
+	  3 minute read
 	
 </p>
           
@@ -283,7 +283,81 @@
       
 
       <section class="page__content" itemprop="text">
-        <p><em>Coming Soon</em></p>
+        <p>The prerequisites for this blog are Digital VLSI Design, RTL Design using Verilog and FPGA structure the knowledge of CLBs and Slices.</p>
+
+<p>Many a time it is required to write a LUT level design for a better overview of the design space exploration and also to get better control for design such as ring oscillators etc.
+In this blog, I will focus mostly on the details of How do we write LUT based code instead of simple Verilog syntax in the same file. It is assumed that the reader is aware of Verilog and other digital design concepts.</p>
+
+<p>Let’s look at the Lookup Table LUT design at the gate level, LUT is a basic block of a FPGA, as the name suggests LUTs looks for a table, the table here is the function output in a truth table representation, i.e when you write an expanded truth table the column corresponding to the function is what we are talking about. Now there is a nice <a href="https://www.intel.com/content/dam/www/programmable/us/en/pdfs/literature/wp/wp-01003.pdf" target="_blank">White Paper</a> by Altera, for more details have a look. A LUT-6 from two LUT-3 looks like this</p>
+
+<p><img src="/images/LUT.png" align="middle" /></p>
+
+<p>Fig: LUT-6 from two LUT-3, <a href="https://www.intel.com/content/dam/www/programmable/us/en/pdfs/literature/wp/wp-01003.pdf" target="_blank">Altera FPGA Architecture White Paper</a>.</p>
+
+<h3 id="how-do-we-instantiate-luts-directly-in-verilog-scripts">How do we instantiate LUTs directly in verilog scripts?</h3>
+
+<p>The code snippet is taken from the <a href="https://www.xilinx.com/support/documentation/sw_manuals/xilinx2012_2/ug953-vivado-7series-libraries.pdf#page=258" target="_blank">Vivado Design Suite 7 Series FPGA Libraries Guide</a></p>
+
+<p>Verilog Instantiation Template</p>
+<div class="language-verilog highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// LUT6: 6-input Look-Up Table with general output
+// 7 Series
+// Xilinx HDL Libraries Guide, version 2012.2
+</span><span class="n">LUT6</span> <span class="p">#(</span>
+<span class="o">.</span><span class="n">INIT</span><span class="p">(</span><span class="mh">64'h0000000000000000</span><span class="p">)</span> <span class="c1">// Specify LUT Contents
+</span><span class="p">)</span> <span class="n">LUT6_inst</span> <span class="p">(</span>
+<span class="o">.</span><span class="n">O</span><span class="p">(</span><span class="n">O</span><span class="p">)</span><span class="o">,</span> <span class="c1">// LUT general output
+</span><span class="o">.</span><span class="n">I0</span><span class="p">(</span><span class="n">I0</span><span class="p">)</span><span class="o">,</span> <span class="c1">// LUT input
+</span><span class="o">.</span><span class="n">I1</span><span class="p">(</span><span class="n">I1</span><span class="p">)</span><span class="o">,</span> <span class="c1">// LUT input
+</span><span class="o">.</span><span class="n">I2</span><span class="p">(</span><span class="n">I2</span><span class="p">)</span><span class="o">,</span> <span class="c1">// LUT input
+</span><span class="o">.</span><span class="n">I3</span><span class="p">(</span><span class="n">I3</span><span class="p">)</span><span class="o">,</span> <span class="c1">// LUT input
+</span><span class="o">.</span><span class="n">I4</span><span class="p">(</span><span class="n">I4</span><span class="p">)</span><span class="o">,</span> <span class="c1">// LUT input
+</span><span class="o">.</span><span class="n">I5</span><span class="p">(</span><span class="n">I5</span><span class="p">)</span> <span class="c1">// LUT input
+</span><span class="p">)</span><span class="o">;</span>
+<span class="c1">// End of LUT6_inst instantiation
+</span></code></pre></div></div>
+<p>Fig:- This code snippet is taken from the Vivado Design Suit 7 Series FPGA</p>
+
+<p>.INIT() stores the truth table of the 6 input logic function, with LSB on the left</p>
+
+<p>LUT6_inst needs to be changed for all the different instantiation done</p>
+
+<p>.I”x” are the inputs with x from 0 to 5 as 6 inputs with I0 as LSB</p>
+
+<p>.O is the output of the LUT.</p>
+
+<h3 id="2-input-nand-gate-example">2-Input NAND gate example</h3>
+
+<p>In Verilog, in RTL  we write</p>
+
+<p>y=~(a&amp;b)</p>
+
+<p>Its translation to a LUT design would be</p>
+<div class="language-verilog highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Verilog</span> <span class="n">Instantiation</span> <span class="n">Template</span>
+<span class="c1">// LUT6: 6-input Look-Up Table with general output
+// 7 Series
+// Xilinx HDL Libraries Guide, version 2012.2
+</span><span class="n">LUT6</span> <span class="p">#(</span>
+<span class="o">.</span><span class="n">INIT</span><span class="p">(</span><span class="mh">64'h0000000000000007</span><span class="p">)</span> <span class="c1">// Specify LUT Contents
+</span><span class="p">)</span> <span class="n">LUT6_inst</span> <span class="p">(</span>
+<span class="o">.</span><span class="n">O</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">,</span> <span class="c1">// LUT general output
+</span><span class="o">.</span><span class="n">I0</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">,</span> <span class="c1">// LUT input
+</span><span class="o">.</span><span class="n">I1</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">,</span> <span class="c1">// LUT input
+</span><span class="o">.</span><span class="n">I2</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">,</span> <span class="c1">// LUT input
+</span><span class="o">.</span><span class="n">I3</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">,</span> <span class="c1">// LUT input
+</span><span class="o">.</span><span class="n">I4</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">,</span> <span class="c1">// LUT input
+</span><span class="o">.</span><span class="n">I5</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1">// LUT input
+</span><span class="p">)</span><span class="o">;</span>
+<span class="c1">// End of LUT6_inst instantiation
+</span></code></pre></div></div>
+<p>Output of NAND with inputs as &lt;(1,1), (1,0), (0,1), (0,0)&gt; is  &lt;0, 1 , 1, 1&gt;  which is 7(4’b0111) in hexadecimal. That is written in the  .INIT() considering the LSB and MSB ordering.</p>
+
+<p>Inputs a and b are the I0 and I1 inputs of the LUT remaining inputs of the LUT are set to 0 as we don’t need them, y is the output written in .O().</p>
+
+<p>So using one LUT6 we can realise any 6-input or less 1 output boolean functions. Keep in mind one LUT has only one output.</p>
+
+<h3 id="additional-information">Additional Information</h3>
+
+<p>Some of the design specification desires for the appropriate locations of these LUTs consider a <a href="https://en.wikipedia.org/wiki/Physical_unclonable_function" target="_blank">PUF</a> design. The location can be set using <a href="https://www.xilinx.com/support/documentation/sw_manuals/xilinx11/cgd.pdf#page=118" targer="_blank">LOC constraint</a> by setting Slices(LUTs are present inside the Slices) locations in the constraint file.</p>
 
 <hr />
 

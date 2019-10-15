@@ -1,6 +1,80 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-10-12T20:08:28-07:00</updated><id>/feed.xml</id><title type="html">Sudarshan Sharma</title><subtitle>Senior Undergraduate at IIT Kharagpur</subtitle><author><name>Sudarshan Sharma</name><email>me@sudarshan-sh.com</email></author><entry><title type="html">Writing LUT level design</title><link href="/posts/2019/09/writing_lut_level_design/" rel="alternate" type="text/html" title="Writing  LUT level design" /><published>2019-09-28T00:00:00-07:00</published><updated>2019-09-28T00:00:00-07:00</updated><id>/posts/2019/09/blog-post-2</id><content type="html" xml:base="/posts/2019/09/writing_lut_level_design/">&lt;p&gt;&lt;em&gt;Coming Soon&lt;/em&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-10-15T05:17:33-07:00</updated><id>/feed.xml</id><title type="html">Sudarshan Sharma</title><subtitle>Senior Undergraduate at IIT Kharagpur</subtitle><author><name>Sudarshan Sharma</name><email>me@sudarshan-sh.com</email></author><entry><title type="html">Writing LUT level design</title><link href="/posts/2019/09/writing_lut_level_design/" rel="alternate" type="text/html" title="Writing  LUT level design" /><published>2019-09-28T00:00:00-07:00</published><updated>2019-09-28T00:00:00-07:00</updated><id>/posts/2019/09/blog-post-2</id><content type="html" xml:base="/posts/2019/09/writing_lut_level_design/">&lt;p&gt;The prerequisites for this blog are Digital VLSI Design, RTL Design using Verilog and FPGA structure the knowledge of CLBs and Slices.&lt;/p&gt;
 
-&lt;hr /&gt;</content><author><name>Sudarshan Sharma</name><email>me@sudarshan-sh.com</email></author><category term="FPGA" /><category term="verilog" /><category term="rtl_programming" /><summary type="html">Coming Soon</summary></entry><entry><title type="html">Setting up the Website</title><link href="/posts/2019/09/setting_up_website/" rel="alternate" type="text/html" title="Setting up the Website" /><published>2019-09-05T00:00:00-07:00</published><updated>2019-09-05T00:00:00-07:00</updated><id>/posts/2019/09/blog-post-1</id><content type="html" xml:base="/posts/2019/09/setting_up_website/">&lt;p&gt;One beautiful day after reading &lt;a href=&quot;https://www.vanschneider.com/a-love-letter-to-personal-websites&quot;&gt;A love letter to my website- DESK Magazine&lt;/a&gt; sent by my friend &lt;a href=&quot;http://www.bauva.com/&quot;&gt;Bauva.Com&lt;/a&gt;.I decided to buy a domain and build my &lt;em&gt;little corner of the internet&lt;/em&gt;; this blog is about my experience about &lt;strong&gt;my world&lt;/strong&gt; and how I perceive it to be, I will start with writing about &lt;em&gt;How I set up my website?&lt;/em&gt;, starting from hosting on GitHub pages and setting up my DNS record by buying &lt;a href=&quot;http://www.sudarshan-sh.com/&quot;&gt;sudarshan-sh.com&lt;/a&gt; for &lt;em&gt;forever and ever&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Many a time it is required to write a LUT level design for a better overview of the design space exploration and also to get better control for design such as ring oscillators etc.
+In this blog, I will focus mostly on the details of How do we write LUT based code instead of simple Verilog syntax in the same file. It is assumed that the reader is aware of Verilog and other digital design concepts.&lt;/p&gt;
+
+&lt;p&gt;Let’s look at the Lookup Table LUT design at the gate level, LUT is a basic block of a FPGA, as the name suggests LUTs looks for a table, the table here is the function output in a truth table representation, i.e when you write an expanded truth table the column corresponding to the function is what we are talking about. Now there is a nice &lt;a href=&quot;https://www.intel.com/content/dam/www/programmable/us/en/pdfs/literature/wp/wp-01003.pdf&quot; target=&quot;_blank&quot;&gt;White Paper&lt;/a&gt; by Altera, for more details have a look. A LUT-6 from two LUT-3 looks like this&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/LUT.png&quot; align=&quot;middle&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Fig: LUT-6 from two LUT-3, &lt;a href=&quot;https://www.intel.com/content/dam/www/programmable/us/en/pdfs/literature/wp/wp-01003.pdf&quot; target=&quot;_blank&quot;&gt;Altera FPGA Architecture White Paper&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;how-do-we-instantiate-luts-directly-in-verilog-scripts&quot;&gt;How do we instantiate LUTs directly in verilog scripts?&lt;/h3&gt;
+
+&lt;p&gt;The code snippet is taken from the &lt;a href=&quot;https://www.xilinx.com/support/documentation/sw_manuals/xilinx2012_2/ug953-vivado-7series-libraries.pdf#page=258&quot; target=&quot;_blank&quot;&gt;Vivado Design Suite 7 Series FPGA Libraries Guide&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Verilog Instantiation Template&lt;/p&gt;
+&lt;div class=&quot;language-verilog highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// LUT6: 6-input Look-Up Table with general output
+// 7 Series
+// Xilinx HDL Libraries Guide, version 2012.2
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LUT6&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;#(&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;INIT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;64'h0000000000000000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Specify LUT Contents
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LUT6_inst&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;O&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;O&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT general output
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT input
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT input
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT input
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT input
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT input
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT input
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// End of LUT6_inst instantiation
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Fig:- This code snippet is taken from the Vivado Design Suit 7 Series FPGA&lt;/p&gt;
+
+&lt;p&gt;.INIT() stores the truth table of the 6 input logic function, with LSB on the left&lt;/p&gt;
+
+&lt;p&gt;LUT6_inst needs to be changed for all the different instantiation done&lt;/p&gt;
+
+&lt;p&gt;.I”x” are the inputs with x from 0 to 5 as 6 inputs with I0 as LSB&lt;/p&gt;
+
+&lt;p&gt;.O is the output of the LUT.&lt;/p&gt;
+
+&lt;h3 id=&quot;2-input-nand-gate-example&quot;&gt;2-Input NAND gate example&lt;/h3&gt;
+
+&lt;p&gt;In Verilog, in RTL  we write&lt;/p&gt;
+
+&lt;p&gt;y=~(a&amp;amp;b)&lt;/p&gt;
+
+&lt;p&gt;Its translation to a LUT design would be&lt;/p&gt;
+&lt;div class=&quot;language-verilog highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;Verilog&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Instantiation&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Template&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// LUT6: 6-input Look-Up Table with general output
+// 7 Series
+// Xilinx HDL Libraries Guide, version 2012.2
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LUT6&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;#(&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;INIT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;64'h0000000000000007&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Specify LUT Contents
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LUT6_inst&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;O&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT general output
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT input
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT input
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT input
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT input
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT input
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT input
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// End of LUT6_inst instantiation
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Output of NAND with inputs as &amp;lt;(1,1), (1,0), (0,1), (0,0)&amp;gt; is  &amp;lt;0, 1 , 1, 1&amp;gt;  which is 7(4’b0111) in hexadecimal. That is written in the  .INIT() considering the LSB and MSB ordering.&lt;/p&gt;
+
+&lt;p&gt;Inputs a and b are the I0 and I1 inputs of the LUT remaining inputs of the LUT are set to 0 as we don’t need them, y is the output written in .O().&lt;/p&gt;
+
+&lt;p&gt;So using one LUT6 we can realise any 6-input or less 1 output boolean functions. Keep in mind one LUT has only one output.&lt;/p&gt;
+
+&lt;h3 id=&quot;additional-information&quot;&gt;Additional Information&lt;/h3&gt;
+
+&lt;p&gt;Some of the design specification desires for the appropriate locations of these LUTs consider a &lt;a href=&quot;https://en.wikipedia.org/wiki/Physical_unclonable_function&quot; target=&quot;_blank&quot;&gt;PUF&lt;/a&gt; design. The location can be set using &lt;a href=&quot;https://www.xilinx.com/support/documentation/sw_manuals/xilinx11/cgd.pdf#page=118&quot; targer=&quot;_blank&quot;&gt;LOC constraint&lt;/a&gt; by setting Slices(LUTs are present inside the Slices) locations in the constraint file.&lt;/p&gt;
+
+&lt;hr /&gt;</content><author><name>Sudarshan Sharma</name><email>me@sudarshan-sh.com</email></author><category term="FPGA" /><category term="verilog" /><category term="rtl_programming" /><summary type="html">The prerequisites for this blog are Digital VLSI Design, RTL Design using Verilog and FPGA structure the knowledge of CLBs and Slices.</summary></entry><entry><title type="html">Setting up the Website</title><link href="/posts/2019/09/setting_up_website/" rel="alternate" type="text/html" title="Setting up the Website" /><published>2019-09-05T00:00:00-07:00</published><updated>2019-09-05T00:00:00-07:00</updated><id>/posts/2019/09/blog-post-1</id><content type="html" xml:base="/posts/2019/09/setting_up_website/">&lt;p&gt;One beautiful day after reading &lt;a href=&quot;https://www.vanschneider.com/a-love-letter-to-personal-websites&quot;&gt;A love letter to my website- DESK Magazine&lt;/a&gt; sent by my friend &lt;a href=&quot;http://www.bauva.com/&quot;&gt;Bauva.Com&lt;/a&gt;.I decided to buy a domain and build my &lt;em&gt;little corner of the internet&lt;/em&gt;; this blog is about my experience about &lt;strong&gt;my world&lt;/strong&gt; and how I perceive it to be, I will start with writing about &lt;em&gt;How I set up my website?&lt;/em&gt;, starting from hosting on GitHub pages and setting up my DNS record by buying &lt;a href=&quot;http://www.sudarshan-sh.com/&quot;&gt;sudarshan-sh.com&lt;/a&gt; for &lt;em&gt;forever and ever&lt;/em&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;setting-up-github-pages&quot;&gt;Setting up Github Pages&lt;/h2&gt;
 
