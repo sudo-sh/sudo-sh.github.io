@@ -8,28 +8,33 @@
 
 
 <url>
-  <loc>http://www.sudarshan-sh.com/</loc>
-  <lastmod>2019-09-26T18:22:18+00:00</lastmod>
+  <loc>https://www.sudarshan-sh.com/</loc>
+  <lastmod>2019-10-15T06:50:24+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>http://www.sudarshan-sh.com/projects/</loc>
-  <lastmod>2019-09-26T18:22:18+00:00</lastmod>
+  <loc>https://www.sudarshan-sh.com/projects/</loc>
+  <lastmod>2019-10-15T06:50:24+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://www.sudarshan-sh.com/blog/</loc>
-  <lastmod>2019-09-26T18:22:18+00:00</lastmod>
+  <loc>https://www.sudarshan-sh.com/blog/</loc>
+  <lastmod>2019-10-15T06:50:24+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://www.sudarshan-sh.com/resume/</loc>
-  <lastmod>2019-09-26T18:22:18+00:00</lastmod>
+  <loc>https://www.sudarshan-sh.com/resume/</loc>
+  <lastmod>2019-10-15T06:50:24+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://www.sudarshan-sh.com/posts/2019/09/setting_up_website/</loc>
-  <lastmod>2019-09-26T18:22:18+00:00</lastmod>
+  <loc>https://www.sudarshan-sh.com/posts/2019/09/writing_lut_level_design/</loc>
+  <lastmod>2019-10-15T06:50:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.sudarshan-sh.com/posts/2019/09/setting_up_website/</loc>
+  <lastmod>2019-10-15T06:50:24+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 
