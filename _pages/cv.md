@@ -9,7 +9,7 @@ redirect_from:
 
 {% include base_path %}
 
-Link to my [Curriculum Vitae](https://sudo-sh.github.io/files/Sudarshan.pdf), it holds more information on my experiences, internships, courseworks and skillsets.
+Link to my [Curriculum Vitae](https://sudo-sh.github.io/files/Sudarshan_Resume.pdf), it holds more information on my experiences, internships, courseworks and skillsets.
 
 
 <object data="https://sudo-sh.github.io/files/Sudarshan_Resume.pdf" type="application/pdf" width="700px" height="700px">
