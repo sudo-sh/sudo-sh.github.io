@@ -12,9 +12,9 @@ redirect_from:
 Link to my [Curriculum Vitae](https://sudo-sh.github.io/files/Sudarshan_Resume__2019.pdf), it holds more information on my experiences and skillsets.
 
 
-<object data="https://sudo-sh.github.io/files/Sudarshan_Resume__2019.pdf" type="application/pdf" width="700px" height="700px">
+<object data="https://sudo-sh.github.io/files/Sudarshan_Resume.pdf" type="application/pdf" width="700px" height="700px">
     <embed src="https://sudo-sh.github.io/files/Sudarshan_Resume.pdf">
-        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="https://sudo-sh.github.io/files/Sudarshan_Resume__2019.pdf">Download PDF</a>.</p>
+        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="https://sudo-sh.github.io/files/Sudarshan_Resume.pdf">Download PDF</a>.</p>
     </embed>
 </object>
 
