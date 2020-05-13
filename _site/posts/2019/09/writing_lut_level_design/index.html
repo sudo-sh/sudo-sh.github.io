@@ -37,7 +37,7 @@
 
 
 
-  <meta property="og:description" content="The prerequisites for this blog are Digital VLSI Design, RTL Design using Verilog and FPGA structure the knowledge of CLBs and Slices.">
+  <meta property="og:description" content="The prerequisites required for this blog are Digital VLSI Design, RTL Design using Verilog and FPGA structure the knowledge of CLBs and Slices.">
 
 
 
@@ -216,7 +216,7 @@
       
       
       
-        <li><a href="https://www.linkedin.com/in/sudarshan-sharma-155330148"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+        <li><a href="https://www.linkedin.com/in/sudarshan-sh"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
       
       
       
@@ -252,7 +252,7 @@
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     <meta itemprop="headline" content="Writing  LUT level design">
-    <meta itemprop="description" content="The prerequisites for this blog are Digital VLSI Design, RTL Design using Verilog and FPGA structure the knowledge of CLBs and Slices.">
+    <meta itemprop="description" content="The prerequisites required for this blog are Digital VLSI Design, RTL Design using Verilog and FPGA structure the knowledge of CLBs and Slices.">
     <meta itemprop="datePublished" content="September 28, 2019">
     
 
@@ -283,7 +283,7 @@
       
 
       <section class="page__content" itemprop="text">
-        <p>The prerequisites for this blog are Digital VLSI Design, RTL Design using Verilog and FPGA structure the knowledge of CLBs and Slices.</p>
+        <p>The prerequisites required for this blog are Digital VLSI Design, RTL Design using Verilog and FPGA structure the knowledge of CLBs and Slices.</p>
 
 <p>Many a time it is required to write a LUT level design for a better overview of the design space exploration and also to get better control for design such as ring oscillators etc.
 In this blog, I will focus mostly on the details of How do we write LUT based code instead of simple Verilog syntax in the same file. It is assumed that the reader is aware of Verilog and other digital design concepts.</p>
@@ -303,16 +303,16 @@ In this blog, I will focus mostly on the details of How do we write LUT based co
 // 7 Series
 // Xilinx HDL Libraries Guide, version 2012.2
 </span><span class="n">LUT6</span> <span class="p">#(</span>
-<span class="o">.</span><span class="n">INIT</span><span class="p">(</span><span class="mh">64'h0000000000000000</span><span class="p">)</span> <span class="c1">// Specify LUT Contents
+<span class="p">.</span><span class="n">INIT</span><span class="p">(</span><span class="mh">64'h0000000000000000</span><span class="p">)</span> <span class="c1">// Specify LUT Contents
 </span><span class="p">)</span> <span class="n">LUT6_inst</span> <span class="p">(</span>
-<span class="o">.</span><span class="n">O</span><span class="p">(</span><span class="n">O</span><span class="p">)</span><span class="o">,</span> <span class="c1">// LUT general output
-</span><span class="o">.</span><span class="n">I0</span><span class="p">(</span><span class="n">I0</span><span class="p">)</span><span class="o">,</span> <span class="c1">// LUT input
-</span><span class="o">.</span><span class="n">I1</span><span class="p">(</span><span class="n">I1</span><span class="p">)</span><span class="o">,</span> <span class="c1">// LUT input
-</span><span class="o">.</span><span class="n">I2</span><span class="p">(</span><span class="n">I2</span><span class="p">)</span><span class="o">,</span> <span class="c1">// LUT input
-</span><span class="o">.</span><span class="n">I3</span><span class="p">(</span><span class="n">I3</span><span class="p">)</span><span class="o">,</span> <span class="c1">// LUT input
-</span><span class="o">.</span><span class="n">I4</span><span class="p">(</span><span class="n">I4</span><span class="p">)</span><span class="o">,</span> <span class="c1">// LUT input
-</span><span class="o">.</span><span class="n">I5</span><span class="p">(</span><span class="n">I5</span><span class="p">)</span> <span class="c1">// LUT input
-</span><span class="p">)</span><span class="o">;</span>
+<span class="p">.</span><span class="n">O</span><span class="p">(</span><span class="n">O</span><span class="p">),</span> <span class="c1">// LUT general output
+</span><span class="p">.</span><span class="n">I0</span><span class="p">(</span><span class="n">I0</span><span class="p">),</span> <span class="c1">// LUT input
+</span><span class="p">.</span><span class="n">I1</span><span class="p">(</span><span class="n">I1</span><span class="p">),</span> <span class="c1">// LUT input
+</span><span class="p">.</span><span class="n">I2</span><span class="p">(</span><span class="n">I2</span><span class="p">),</span> <span class="c1">// LUT input
+</span><span class="p">.</span><span class="n">I3</span><span class="p">(</span><span class="n">I3</span><span class="p">),</span> <span class="c1">// LUT input
+</span><span class="p">.</span><span class="n">I4</span><span class="p">(</span><span class="n">I4</span><span class="p">),</span> <span class="c1">// LUT input
+</span><span class="p">.</span><span class="n">I5</span><span class="p">(</span><span class="n">I5</span><span class="p">)</span> <span class="c1">// LUT input
+</span><span class="p">);</span>
 <span class="c1">// End of LUT6_inst instantiation
 </span></code></pre></div></div>
 <p>Fig:- This code snippet is taken from the Vivado Design Suit 7 Series FPGA</p>
@@ -337,16 +337,16 @@ In this blog, I will focus mostly on the details of How do we write LUT based co
 // 7 Series
 // Xilinx HDL Libraries Guide, version 2012.2
 </span><span class="n">LUT6</span> <span class="p">#(</span>
-<span class="o">.</span><span class="n">INIT</span><span class="p">(</span><span class="mh">64'h0000000000000007</span><span class="p">)</span> <span class="c1">// Specify LUT Contents
+<span class="p">.</span><span class="n">INIT</span><span class="p">(</span><span class="mh">64'h0000000000000007</span><span class="p">)</span> <span class="c1">// Specify LUT Contents
 </span><span class="p">)</span> <span class="n">LUT6_inst</span> <span class="p">(</span>
-<span class="o">.</span><span class="n">O</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">,</span> <span class="c1">// LUT general output
-</span><span class="o">.</span><span class="n">I0</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">,</span> <span class="c1">// LUT input
-</span><span class="o">.</span><span class="n">I1</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">,</span> <span class="c1">// LUT input
-</span><span class="o">.</span><span class="n">I2</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">,</span> <span class="c1">// LUT input
-</span><span class="o">.</span><span class="n">I3</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">,</span> <span class="c1">// LUT input
-</span><span class="o">.</span><span class="n">I4</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">,</span> <span class="c1">// LUT input
-</span><span class="o">.</span><span class="n">I5</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1">// LUT input
-</span><span class="p">)</span><span class="o">;</span>
+<span class="p">.</span><span class="n">O</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="c1">// LUT general output
+</span><span class="p">.</span><span class="n">I0</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="c1">// LUT input
+</span><span class="p">.</span><span class="n">I1</span><span class="p">(</span><span class="n">b</span><span class="p">),</span> <span class="c1">// LUT input
+</span><span class="p">.</span><span class="n">I2</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="c1">// LUT input
+</span><span class="p">.</span><span class="n">I3</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="c1">// LUT input
+</span><span class="p">.</span><span class="n">I4</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="c1">// LUT input
+</span><span class="p">.</span><span class="n">I5</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1">// LUT input
+</span><span class="p">);</span>
 <span class="c1">// End of LUT6_inst instantiation
 </span></code></pre></div></div>
 <p>Output of NAND with inputs as &lt;(1,1), (1,0), (0,1), (0,0)&gt; is  &lt;0, 1 , 1, 1&gt;  which is 7(4’b0111) in hexadecimal. That is written in the  .INIT() considering the LSB and MSB ordering.</p>

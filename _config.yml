@@ -29,7 +29,7 @@ comments:
   facebook:
     appid                :
     num_posts            : # 5 (default)
-    colorscheme          : "light" # "light" (default), "dark"
+    colorscheme          : "dark" # "light" (default), "dark"
 staticman:
   allowedFields          : ['name', 'email', 'url', 'message']
   branch                 : "gh-pages" # "master", "gh-pages"
@@ -47,7 +47,9 @@ staticman:
       options:
         format           : "iso8601" # "iso8601" (default), "timestamp-seconds", "timestamp-milliseconds"
 atom_feed:
-  # theme                  : jekyll-theme-midnight
+  theme                  : minimal-mistakes-jekyll
+  minimal_mistakes_skin: "neon" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum" "sunrise"
+
   path                   : # blank (default) uses feed.xml
 # SEO Related
 google_site_verification :
@@ -102,7 +104,7 @@ author:
   instagram        :
   impactstory      :
   lastfm           :
-  linkedin         : "sudarshan-sharma-155330148"
+  linkedin         : "sudarshan-sh"
   orcid            : 
   pinterest        :
   soundcloud       :
