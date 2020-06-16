@@ -266,7 +266,7 @@
 
 
   
-	  9 minute read
+	  10 minute read
 	
 </p>
           
@@ -321,7 +321,7 @@ R(i)=R(i+1) - q_{i}*D*10^{i}
 
 <script type="math/tex; mode=display">\begin{equation} \label{radix_2_div}
 
-R(i)=R(i+1) - q_{i}*D*2^{i}\\
+R(i)=R(i+1) - q_{i}*D*2^{i}
 
 \end{equation}</script>
 
@@ -338,19 +338,17 @@ R(i) < 0 %]]></script> the assumption was wrong and we need to restore the parti
 
 <p>Let’s understand this with an example.</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{equation} \label{2_radix_ex}
-
-29 - 3*2^{4} = -19 \ \ q_{4}=1 \ (R(4) < 0\ : \ restore)\\
--19 + 3*2^{4}= +29 \ \ q_{4}=0 \ (R(4) \geq 0\ : \ continue)\\
-29 - 3*2^{3}= +5 \ \ q_{3}=1 \  (R(3) \geq 0\ : \ continue)\\
-+5 - 3*2^{2}= -7 \ \ q_{2}=1 \ (R(2) < 0 \: \ restore)\\
--7 + 3*2^{2}= +5 \ \ q_{2}=0 \ (R(2) \geq 0\: \ continue)\\
-+5 - 3*2^{1}= -1 \ \ q_{1}=1 \ (R(1) < 0 \ :\ restore)\\
--1 + 3*2^{1}= +5 \ \ q_{1}=0 \ (R(1) \geq 0\ :\ continue)\\
-+5 - 3*2^{0}=+2 \ \ q_{0}=1 \ (R(0) \geq 0\ : \ continue)
-
-\end{equation} %]]></script>
+<p><script type="math/tex">% <![CDATA[
+29 - 3*2^{4} = -19 \ \ q_{4}=1 \ (R(4) < 0\ : \ restore) %]]></script>
+<script type="math/tex">-19 + 3*2^{4}= +29 \ \ q_{4}=0 \ (R(4) \geq 0\ : \ continue)</script>
+<script type="math/tex">29 - 3*2^{3}= +5 \ \ q_{3}=1 \  (R(3) \geq 0\ : \ continue)</script>
+<script type="math/tex">% <![CDATA[
++5 - 3*2^{2}= -7 \ \ q_{2}=1 \ (R(2) < 0 \: \ restore) %]]></script>
+<script type="math/tex">-7 + 3*2^{2}= +5 \ \ q_{2}=0 \ (R(2) \geq 0\: \ continue)</script>
+<script type="math/tex">% <![CDATA[
++5 - 3*2^{1}= -1 \ \ q_{1}=1 \ (R(1) < 0 \ :\ restore) %]]></script>
+<script type="math/tex">-1 + 3*2^{1}= +5 \ \ q_{1}=0 \ (R(1) \geq 0\ :\ continue)</script>
+<script type="math/tex">+5 - 3*2^{0}=+2 \ \ q_{0}=1 \ (R(0) \geq 0\ : \ continue)</script></p>
 
 <p>Now using the <script type="math/tex">q_{i}</script> values where continue keyword is used the quotient obtained is 01001 which is equivalent to 9 which should be the actual quotient. Let’s look into another example with boolean values.</p>
 
@@ -376,39 +374,28 @@ R(i) < 0 %]]></script> the assumption was wrong and we need to restore the parti
 
 <p>The idea of restoring division can be extended using simple manipulation such that the restoration of the partial remainder is omitted. To understand this manipulation let’s look at it mathematically.</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{equation} \label{non_restoring_proof}
+<p>From the previous equation we know.</p>
 
-From\ the \ previous \ equation\ we\ know\\
-
-R(i)= R(i+1) - D*2^{i}\\
-
-Case\ 1 :\ We\ need \ to \ restore \ when \ R(i) \ < \ 0 \ this \ is \ done \ by \ adding \ D*2^{i}\\
-
-R(i)= R(i) + D*2^{i}\\
-
-Now,\ in \ the \ next\ iteration\ we \ subtract\ D*2^{i-1}\ for \ the\ assumption\ q_{i}=1\\
-
-R(i-1)= R(i) - D*2^{i-1}\\
-R(i-1)=R(i) + D*2^{i} - D *2^{i-1}\\
-R(i-1)=R(i) + D*2^{i-1}\\
-
-Case\ 2:\ When\ R(i) \ \geq 0\ the \ assumption\ was \ correct \ for\ q_{i}=1\ continue. 
-
-\end{equation} %]]></script>
+<p><script type="math/tex">R(i)= R(i+1) - D*2^{i}\\</script> 
+<script type="math/tex">% <![CDATA[
+Case\ 1 :\ We\ need \ to \ restore \ when \ R(i) \ < \ 0 \ this \ is \ done \ by \ adding \ D*2^{i} \\ %]]></script>
+<script type="math/tex">R(i)= R(i) + D*2^{i} \\</script>
+<script type="math/tex">Now,\ in \ the \ next\ iteration\ we \ subtract\ D*2^{i-1}\ for \ the\ assumption\ q_{i}=1 \\</script> 
+<script type="math/tex">R(i-1)= R(i) - D*2^{i-1} \\</script>
+<script type="math/tex">R(i-1)=R(i) + D*2^{i} - D *2^{i-1}\\</script>
+<script type="math/tex">R(i-1)=R(i) + D*2^{i-1} \\</script>
+<script type="math/tex">Case\ 2:\ When\ R(i) \ \geq 0\ the \ assumption\ was \ correct \ for\ q_{i}=1\ continue.</script></p>
 
 <p>The Non-restoring division algorithm doesn’t need to restore the partial remainder every time rather if the partial remainder is negative we need to add the divisor in the next iteration taking into consideration the bit shifts. To obtain this functionality with minimal hardware we need to look at the combined hardware used for addition and subtraction of binary bits. Refer to the section Binary Adder Subtractor in the blog <a href="https://www.electrical4u.com/binary-substractor/" target="_blank">Binary Subtractor </a>. The combined hardware used works on the principle that the subtraction can be performed using the 2’s complement notation. According to this method first, the binary number to be subtracted is converted in 2’s complement notation by inverting its bits and adding 1 to it. Further, the 2’s complemented number is then added to another operand. Refer to this blog to gain insight on the 2’s complement subtraction <a href="https://www.math-only-math.com/subtraction-by-2s-complement.html" target="_blank">Subtraction by 2’s complement </a>. Finally, the most important point to address here is the fact that when subtraction is done using the adder hardware with one input complemented and initial carry input as 1, the output is considered negative if the final carry out is 0 and positive when the final carry out is 1. This concept will be used extensively in the later sections.</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{equation} \label{non_restoring_div_ex}
-
-29 - 3*2^{4} = -19 \ \ q_{4}=1 \ (R(4) < 0\ : \ assumption \ wrong  )\\
--19 + 3*2^{3}= +5 \ \ q_{3}=\bar{1} \  (R(3) \geq 0\ : \ continue)\\
-+5 - 3*2^{2}= -7 \ \ q_{2}=1 \ (R(2) < 0 \: \ assumption \  wrong )\\
--7 + 3*2^{1}= -1 \ \ q_{2}=\bar{1} \ (R(1) < 0\: \ assumption \  wrong )\\
--1 + 3*2^{0}= 2 \ \ q_{1}=\bar{1} \ (R(0) \geq 0 \ :\ continue \ post \ decimal)\\
-
-\end{equation} %]]></script>
+<p><script type="math/tex">% <![CDATA[
+29 - 3*2^{4} = -19 \ \ q_{4}=1 \ (R(4) < 0\ : \ assumption \ wrong  ) %]]></script>
+<script type="math/tex">-19 + 3*2^{3}= +5 \ \ q_{3}=\bar{1} \  (R(3) \geq 0\ : \ continue)</script>
+<script type="math/tex">% <![CDATA[
++5 - 3*2^{2}= -7 \ \ q_{2}=1 \ (R(2) < 0 \: \ assumption \  wrong ) %]]></script> 
+<script type="math/tex">% <![CDATA[
+-7 + 3*2^{1}= -1 \ \ q_{2}=\bar{1} \ (R(1) < 0\: \ assumption \  wrong ) %]]></script> 
+<script type="math/tex">-1 + 3*2^{0}= 2 \ \ q_{1}=\bar{1} \ (R(0) \geq 0 \ :\ continue \ post \ decimal)</script></p>
 
 <p>From the example we observe that non restoring algorithm takes lesser number of iterations compared to the restoring algorithm. However as you can observe the quotient bits are not in the form of normal 0 and 1 rather in the form of 1 and <script type="math/tex">\bar{1}</script> which has a numerial value equivalent to -1. So here the quotient obtained is <script type="math/tex">1 \bar{1} 1 \bar{1} \bar{1}</script> numrically calculated as <script type="math/tex">1*2^{4} -1*2^{3} + 1*2^{2} - 2*2^{1} -1*2^{0} = 9</script>.</p>
 

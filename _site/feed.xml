@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-15T18:12:45-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Sudarshan Sharma</title><subtitle>Senior Undergraduate at IIT Kharagpur</subtitle><author><name>Sudarshan Sharma</name><email>me@sudarshan-sh.com</email></author><entry><title type="html">Division in Hardware</title><link href="http://localhost:4000/posts/2020/06/division_in_hardware/" rel="alternate" type="text/html" title="Division in Hardware" /><published>2020-06-14T00:00:00-07:00</published><updated>2020-06-14T00:00:00-07:00</updated><id>http://localhost:4000/posts/2020/06/blog-post-3</id><content type="html" xml:base="http://localhost:4000/posts/2020/06/division_in_hardware/">&lt;p&gt;The pre-requisite for this blog includes the knowledge of basic boolean algebra, solid background on Digital Electronics is a big plus.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-06-15T18:41:54-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Sudarshan Sharma</title><subtitle>Senior Undergraduate at IIT Kharagpur</subtitle><author><name>Sudarshan Sharma</name><email>me@sudarshan-sh.com</email></author><entry><title type="html">Division in Hardware</title><link href="http://localhost:4000/posts/2020/06/division_in_hardware/" rel="alternate" type="text/html" title="Division in Hardware" /><published>2020-06-14T00:00:00-07:00</published><updated>2020-06-14T00:00:00-07:00</updated><id>http://localhost:4000/posts/2020/06/blog-post-3</id><content type="html" xml:base="http://localhost:4000/posts/2020/06/division_in_hardware/">&lt;p&gt;The pre-requisite for this blog includes the knowledge of basic boolean algebra, solid background on Digital Electronics is a big plus.&lt;/p&gt;
 
 &lt;p&gt;Majority of the content on the internet talks about the sequential architecture of the division algorithm. However, irrespective of the same idealogy it is difficult to visualise the combinatorial division circuit. The blogs on combination multiplier are readily available on the internet one such blog is &lt;a href=&quot;https://learn.digilentinc.com/Documents/282&quot; target=&quot;_blank&quot;&gt;Multipler Architecture &lt;/a&gt;. In this blog, I will try to cover the concept behind the restoring and the non-restoring type division algorithms and then translate these algorithms to respective hardware architecture.&lt;/p&gt;
 
@@ -36,7 +36,7 @@ R(i)=R(i+1) - q_{i}*D*10^{i}
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{equation} \label{radix_2_div}
 
-R(i)=R(i+1) - q_{i}*D*2^{i}\\
+R(i)=R(i+1) - q_{i}*D*2^{i}
 
 \end{equation}&lt;/script&gt;
 
@@ -53,19 +53,17 @@ R(i) &lt; 0 %]]&gt;&lt;/script&gt; the assumption was wrong and we need to resto
 
 &lt;p&gt;Let’s understand this with an example.&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{equation} \label{2_radix_ex}
-
-29 - 3*2^{4} = -19 \ \ q_{4}=1 \ (R(4) &lt; 0\ : \ restore)\\
--19 + 3*2^{4}= +29 \ \ q_{4}=0 \ (R(4) \geq 0\ : \ continue)\\
-29 - 3*2^{3}= +5 \ \ q_{3}=1 \  (R(3) \geq 0\ : \ continue)\\
-+5 - 3*2^{2}= -7 \ \ q_{2}=1 \ (R(2) &lt; 0 \: \ restore)\\
--7 + 3*2^{2}= +5 \ \ q_{2}=0 \ (R(2) \geq 0\: \ continue)\\
-+5 - 3*2^{1}= -1 \ \ q_{1}=1 \ (R(1) &lt; 0 \ :\ restore)\\
--1 + 3*2^{1}= +5 \ \ q_{1}=0 \ (R(1) \geq 0\ :\ continue)\\
-+5 - 3*2^{0}=+2 \ \ q_{0}=1 \ (R(0) \geq 0\ : \ continue)
-
-\end{equation} %]]&gt;&lt;/script&gt;
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+29 - 3*2^{4} = -19 \ \ q_{4}=1 \ (R(4) &lt; 0\ : \ restore) %]]&gt;&lt;/script&gt;
+&lt;script type=&quot;math/tex&quot;&gt;-19 + 3*2^{4}= +29 \ \ q_{4}=0 \ (R(4) \geq 0\ : \ continue)&lt;/script&gt;
+&lt;script type=&quot;math/tex&quot;&gt;29 - 3*2^{3}= +5 \ \ q_{3}=1 \  (R(3) \geq 0\ : \ continue)&lt;/script&gt;
+&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
++5 - 3*2^{2}= -7 \ \ q_{2}=1 \ (R(2) &lt; 0 \: \ restore) %]]&gt;&lt;/script&gt;
+&lt;script type=&quot;math/tex&quot;&gt;-7 + 3*2^{2}= +5 \ \ q_{2}=0 \ (R(2) \geq 0\: \ continue)&lt;/script&gt;
+&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
++5 - 3*2^{1}= -1 \ \ q_{1}=1 \ (R(1) &lt; 0 \ :\ restore) %]]&gt;&lt;/script&gt;
+&lt;script type=&quot;math/tex&quot;&gt;-1 + 3*2^{1}= +5 \ \ q_{1}=0 \ (R(1) \geq 0\ :\ continue)&lt;/script&gt;
+&lt;script type=&quot;math/tex&quot;&gt;+5 - 3*2^{0}=+2 \ \ q_{0}=1 \ (R(0) \geq 0\ : \ continue)&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;Now using the &lt;script type=&quot;math/tex&quot;&gt;q_{i}&lt;/script&gt; values where continue keyword is used the quotient obtained is 01001 which is equivalent to 9 which should be the actual quotient. Let’s look into another example with boolean values.&lt;/p&gt;
 
@@ -91,39 +89,28 @@ R(i) &lt; 0 %]]&gt;&lt;/script&gt; the assumption was wrong and we need to resto
 
 &lt;p&gt;The idea of restoring division can be extended using simple manipulation such that the restoration of the partial remainder is omitted. To understand this manipulation let’s look at it mathematically.&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{equation} \label{non_restoring_proof}
+&lt;p&gt;From the previous equation we know.&lt;/p&gt;
 
-From\ the \ previous \ equation\ we\ know\\
-
-R(i)= R(i+1) - D*2^{i}\\
-
-Case\ 1 :\ We\ need \ to \ restore \ when \ R(i) \ &lt; \ 0 \ this \ is \ done \ by \ adding \ D*2^{i}\\
-
-R(i)= R(i) + D*2^{i}\\
-
-Now,\ in \ the \ next\ iteration\ we \ subtract\ D*2^{i-1}\ for \ the\ assumption\ q_{i}=1\\
-
-R(i-1)= R(i) - D*2^{i-1}\\
-R(i-1)=R(i) + D*2^{i} - D *2^{i-1}\\
-R(i-1)=R(i) + D*2^{i-1}\\
-
-Case\ 2:\ When\ R(i) \ \geq 0\ the \ assumption\ was \ correct \ for\ q_{i}=1\ continue. 
-
-\end{equation} %]]&gt;&lt;/script&gt;
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;R(i)= R(i+1) - D*2^{i}\\&lt;/script&gt; 
+&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+Case\ 1 :\ We\ need \ to \ restore \ when \ R(i) \ &lt; \ 0 \ this \ is \ done \ by \ adding \ D*2^{i} \\ %]]&gt;&lt;/script&gt;
+&lt;script type=&quot;math/tex&quot;&gt;R(i)= R(i) + D*2^{i} \\&lt;/script&gt;
+&lt;script type=&quot;math/tex&quot;&gt;Now,\ in \ the \ next\ iteration\ we \ subtract\ D*2^{i-1}\ for \ the\ assumption\ q_{i}=1 \\&lt;/script&gt; 
+&lt;script type=&quot;math/tex&quot;&gt;R(i-1)= R(i) - D*2^{i-1} \\&lt;/script&gt;
+&lt;script type=&quot;math/tex&quot;&gt;R(i-1)=R(i) + D*2^{i} - D *2^{i-1}\\&lt;/script&gt;
+&lt;script type=&quot;math/tex&quot;&gt;R(i-1)=R(i) + D*2^{i-1} \\&lt;/script&gt;
+&lt;script type=&quot;math/tex&quot;&gt;Case\ 2:\ When\ R(i) \ \geq 0\ the \ assumption\ was \ correct \ for\ q_{i}=1\ continue.&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;The Non-restoring division algorithm doesn’t need to restore the partial remainder every time rather if the partial remainder is negative we need to add the divisor in the next iteration taking into consideration the bit shifts. To obtain this functionality with minimal hardware we need to look at the combined hardware used for addition and subtraction of binary bits. Refer to the section Binary Adder Subtractor in the blog &lt;a href=&quot;https://www.electrical4u.com/binary-substractor/&quot; target=&quot;_blank&quot;&gt;Binary Subtractor &lt;/a&gt;. The combined hardware used works on the principle that the subtraction can be performed using the 2’s complement notation. According to this method first, the binary number to be subtracted is converted in 2’s complement notation by inverting its bits and adding 1 to it. Further, the 2’s complemented number is then added to another operand. Refer to this blog to gain insight on the 2’s complement subtraction &lt;a href=&quot;https://www.math-only-math.com/subtraction-by-2s-complement.html&quot; target=&quot;_blank&quot;&gt;Subtraction by 2’s complement &lt;/a&gt;. Finally, the most important point to address here is the fact that when subtraction is done using the adder hardware with one input complemented and initial carry input as 1, the output is considered negative if the final carry out is 0 and positive when the final carry out is 1. This concept will be used extensively in the later sections.&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{equation} \label{non_restoring_div_ex}
-
-29 - 3*2^{4} = -19 \ \ q_{4}=1 \ (R(4) &lt; 0\ : \ assumption \ wrong  )\\
--19 + 3*2^{3}= +5 \ \ q_{3}=\bar{1} \  (R(3) \geq 0\ : \ continue)\\
-+5 - 3*2^{2}= -7 \ \ q_{2}=1 \ (R(2) &lt; 0 \: \ assumption \  wrong )\\
--7 + 3*2^{1}= -1 \ \ q_{2}=\bar{1} \ (R(1) &lt; 0\: \ assumption \  wrong )\\
--1 + 3*2^{0}= 2 \ \ q_{1}=\bar{1} \ (R(0) \geq 0 \ :\ continue \ post \ decimal)\\
-
-\end{equation} %]]&gt;&lt;/script&gt;
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+29 - 3*2^{4} = -19 \ \ q_{4}=1 \ (R(4) &lt; 0\ : \ assumption \ wrong  ) %]]&gt;&lt;/script&gt;
+&lt;script type=&quot;math/tex&quot;&gt;-19 + 3*2^{3}= +5 \ \ q_{3}=\bar{1} \  (R(3) \geq 0\ : \ continue)&lt;/script&gt;
+&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
++5 - 3*2^{2}= -7 \ \ q_{2}=1 \ (R(2) &lt; 0 \: \ assumption \  wrong ) %]]&gt;&lt;/script&gt; 
+&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+-7 + 3*2^{1}= -1 \ \ q_{2}=\bar{1} \ (R(1) &lt; 0\: \ assumption \  wrong ) %]]&gt;&lt;/script&gt; 
+&lt;script type=&quot;math/tex&quot;&gt;-1 + 3*2^{0}= 2 \ \ q_{1}=\bar{1} \ (R(0) \geq 0 \ :\ continue \ post \ decimal)&lt;/script&gt;&lt;/p&gt;
 
 &lt;p&gt;From the example we observe that non restoring algorithm takes lesser number of iterations compared to the restoring algorithm. However as you can observe the quotient bits are not in the form of normal 0 and 1 rather in the form of 1 and &lt;script type=&quot;math/tex&quot;&gt;\bar{1}&lt;/script&gt; which has a numerial value equivalent to -1. So here the quotient obtained is &lt;script type=&quot;math/tex&quot;&gt;1 \bar{1} 1 \bar{1} \bar{1}&lt;/script&gt; numrically calculated as &lt;script type=&quot;math/tex&quot;&gt;1*2^{4} -1*2^{3} + 1*2^{2} - 2*2^{1} -1*2^{0} = 9&lt;/script&gt;.&lt;/p&gt;
 
