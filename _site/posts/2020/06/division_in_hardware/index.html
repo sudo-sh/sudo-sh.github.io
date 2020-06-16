@@ -1,0 +1,603 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta charset="utf-8">
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Division in Hardware - Sudarshan Sharma</title>
+
+
+
+
+
+
+
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="Sudarshan Sharma">
+<meta property="og:title" content="Division in Hardware">
+
+
+  <link rel="canonical" href="http://localhost:4000/posts/2020/06/division_in_hardware/">
+  <meta property="og:url" content="http://localhost:4000/posts/2020/06/division_in_hardware/">
+
+
+
+  <meta property="og:description" content="The pre-requisite for this blog includes the knowledge of basic boolean algebra, solid background on Digital Electronics is a big plus.">
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2020-06-14T00:00:00-07:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Sudarshan Sharma",
+      "url" : "http://localhost:4000",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Sudarshan Sharma Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    
+
+<!-- start custom head snippets -->
+
+<link rel="apple-touch-icon" sizes="57x57" href="http://localhost:4000/images/apple-touch-icon-57x57.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="60x60" href="http://localhost:4000/images/apple-touch-icon-60x60.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="76x76" href="http://localhost:4000/images/apple-touch-icon-76x76.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="120x120" href="http://localhost:4000/images/apple-touch-icon-120x120.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="152x152" href="http://localhost:4000/images/apple-touch-icon-152x152.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="180x180" href="http://localhost:4000/images/apple-touch-icon-180x180.png?v=M44lzPylqQ">
+<!-- <link rel="icon" type="image/png" href="http://localhost:4000/images/favicon-32x32.png?v=M44lzPylqQ" sizes="32x32">
+ -->
+ <!-- <link rel="icon" type="image/png" href="http://localhost:4000/images/android-chrome-192x192.png?v=M44lzPylqQ" sizes="192x192"> -->
+<!-- <link rel="icon" type="image/png" href="http://localhost:4000/images/favicon-96x96.png?v=M44lzPylqQ" sizes="96x96"> -->
+<!-- <link rel="icon" type="image/png" href="http://localhost:4000/images/favicon-16x16.png?v=M44lzPylqQ" sizes="16x16"> -->
+<link rel="manifest" href="http://localhost:4000/images/manifest.json?v=M44lzPylqQ">
+<link rel="mask-icon" href="http://localhost:4000/images/safari-pinned-tab.svg?v=M44lzPylqQ" color="#000000">
+<!-- <link rel="shortcut icon" href="/images/favicon.ico?v=M44lzPylqQ"> -->
+<meta name="msapplication-TileColor" content="#000000">
+<meta name="msapplication-TileImage" content="http://localhost:4000/images/mstile-144x144.png?v=M44lzPylqQ">
+<meta name="msapplication-config" content="http://localhost:4000/images/browserconfig.xml?v=M44lzPylqQ">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="http://localhost:4000/assets/css/academicons.css"/>
+<link rel="shortcut icon" type="image/png" href="/images/favicon.png">
+
+<script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } }); </script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML' async></script>
+
+<script id="dsq-count-scr" src="//sudarshan-sh.disqus.com/count.js" async></script>
+
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/">Sudarshan Sharma</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/projects/">Projects</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/blog/">Blog</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/resume/">Resume</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+
+
+
+<div id="main" role="main">
+  
+
+
+  <div class="sidebar sticky">
+  
+
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  <div class="author__avatar">
+    
+    	<img src="http://localhost:4000/images/profile.png" class="author__avatar" alt="Sudarshan Sharma">
+    
+  </div>
+
+  <div class="author__content">
+    <h3 class="author__name">Sudarshan Sharma</h3>
+    <p class="author__bio">Senior Undergraduate, Dept. of Electronics and Electrical Communication Engineering with specialisation in Microelectronics and VLSI Design, IIT Kharagpur</p>
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> West Bengal, India</li>
+      
+      
+      
+      
+        <li><a href="mailto:me@sudarshan-sh.com"><i class="fas fa-fw fa-envelope" aria-hidden="true"></i> Email</a></li>
+      
+      
+       
+      
+      
+      
+      
+        <li><a href="https://www.linkedin.com/in/sudarshan-sh"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+      
+      
+      
+      
+      
+      
+        <li><a href="https://github.com/sudo-sh"><i class="fab fa-fw fa-github" aria-hidden="true"></i> Github</a></li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Division in Hardware">
+    <meta itemprop="description" content="The pre-requisite for this blog includes the knowledge of basic boolean algebra, solid background on Digital Electronics is a big plus.">
+    <meta itemprop="datePublished" content="June 14, 2020">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Division in Hardware
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  9 minute read
+	
+</p>
+          
+        
+        
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2020-06-14T00:00:00-07:00">June 14, 2020</time></p>
+        
+        
+             
+        
+    
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>The pre-requisite for this blog includes the knowledge of basic boolean algebra, solid background on Digital Electronics is a big plus.</p>
+
+<p>Majority of the content on the internet talks about the sequential architecture of the division algorithm. However, irrespective of the same idealogy it is difficult to visualise the combinatorial division circuit. The blogs on combination multiplier are readily available on the internet one such blog is <a href="https://learn.digilentinc.com/Documents/282" target="_blank">Multipler Architecture </a>. In this blog, I will try to cover the concept behind the restoring and the non-restoring type division algorithms and then translate these algorithms to respective hardware architecture.</p>
+
+<p>Let’s start with the school book division. The four generic terms used in every division algorithm are dividend, divisor, quotient and remainder. The following image shows the naive division algorithm and an equivalent which will be used to build the understanding.</p>
+
+<p><img src="/images/post_3/division_school_book.jpg" align="middle" /></p>
+
+<p>Fig:<em>Naive division method</em>.</p>
+
+<p>In the figure Dividend=4568, Divisor(D)=3, Quotient(q)=1522 and Remainder(R)=2. Now, the division takes four steps, the <script type="math/tex">i^{th}</script> digit of q is denoted as <script type="math/tex">q_{i}</script> and the partial remainder at the <script type="math/tex">i^{th}</script> step after substraction is denoted as <script type="math/tex">R(i)</script>. Assume that <script type="math/tex">R(0)</script> is the final remainder. Looking at the division once again we observe.</p>
+
+<script type="math/tex; mode=display">\begin{equation} \label{division_sequence}
+
+4568 - 1*3*10^{3}=1568 \ or \ R(4) - q_{3}*D*10^{3}= R(3)\\
+1568 - 5*3*10^{2}=0068 \ or \ R(3) - q_{2}*D*10^{2}= R(2)\\
+0068 - 2*3*10^{1}=0008 \ or \ R(2) - q_{1}*D*10^{1}= R(1)\\
+0008 - 1*3*10^{0}=0002 \ or \ R(1) - q_{0}*D*10^{0}= R(0)
+\end{equation}</script>
+
+<p><script type="math/tex">R(4)</script> is numerically equal to the dividend. Now, observing the sequence we can say that the Remainder, in general, can be expressed as:</p>
+
+<script type="math/tex; mode=display">\begin{equation} \label{division_gen}
+
+R(i)=R(i+1) - q_{i}*D*10^{i}
+
+\end{equation}</script>
+
+<p>where <script type="math/tex">i= n-1, n-2, ......, 1, 0</script>.</p>
+
+<p>Now, the whole purpose of introducing the naive approach is the fact that in binary-only the radix changes from 10 to 2. The inherent concept remains the same, one important questions to ask at this point is how the quotient <script type="math/tex">q_{i}</script> is calculated? It is obvious that through observation we figure out the value of quotient at every iteration but for a machine, we need to define a methodology as an alternative to this observation. Further, this observation is nothing but a mental trial and error. We keep on checking the difference between the partial remainder (dividend in the first step) and the integer multiple of the divisor till the point we get a negative value. Once the integer multiple yielding the negative difference is obtained we choose the <script type="math/tex">q_{i}</script> as one less than that particular integer. This is the main idea of restoring division.</p>
+
+<h2 id="restoring-divison">Restoring Divison</h2>
+
+<p>As discussed in the previous paragraph the restoring division also gives a positive partial remainder. The examples from here onwards will deal with radix as 2 instead of 10 as discussed in the previous paragraphs. In case of 2 as the radix, the quotient is either 0 or 1 so using \eqref{division_gen} and rewriting the equation.</p>
+
+<script type="math/tex; mode=display">\begin{equation} \label{radix_2_div}
+
+R(i)=R(i+1) - q_{i}*D*2^{i}\\
+
+\end{equation}</script>
+
+<p>We start with assuming <script type="math/tex">q_{i}</script> as 1 so</p>
+
+<script type="math/tex; mode=display">R(i)=R(i+1) - D*2^{i}</script>
+
+<p>Now from here onwards we define two cases based on the value of <script type="math/tex">R(i)</script>.</p>
+
+<p><strong>Case 1</strong>: if <script type="math/tex">R(i) \geq 0</script> the assumption for <script type="math/tex">q_{i}</script>=1 was correct.</p>
+
+<p><strong>Case 2</strong>: if <script type="math/tex">% <![CDATA[
+R(i) < 0 %]]></script> the assumption was wrong and we need to restore the partial remainder.</p>
+
+<p>Let’s understand this with an example.</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{equation} \label{2_radix_ex}
+
+29 - 3*2^{4} = -19 \ \ q_{4}=1 \ (R(4) < 0\ : \ restore)\\
+-19 + 3*2^{4}= +29 \ \ q_{4}=0 \ (R(4) \geq 0\ : \ continue)\\
+29 - 3*2^{3}= +5 \ \ q_{3}=1 \  (R(3) \geq 0\ : \ continue)\\
++5 - 3*2^{2}= -7 \ \ q_{2}=1 \ (R(2) < 0 \: \ restore)\\
+-7 + 3*2^{2}= +5 \ \ q_{2}=0 \ (R(2) \geq 0\: \ continue)\\
++5 - 3*2^{1}= -1 \ \ q_{1}=1 \ (R(1) < 0 \ :\ restore)\\
+-1 + 3*2^{1}= +5 \ \ q_{1}=0 \ (R(1) \geq 0\ :\ continue)\\
++5 - 3*2^{0}=+2 \ \ q_{0}=1 \ (R(0) \geq 0\ : \ continue)
+
+\end{equation} %]]></script>
+
+<p>Now using the <script type="math/tex">q_{i}</script> values where continue keyword is used the quotient obtained is 01001 which is equivalent to 9 which should be the actual quotient. Let’s look into another example with boolean values.</p>
+
+<p><img src="/images/post_3/restoring_division_binary.jpg" align="middle" /></p>
+
+<p>Fig: <em>Binary Restoring Division with Dividend=46, Divisor=9, Quotient=5, Remainder= 1</em>.</p>
+
+<p>Now looking at the example it is trivial that we need to have a subtractor in our design. Moreover, to mitigate the extra step present to restore the partial remainder we can think of an architecture which directs the partial remainder to the next iteration upon checking whether the result of subtraction is negative. To sum up we will use a multiplexer with final borrow out as the selection line which is 1 if the subtraction is negative and 0 when it is positive. To understand the binary full subtractor refer to this blog <a href="https://www.electrical4u.com/binary-substractor/" _target="blank">Binary Subtractor</a>. One important point to note is the binary division considered here is for unsigned binary numbers with the divisor and dividend aligned. As mentioned earlier our main aim is to design a combinatorial divisor, so it is evident that we need an array-like structure to incorporate the bitwise operations. Let’s discuss the building block of this array structure.</p>
+
+<p><img src="/images/post_3/hw_restoring_divider.jpg" align="middle" /></p>
+
+<p>Fig: <em>Array architecture building block Restoring Divider</em>.</p>
+
+<p>The <script type="math/tex">final\ b_{out}</script> is calculated from the block present at the Main Significant Bit (MSB). Furthermore, it is important to realise that the architecture proposed can be extended to floating-point by continuing the iterations for the sake of simplicity we only consider the integer quotient. Now with the help of the building blocks, we can construct an array architecture for restoring division which is purely combinatorial. Here for the architecture we have considered the dividend as 6 bits (<script type="math/tex">n_5 n_4 n_3 n_2 n_1 n_0</script>), the divisor is 4 bits (<script type="math/tex">d_3 d_2 d_1 d_0</script>), the quotient is 3 bits (<script type="math/tex">q_2 q_1 q_0</script>) Why? To answer this first understand the assumption that the dividend and the divisor are aligned which means the MSB’s of both the binary representation has 1 as its value. So, maximum quotient can be calculated as <script type="math/tex">\frac{max\ dividend}{min\ divisor}</script> which comes out to be <script type="math/tex">\frac{63}{8}</script> taking the <script type="math/tex">log_2</script> followed by the ceiling of the value we obtain 3. How about you check it out yourself?. Finally, the remainder is expressed as 4 bits (<script type="math/tex">r_3 r_2 r_2 r_0</script>).</p>
+
+<p><img src="/images/post_3/array_divider_restoring.jpg" align="middle" /></p>
+
+<p>Fig: <em>Array architecture Restoring Divider</em>.</p>
+
+<p>The quotient bit as seen from the figure is the inverted form of the <script type="math/tex">final\  b_{out}</script>. Also, the initial borrow input is given as 0 which is trivial. The number of rows in the array architecture is given as <script type="math/tex">rows = width\ of \ dividend\ - \ width\ of \ divisor\ + \ 1</script>. The number of rows corresponds directly to the width of the quotient, which can be proved intuitively using the stated assumption and the example calculation in the previous paragraph. Moreover, if the divisor and the dividend are aligned perfectly we can remove the first block in the third row from the left.</p>
+
+<h2 id="non-restoring-division">Non-restoring Division</h2>
+
+<p>The idea of restoring division can be extended using simple manipulation such that the restoration of the partial remainder is omitted. To understand this manipulation let’s look at it mathematically.</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{equation} \label{non_restoring_proof}
+
+From\ the \ previous \ equation\ we\ know\\
+
+R(i)= R(i+1) - D*2^{i}\\
+
+Case\ 1 :\ We\ need \ to \ restore \ when \ R(i) \ < \ 0 \ this \ is \ done \ by \ adding \ D*2^{i}\\
+
+R(i)= R(i) + D*2^{i}\\
+
+Now,\ in \ the \ next\ iteration\ we \ subtract\ D*2^{i-1}\ for \ the\ assumption\ q_{i}=1\\
+
+R(i-1)= R(i) - D*2^{i-1}\\
+R(i-1)=R(i) + D*2^{i} - D *2^{i-1}\\
+R(i-1)=R(i) + D*2^{i-1}\\
+
+Case\ 2:\ When\ R(i) \ \geq 0\ the \ assumption\ was \ correct \ for\ q_{i}=1\ continue. 
+
+\end{equation} %]]></script>
+
+<p>The Non-restoring division algorithm doesn’t need to restore the partial remainder every time rather if the partial remainder is negative we need to add the divisor in the next iteration taking into consideration the bit shifts. To obtain this functionality with minimal hardware we need to look at the combined hardware used for addition and subtraction of binary bits. Refer to the section Binary Adder Subtractor in the blog <a href="https://www.electrical4u.com/binary-substractor/" target="_blank">Binary Subtractor </a>. The combined hardware used works on the principle that the subtraction can be performed using the 2’s complement notation. According to this method first, the binary number to be subtracted is converted in 2’s complement notation by inverting its bits and adding 1 to it. Further, the 2’s complemented number is then added to another operand. Refer to this blog to gain insight on the 2’s complement subtraction <a href="https://www.math-only-math.com/subtraction-by-2s-complement.html" target="_blank">Subtraction by 2’s complement </a>. Finally, the most important point to address here is the fact that when subtraction is done using the adder hardware with one input complemented and initial carry input as 1, the output is considered negative if the final carry out is 0 and positive when the final carry out is 1. This concept will be used extensively in the later sections.</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{equation} \label{non_restoring_div_ex}
+
+29 - 3*2^{4} = -19 \ \ q_{4}=1 \ (R(4) < 0\ : \ assumption \ wrong  )\\
+-19 + 3*2^{3}= +5 \ \ q_{3}=\bar{1} \  (R(3) \geq 0\ : \ continue)\\
++5 - 3*2^{2}= -7 \ \ q_{2}=1 \ (R(2) < 0 \: \ assumption \  wrong )\\
+-7 + 3*2^{1}= -1 \ \ q_{2}=\bar{1} \ (R(1) < 0\: \ assumption \  wrong )\\
+-1 + 3*2^{0}= 2 \ \ q_{1}=\bar{1} \ (R(0) \geq 0 \ :\ continue \ post \ decimal)\\
+
+\end{equation} %]]></script>
+
+<p>From the example we observe that non restoring algorithm takes lesser number of iterations compared to the restoring algorithm. However as you can observe the quotient bits are not in the form of normal 0 and 1 rather in the form of 1 and <script type="math/tex">\bar{1}</script> which has a numerial value equivalent to -1. So here the quotient obtained is <script type="math/tex">1 \bar{1} 1 \bar{1} \bar{1}</script> numrically calculated as <script type="math/tex">1*2^{4} -1*2^{3} + 1*2^{2} - 2*2^{1} -1*2^{0} = 9</script>.</p>
+
+<p>Now, let’s look at another example of non-restoring division algorithm with boolean values. In the example, we will perform subtraction using the 2’s complement notation used in the combined adder subtractor circuit mentioned previously. Thus, the subtraction results with final carry out as 0 has a negative value and the subtraction with carry out as 1 has a positive value.</p>
+
+<p><img src="/images/post_3/non_restoring_division_binary.jpg" align="middle" /></p>
+
+<p>Fig: <em>Binary Non-restoring Division with Dividend=35, Divisor=11, Quotient=3, Remainder=2</em>.</p>
+
+<p>Considering the example and the discussion in the previous paragraph it is easy to guess that we need a combined adder subtracter circuit which performs addition if the carry out from the previous iteration is 0 (a negative value) and performs the normal subtraction of the carry out from the previous iteration is 1 ( a positive value).</p>
+
+<p><img src="/images/post_3/hw_non_restoring_divider.jpg" align="middle" /></p>
+
+<p>Fig: <em>Array architecture building block Non restoring divider</em>.</p>
+
+<p>The <script type="math/tex">final\ c_{out}</script> is obtained through the block present at the MSB. Again, if the requirement of quotient bit is higher one can extend the architecture. Now, let’s construct the array architecture for the Non-restoring array divider with the dividend as 6 bits (<script type="math/tex">n_5 n_4 n_3 n_2 n_1 n_0</script>), the divisor as 4 bits (<script type="math/tex">d_3 d_2 d_1 d_0</script>), the quotient as 3 bits (<script type="math/tex">q_2 q_1 q_0</script>) and the remainder as 4 bits (<script type="math/tex">r_3 r_2 r_1 r_0</script>).</p>
+
+<p><img src="/images/post_3/array_divider_non_restoring.jpg" align="middle" /></p>
+
+<p>Fig: <em>Array architecture Non restoring Divider</em>.</p>
+
+<p>Looking at the array structure we need to address the two main points. First, in the topmost row, the value of the <script type="math/tex">final \ c_{out}</script> is 1, this is because the first iteration is always subtraction in the non-restoring divider. Second, as observed above in the example of binary Non restoring divider the quotient bits are not of form 0 or 1 rather it is of form 1 and <script type="math/tex">\bar{1}</script>. The conversion of to the original encoding scheme can be done after storing the 0,1 sequence of the quotient bit depending on the order since we know the first is always 1 and then if 0 appears means the next quotient bit is <script type="math/tex">\bar{1}</script>. Moreover, if the input and the outputs are perfectly aligned then the first block in the third row from the left can be completely omitted.</p>
+
+<p>Interested readers can visit the Lecture Notes of EE486 <a href="https://web.stanford.edu/class/ee486/" target="_blank">Advanced Computer Arithmetic </a> by Prof. M.J.Flynn Stanford University. Furthermore, I am thankful to Prof. A.S.Dhar for the course on Architectural Design of Integrated Circuits at IIT Kharagpur.</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/tags/#combinatorial-circuit" class="page__taxonomy-item" rel="tag">combinatorial circuit</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#computer-arithmetic" class="page__taxonomy-item" rel="tag">computer arithmetic</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#division-algorithm" class="page__taxonomy-item" rel="tag">division algorithm</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#restoring-and-non-restoring-division" class="page__taxonomy-item" rel="tag">restoring and non-restoring division</a>
+    
+    </span>
+  </p>
+
+
+
+
+      </footer>
+
+      
+
+      
+
+
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/posts/2019/09/writing_lut_level_design/" class="pagination--pager" title="Writing  LUT level design
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      
+
+<div class="page__comments">
+  
+  
+    <h4 class="page__comments-title">Leave a Comment</h4>
+    <section id="disqus_thread"></section>
+  
+</div>
+    
+  </article>
+
+  
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        
+
+<!-- start custom footer snippets -->
+<!---a href="/sitemap/">Sitemap</a-->
+<!-- end custom footer snippets -->
+
+        
+<p align="center">&copy; <i> Sudarshan Sharma 2020 | All Rights Reserved. </p>
+
+<!-- <p>&copy; Sudarshan Sharma 2020 | All Rights Reserved. </p>
+ -->
+<!--
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+    
+    
+      <li><a href="http://github.com/sudo-sh"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 Sudarshan Sharma. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/academicpages/academicpages.github.io">AcademicPages</a>, a fork of <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>-->
+
+        
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-153167721-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+  
+  <script type="text/javascript">
+  	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  	var disqus_shortname = 'sudarshan-sh';
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function() {
+  		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  		dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+  		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  	})();
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function () {
+  		var s = document.createElement('script'); s.async = true;
+  		s.type = 'text/javascript';
+  		s.src = 'https://' + disqus_shortname + '.disqus.com/count.js';
+  		(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  	}());
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+  </body>
+</html>
+
