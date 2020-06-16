@@ -18,7 +18,7 @@ Link to my [Curriculum Vitae](https://sudo-sh.github.io/files/Sudarshan_Resume.p
     </embed>
 </object>
 
-##### Last Updated : March 2019
+##### Last Updated : June 2019
 <!-- Education
 ======
 * B.S. in GitHub, GitHub University, 2012

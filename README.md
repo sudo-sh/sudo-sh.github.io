@@ -2,6 +2,6 @@ A Github Pages template for academic websites. This was forked (then detached) b
 
 I think I've got things running smoothly and fixed some major bugs, but feel free to file issues or make pull requests if you want to improve the generic template / theme.
 
-
+Run using: bundle exec jekyll serve 2>/dev/null to supress the warning with new ruby versions.
 
 See more info at https://academicpages.github.io/
