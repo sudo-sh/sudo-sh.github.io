@@ -37,7 +37,7 @@
 
 
 
-  <meta property="og:description" content="The pre-requisite for this blog includes the knowledge of basic boolean algebra, solid background on Digital Electronics is a big plus.">
+  <meta property="og:description" content="The pre-requisite for this post includes the knowledge of basic boolean algebra, solid background on Digital Electronics is a big plus.">
 
 
 
@@ -252,7 +252,7 @@
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     <meta itemprop="headline" content="Division in Hardware">
-    <meta itemprop="description" content="The pre-requisite for this blog includes the knowledge of basic boolean algebra, solid background on Digital Electronics is a big plus.">
+    <meta itemprop="description" content="The pre-requisite for this post includes the knowledge of basic boolean algebra, solid background on Digital Electronics is a big plus.">
     <meta itemprop="datePublished" content="June 14, 2020">
     
 
@@ -283,9 +283,9 @@
       
 
       <section class="page__content" itemprop="text">
-        <p>The pre-requisite for this blog includes the knowledge of basic boolean algebra, solid background on Digital Electronics is a big plus.</p>
+        <p>The pre-requisite for this post includes the knowledge of basic boolean algebra, solid background on Digital Electronics is a big plus.</p>
 
-<p>Majority of the content on the internet talks about the sequential architecture of the division algorithm. However, irrespective of the same idealogy it is difficult to visualise the combinatorial division circuit. The blogs on combination multiplier are readily available on the internet one such blog is <a href="https://learn.digilentinc.com/Documents/282" target="_blank">Multipler Architecture </a>. In this blog, I will try to cover the concept behind the restoring and the non-restoring type division algorithms and then translate these algorithms to respective hardware architecture.</p>
+<p>Majority of the content on the internet talks about the sequential architecture of the division algorithm. However, irrespective of the same idealogy it is difficult to visualise the combinatorial division circuit. The posts on combination multiplier are readily available on the internet one such post is <a href="https://learn.digilentinc.com/Documents/282" target="_blank">Multipler Architecture </a>. In this post, I will try to cover the concept behind the restoring and the non-restoring type division algorithms and then translate these algorithms to respective hardware architecture.</p>
 
 <p>Let’s start with the school book division. The four generic terms used in every division algorithm are dividend, divisor, quotient and remainder. The following image shows the naive division algorithm and an equivalent which will be used to build the understanding.</p>
 
@@ -293,17 +293,17 @@
 
 <p>Fig:<em>Naive division method</em>.</p>
 
-<p>In the figure Dividend=4568, Divisor(D)=3, Quotient(q)=1522 and Remainder(R)=2. Now, the division takes four steps, the <script type="math/tex">i^{th}</script> digit of q is denoted as <script type="math/tex">q_{i}</script> and the partial remainder at the <script type="math/tex">i^{th}</script> step after substraction is denoted as <script type="math/tex">R(i)</script>. Assume that <script type="math/tex">R(0)</script> is the final remainder. Looking at the division once again we observe.</p>
+<p>In the figure Dividend=4568, Divisor(D)=3, Quotient(q)=1522 and Remainder(R)=2. Now, the division takes four steps, the <script type="math/tex">i^{th}</script> digit of q is denoted as <script type="math/tex">q_{i}</script> and the partial remainder at the <script type="math/tex">i^{th}</script> step after substraction is denoted as R(i). Assume that R(0) is the final remainder. Looking at the division once again we observe.</p>
 
-<script type="math/tex; mode=display">\begin{equation} \label{division_sequence}
+<p><script type="math/tex">4568 - 1*3*10^{3}=1568</script> or R(4) - <script type="math/tex">q_{3}*D*10^{3}</script>= R(3)</p>
 
-4568 - 1*3*10^{3}=1568 \ or \ R(4) - q_{3}*D*10^{3}= R(3)\\
-1568 - 5*3*10^{2}=0068 \ or \ R(3) - q_{2}*D*10^{2}= R(2)\\
-0068 - 2*3*10^{1}=0008 \ or \ R(2) - q_{1}*D*10^{1}= R(1)\\
-0008 - 1*3*10^{0}=0002 \ or \ R(1) - q_{0}*D*10^{0}= R(0)
-\end{equation}</script>
+<p><script type="math/tex">1568 - 5*3*10^{2}=0068</script> or R(3) - <script type="math/tex">q_{2}*D*10^{2}</script>= R(2)</p>
 
-<p><script type="math/tex">R(4)</script> is numerically equal to the dividend. Now, observing the sequence we can say that the Remainder, in general, can be expressed as:</p>
+<p><script type="math/tex">0068 - 2*3*10^{1}=0008</script> or R(2) - <script type="math/tex">q_{1}*D*10^{1}</script>= R(1)</p>
+
+<p><script type="math/tex">0008 - 1*3*10^{0}=0002</script> or R(1) - <script type="math/tex">q_{0}*D*10^{0}</script>= R(0)</p>
+
+<p>R(4) is numerically equal to the dividend. Now, observing the sequence we can say that the Remainder, in general, can be expressed as:</p>
 
 <script type="math/tex; mode=display">\begin{equation} \label{division_gen}
 
@@ -360,7 +360,7 @@ R(i) < 0 %]]></script> the assumption was wrong and we need to restore the parti
 
 <p>Fig: <em>Binary Restoring Division with Dividend=46, Divisor=9, Quotient=5, Remainder= 1</em>.</p>
 
-<p>Now looking at the example it is trivial that we need to have a subtractor in our design. Moreover, to mitigate the extra step present to restore the partial remainder we can think of an architecture which directs the partial remainder to the next iteration upon checking whether the result of subtraction is negative. To sum up we will use a multiplexer with final borrow out as the selection line which is 1 if the subtraction is negative and 0 when it is positive. To understand the binary full subtractor refer to this blog <a href="https://www.electrical4u.com/binary-substractor/" _target="blank">Binary Subtractor</a>. One important point to note is the binary division considered here is for unsigned binary numbers with the divisor and dividend aligned. As mentioned earlier our main aim is to design a combinatorial divisor, so it is evident that we need an array-like structure to incorporate the bitwise operations. Let’s discuss the building block of this array structure.</p>
+<p>Now looking at the example it is trivial that we need to have a subtractor in our design. Moreover, to mitigate the extra step present to restore the partial remainder we can think of an architecture which directs the partial remainder to the next iteration upon checking whether the result of subtraction is negative. To sum up we will use a multiplexer with final borrow out as the selection line which is 1 if the subtraction is negative and 0 when it is positive. To understand the binary full subtractor refer to this post <a href="https://www.electrical4u.com/binary-substractor/" _target="blank">Binary Subtractor</a>. One important point to note is the binary division considered here is for unsigned binary numbers with the divisor and dividend aligned. As mentioned earlier our main aim is to design a combinatorial divisor, so it is evident that we need an array-like structure to incorporate the bitwise operations. Let’s discuss the building block of this array structure.</p>
 
 <p><img src="/images/post_3/hw_restoring_divider.jpg" align="middle" /></p>
 
@@ -382,17 +382,18 @@ R(i) < 0 %]]></script> the assumption was wrong and we need to restore the parti
 
 <p><script type="math/tex">R(i)= R(i+1) - D*2^{i}\\</script> 
 <!-- $$ Case\ 1 :\ We\ need \ to \ restore \ when \ R(i) \ < \ 0 \ this \ is \ done \ by \ adding \ D*2^{i} \\$$ -->
-<em>Case 1</em>: We need to restore when R(i) &lt; 0 this is done by adding <script type="math/tex">D*2^{i}</script></p>
+<strong>Case 1</strong>: We need to restore when R(i) &lt; 0 this is done by adding <script type="math/tex">D*2^{i}</script></p>
 
 <p><script type="math/tex">R(i)= R(i) + D*2^{i} \\</script>
-<script type="math/tex">Now,\ in \ the \ next\ iteration\ we \ subtract\ D*2^{i-1}\ for \ the\ assumption\ q_{i}=1 \\</script> 
-<script type="math/tex">R(i-1)= R(i) - D*2^{i-1} \\</script>
+Now, in the next iteration we subtract <script type="math/tex">D*2^{i-1}</script> for the assumption <script type="math/tex">q_{i}=1</script></p>
+
+<p><script type="math/tex">R(i-1)= R(i) - D*2^{i-1} \\</script>
 <script type="math/tex">R(i-1)=R(i) + D*2^{i} - D *2^{i-1}\\</script>
 <script type="math/tex">R(i-1)=R(i) + D*2^{i-1} \\</script>
 <!-- $$Case\ 2:\ When\ R(i) \ \geq 0\ the \ assumption\ was \ correct \ for\ q_{i}=1\ continue.$$ -->
-<em>Case 2</em>:When <script type="math/tex">R(i) \geq 0</script> the assumption was correct for <script type="math/tex">q_{i}=1</script> continue.</p>
+<strong>Case 2</strong>: When <script type="math/tex">R(i) \geq 0</script> the assumption was correct for <script type="math/tex">q_{i}=1</script> continue.</p>
 
-<p>The Non-restoring division algorithm doesn’t need to restore the partial remainder every time rather if the partial remainder is negative we need to add the divisor in the next iteration taking into consideration the bit shifts. To obtain this functionality with minimal hardware we need to look at the combined hardware used for addition and subtraction of binary bits. Refer to the section Binary Adder Subtractor in the blog <a href="https://www.electrical4u.com/binary-substractor/" target="_blank">Binary Subtractor </a>. The combined hardware used works on the principle that the subtraction can be performed using the 2’s complement notation. According to this method first, the binary number to be subtracted is converted in 2’s complement notation by inverting its bits and adding 1 to it. Further, the 2’s complemented number is then added to another operand. Refer to this blog to gain insight on the 2’s complement subtraction <a href="https://www.math-only-math.com/subtraction-by-2s-complement.html" target="_blank">Subtraction by 2’s complement </a>. Finally, the most important point to address here is the fact that when subtraction is done using the adder hardware with one input complemented and initial carry input as 1, the output is considered negative if the final carry out is 0 and positive when the final carry out is 1. This concept will be used extensively in the later sections.</p>
+<p>The Non-restoring division algorithm doesn’t need to restore the partial remainder every time rather if the partial remainder is negative we need to add the divisor in the next iteration taking into consideration the bit shifts. To obtain this functionality with minimal hardware we need to look at the combined hardware used for addition and subtraction of binary bits. Refer to the section Binary Adder Subtractor in the post <a href="https://www.electrical4u.com/binary-substractor/" target="_blank">Binary Subtractor </a>. The combined hardware used works on the principle that the subtraction can be performed using the 2’s complement notation. According to this method first, the binary number to be subtracted is converted in 2’s complement notation by inverting its bits and adding 1 to it. Further, the 2’s complemented number is then added to another operand. Refer to this post to gain insight on the 2’s complement subtraction <a href="https://www.math-only-math.com/subtraction-by-2s-complement.html" target="_blank">Subtraction by 2’s complement </a>. Finally, the most important point to address here is the fact that when subtraction is done using the adder hardware with one input complemented and initial carry input as 1, the output is considered negative if the final carry out is 0 and positive when the final carry out is 1. This concept will be used extensively in the later sections.</p>
 
 <p><script type="math/tex">29 - 3*2^{4} = -19 \ \ q_{4}=1</script> (R(4) &lt; 0: assumption wrong)</p>
 
