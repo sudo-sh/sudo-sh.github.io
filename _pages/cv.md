@@ -9,7 +9,7 @@ redirect_from:
 
 {% include base_path %}
 
-Link to my [Curriculum Vitae](https://sudo-sh.github.io/files/Sudarshan_Resume.pdf), it holds more information on my experiences, internships, courseworks and skillsets.
+Link to my [Curriculum Vitae](https://sudarshan-sh.com/files/Sudarshan_Resume.pdf), it holds more information on my experiences, internships, courseworks and skillsets.
 
 
 <object data="https://sudo-sh.github.io/files/Sudarshan_Resume.pdf" type="application/pdf" width="700px" height="700px">
@@ -18,7 +18,7 @@ Link to my [Curriculum Vitae](https://sudo-sh.github.io/files/Sudarshan_Resume.p
     </embed>
 </object>
 
-##### Last Updated : June 2019
+##### Last Updated : June 2020
 <!-- Education
 ======
 * B.S. in GitHub, GitHub University, 2012

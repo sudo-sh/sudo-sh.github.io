@@ -48,7 +48,7 @@ staticman:
         format           : "iso8601" # "iso8601" (default), "timestamp-seconds", "timestamp-milliseconds"
 atom_feed:
   theme                  : minimal-mistakes-jekyll
-  minimal_mistakes_skin: "neon" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum" "sunrise"
+  minimal_mistakes_skin  : "neon" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum" "sunrise"
 
   path                   : # blank (default) uses feed.xml
 # SEO Related
