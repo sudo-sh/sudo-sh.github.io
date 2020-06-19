@@ -31,6 +31,7 @@ In December 2018, I intered as an Car Electronics and Control Engineer at [Pix M
 
 <br/><br/>
 <br/><br/>
+<br/><br/>
 
 ## Fujita Lab, VDEC, The University of Tokyo, Japan
 
@@ -50,9 +51,6 @@ In Summers of 2017, I attended two months long VLSI Summer School by [Prof. Mrig
 
 <br/><br/>
 <br/><br/>
-<br/><br/>
-<br/><br/>
-
 
 
 # Academic Projects
@@ -82,7 +80,6 @@ The project was an extension of my training at VLSI Summer School IIT Kharagpur,
 
 This project was my final year BTech project under [Prof. Debdeep Mukhopadhyay](https://cse.iitkgp.ac.in/~debdeep/), CSE IIT Kharagpur. The project includes implementation of block cipher GIFT on FPGA, followed by its side-channel analysis using power traces (CPA attack was used), and then looking for the vulnerability in the threshold implementation of the cipher. Sayandeep Saha (PhD Student), SEAL Lab, CSE IIT Kharagpur was my mentor in this project.
 
-<br/><br/>
 <br/><br/>
 
 ## Rehabilitation Robotics
