@@ -91,5 +91,3 @@ The group aims to develop an exoskeleton for the lower extremity of the human bo
 <br/><br/>
 <br/><br/>
 
-
-
