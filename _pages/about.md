@@ -9,7 +9,7 @@ redirect_from:
 ---
 
 
-I am a final year Dual Degree Student (B.Tech + M.Tech) in Microelectronics and VLSI Design under the department of Electronics and Electrical Communication Engineering, [IIT Kharagpur](http://www.iitkgp.ac.in/), India. I am particularly interested in the field of VLSI, Computer Architecture and Hardware Security. 
+Hi! I am a final year Dual Degree Student (B.Tech + M.Tech) in Microelectronics and VLSI Design under the department of Electronics and Electrical Communication Engineering, [IIT Kharagpur](http://www.iitkgp.ac.in/), India. I am particularly interested in the field of VLSI, Computer Architecture and Hardware Security. 
 
 In Summer (2019) I interned at the [Qualcomm- Bangalore Design Center](https://www.qualcomm.com/company/locations/india), Bangalore, India in the Memory Design Team and was offered Pre-Placement Job Offer. 
 
