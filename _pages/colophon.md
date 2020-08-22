@@ -11,6 +11,6 @@ This website is based on A Github Pages template for academic sites. This was fo
 
 I modified a lot of contents according to my taste. I use Sublime Text 3 to edit majority of the content available here. The site is generated using Jekyll, hosted using Github pages and the domain is acquired from GoDaddy.
 
-The world map is generated using [Mapchat](https://mapchart.net/).
-
+<!-- The world map is generated using [Mapchat](https://mapchart.net/).
+ -->
 -Sudarshan
