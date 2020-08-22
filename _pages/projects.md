@@ -60,7 +60,7 @@ In Summers of 2017, I attended two months long VLSI Summer School by [Prof. Mrig
 
 <img style="float: left;" src="/images/krssg.png" width="200" height="200" hspace="30">
 
-The group consists of a bunch of robotics enthusiasts working on the development of autonomous soccer-playing robots for participation in International Competitions like RoboCup and FIRA. Currently, I am the Student Advisor to the group with a focus on the Embedded Electronics team which is responsible for the design of FPGA based circuits involving communication with the base station and BLDC motor based control unit. During my third year, I led the team at Robocup 2018 at Nagoya, Japan (first Indian team at SSL Robocup). Planning to participate in next year Robocup 2020 at Bordeaux France.
+The group consists of a bunch of robotics enthusiasts working on the development of autonomous soccer-playing robots for participation in International Competitions like RoboCup and FIRA. Currently, I am the Student Advisor to the group with a focus on the Embedded Electronics team which is responsible for the design of FPGA based circuits involving communication with the base station and BLDC motor based control unit. During my third year, I led the team at Robocup 2017 at Nagoya, Japan (first Indian team at SSL Robocup).
 
 <br/><br/>
 <br/><br/>
