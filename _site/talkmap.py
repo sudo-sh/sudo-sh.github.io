@@ -1,5 +1,3 @@
-
-
 # # Leaflet cluster map of talk locations
 #
 # (c) 2016-2017 R. Stuart Geiger, released under the MIT license
@@ -11,14 +9,16 @@
 #
 # Requires: glob, getorg, geopy
 
+# !pip3 install getorg --upgrade
+import ipywidgets
 import glob
 import getorg
 from geopy import Nominatim
 
-g = glob.glob("*.md")
+g = glob.glob("./places/locations/*.loc")
 
-
-geocoder = Nominatim()
+geocoder = Nominatim(user_agent="ipywidgets")
+# geocoder = Nominatim()
 location_dict = {}
 location = ""
 permalink = ""
@@ -33,15 +33,11 @@ for file in g:
             lines_trim = lines[loc_start:]
             loc_end = lines_trim.find('"')
             location = lines_trim[:loc_end]
-                            
+        else:
+            print("Not found in File: ",file,"\n")
            
         location_dict[location] = geocoder.geocode(location)
         print(location, "\n", location_dict[location])
 
-
 m = getorg.orgmap.create_map_obj()
-getorg.orgmap.output_html_cluster_map(location_dict, folder_name="../talkmap", hashed_usernames=False)
-
-
-
-
+getorg.orgmap.output_html_cluster_map(location_dict, folder_name="./places", hashed_usernames=False)

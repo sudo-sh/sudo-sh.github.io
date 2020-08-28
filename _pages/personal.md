@@ -7,17 +7,30 @@ redirect_from:
   - /personal
 ---
 
-##  1. Places I've Been
+## Places I've Been
 
-![World Tour](/images/world_map.png)
+<!-- ![World Tour](/images/world_map.png) -->
 
-## 2. Books Recommendation
+<p>These are the places that I have been to in the past decade.</p>
+<iframe src="/places/map.html" height="700" width="850" style="border:none;"></iframe>
 
-&nbsp; &nbsp; &nbsp; Freakonomics: A Rogue Economist Explores the Hidden Side of Everything
+##  Books Recommendation
 
-&nbsp; &nbsp; &nbsp; Sapiens: A Brief History of Humankind
+### Read
+&nbsp; &nbsp; &nbsp; _Stephen J. Dubner and Steven Levitt_, Freakonomics: A Rogue Economist Explores the Hidden Side of Everything
 
-## 3. Google Chrome Extention Suggestions
+&nbsp; &nbsp; &nbsp; _Yuval Noah Harari_, Sapiens: A Brief History of Humankind
+
+&nbsp; &nbsp; &nbsp; _Ashlee Vance_, Elon Musk: Tesla, SpaceX, and the Quest for a Fantastic Future
+
+### Reading
+
+&nbsp; &nbsp; &nbsp; _Blake Masters and Peter Thiel_, Zero to One: Notes on Startups, or How to Build the Future
+
+&nbsp; &nbsp; &nbsp; _Stephen Covey_, The 7 Habits of Highly Effective People
+
+
+<!-- ##  Google Chrome Extention Suggestions
 
 &nbsp; &nbsp; &nbsp; The Great Suspender
 
@@ -35,5 +48,5 @@ redirect_from:
 
 &nbsp; &nbsp; &nbsp; Mercury Reader
 
-&nbsp; &nbsp; &nbsp; StayFocusd
+&nbsp; &nbsp; &nbsp; StayFocusd -->
 

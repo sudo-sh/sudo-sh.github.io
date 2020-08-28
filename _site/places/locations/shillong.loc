@@ -19,7 +19,7 @@
 
 
 
-<title>Projects - Sudarshan Sharma</title>
+<title>Sudarshan Sharma</title>
 
 
 
@@ -29,11 +29,11 @@
 
 <meta property="og:locale" content="en-US">
 <meta property="og:site_name" content="Sudarshan Sharma">
-<meta property="og:title" content="Projects">
+<meta property="og:title" content="Sudarshan Sharma">
 
 
-  <link rel="canonical" href="http://localhost:4000/projects/">
-  <meta property="og:url" content="http://localhost:4000/projects/">
+  <link rel="canonical" href="http://localhost:4000/places/locations/shillong.loc">
+  <meta property="og:url" content="http://localhost:4000/places/locations/shillong.loc">
 
 
 
@@ -176,6 +176,8 @@
 
 
 
+
+
 <div id="main" role="main">
   
 
@@ -249,112 +251,54 @@
   </div>
 
 
-  <div class="archive">
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     
-      <h1 class="page__title">Projects</h1>
     
-    <hr />
+    
+    
 
-<h1 id="internships">Internships</h1>
+    <div class="page__inner-wrap">
+      
+        <header>
+          
+          
+        
+        
+        
+        
+             
+        
+    
+        </header>
+      
 
-<h2 id="qualcomm-bangalore-design-center-india">Qualcomm, Bangalore Design Center, India</h2>
+      <section class="page__content" itemprop="text">
+        
+        
+      </section>
 
-<p><img style="float: left;" src="/images/qualcomm.png" width="200" height="200" hspace="30" /></p>
-
-<p>In Summers of 2019 I was with the Memory Design Team at <a href="https://www.qualcomm.com/company/locations/india">Qualcomm Bangalore</a> where I worked on the detection of Electromigration prone structures from layouts and reviewed the read/write assist and current/voltage sense amplifier ciruits. I was offered pre-placement job opportunity based on my performance.</p>
-
-<p><br /><br />
-<br /><br /></p>
-
-<h2 id="pix-moving-guiyang-china">Pix Moving, Guiyang, China</h2>
-
-<p><img style="float: left;" src="/images/pix_moving.png" width="200" height="200" hspace="30" /></p>
-
-<p>In December 2018, I intered as an Car Electronics and Control Engineer at <a href="https://www.pixmoving.com/">Pix Moving</a>. I developed a CAN based system of braking, steering and accelerator unit on ARM microcontrollers. Hacked BAIC EV car’s ultrasonic system for parking assistance and assisted the team in debugging the pix Robo-vehicle motor driver units.</p>
-
-<p><br /><br />
-<br /><br />
-<br /><br /></p>
-
-<h2 id="fujita-lab-vdec-the-university-of-tokyo-japan">Fujita Lab, VDEC, The University of Tokyo, Japan</h2>
-
-<p><img style="float: left;" src="/images/fujita_lab.png" width="200" height="200" hspace="30" /></p>
-
-<p>In Summers of 2018, I was VDEC intern with <a href="https://www.cad.t.u-tokyo.ac.jp/en/Member/">Prof. Masahiro Fujita</a>, I worked on CAD tool development for partial logic synthesis using discrete valued DNN and And Inverted Graphs (AIGs). Moreover I implemented existing discrete DNN algorithm on tensorflow, along with QBF based architecture verification.</p>
-
-<p><br /><br />
-<br /><br /></p>
-
-<h2 id="vlsi-summer-school-avlsi-lab-iit-kharagpur-india">VLSI Summer School, AVLSI Lab, IIT Kharagpur, India</h2>
-
-<p><img style="float: left;" src="/images/AVLSI.png" width="200" height="200" hspace="30" /></p>
-
-<p>In Summers of 2017, I attended two months long VLSI Summer School by <a href="https://www.linkedin.com/in/mrigank-sharad-b2835b7/?originalSubdomain=in">Prof. Mrigank Sharad</a>. I worked on various design problems in analog and digital domains such as Opamp design, low noise amplifier for bio-medical front-end and RTL design with implementation in LTSPice, Cadence Virtuoso and XIlinx ISE.</p>
-
-<p><br /><br />
-<br /><br /></p>
-
-<h1 id="academic-projects">Academic Projects</h1>
-
-<h2 id="krssg"><a href="https://krssg.in/index.html">KRSSG</a></h2>
-
-<p><img style="float: left;" src="/images/krssg.png" width="200" height="200" hspace="30" /></p>
-
-<p>The group consists of a bunch of robotics enthusiasts working on the development of autonomous soccer-playing robots for participation in International Competitions like RoboCup and FIRA. Currently, I am the Student Advisor to the group with a focus on the Embedded Electronics team which is responsible for the design of FPGA based circuits involving communication with the base station and BLDC motor based control unit. During my third year, I led the team at Robocup 2017 at Nagoya, Japan (first Indian team at SSL Robocup).</p>
-
-<p><br /><br />
-<br /><br /></p>
-
-<h2 id="analog-puf">Analog PUF</h2>
-
-<p><img style="float: left;" src="/images/puf.png" width="200" height="200" hspace="30" /></p>
-
-<p>The project was an extension of my training at VLSI Summer School IIT Kharagpur, guided by <a href="https://www.linkedin.com/in/mrigank-sharad-b2835b7/?originalSubdomain=in">Prof. Mrigank Sharad</a>, presently at Dep. of Engineering Entrepreneurship IIT Kharagpur prev. Dept of E&amp;ECE, IIT Kharagpur. The aim of the project is to design a low power multi-bit adaptive SRAM topology-based analog PUF which variations generated from the mismatch in the current mirror structures considered as bitcell. The other contributors of the project include Dhruv Thapar and Nikhil Bhelave Dept. of EE, IIT Kharagpur.</p>
-
-<p><br /><br />
-<br /><br /></p>
-
-<h2 id="side-channel-analysis-of-block-cipher-gift">Side Channel Analysis of Block Cipher GIFT</h2>
-
-<p><img style="float: left;" src="/images/seal_lab.png" width="200" height="200" hspace="30" /></p>
-
-<p>This project was my final year BTech project under <a href="https://cse.iitkgp.ac.in/~debdeep/">Prof. Debdeep Mukhopadhyay</a>, CSE IIT Kharagpur. The project includes implementation of block cipher GIFT on FPGA, followed by its side-channel analysis using power traces (CPA attack was used), and then looking for the vulnerability in the threshold implementation of the cipher. Sayandeep Saha (PhD Student), SEAL Lab, CSE IIT Kharagpur was my mentor in this project.</p>
-
-<p><br /><br /></p>
-
-<h2 id="rehabilitation-robotics">Rehabilitation Robotics</h2>
-
-<p><img style="float: left;" src="/images/soft_computing.png" width="200" height="200" hspace="30" /></p>
-
-<p>The group aims to develop an exoskeleton for the lower extremity of the human body consisting of actuators and feedback sensors, to impart a locomotive ability to the physically disabled people. For measuring the gait cycle collection of nodes consisting of IMU and RF module was developed.  Advised by <a href="http://www1.iitkgp.ac.in/fac-profiles/showprofile.php?empcode=bUmdQ&amp;depts_name=ME">Prof D. K Pratihar</a> and mentored by Abhishek Rudrapal (PhD Student) at Dep. ME IIT Kharagpur.</p>
-
-<p><br /><br />
-<br /><br /></p>
+      <footer class="page__meta">
+        
+        
 
 
-  </div>
+
+
+      </footer>
+
+      
+
+      
+
+
+    </div>
+
+    
+  </article>
+
+  
+  
 </div>
-
-
-<script type="text/javascript"
-        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-tex2jax: {
-inlineMath: [['$','$'], ['\\(','\\)']],
-processEscapes: true},
-jax: ["input/TeX","input/MathML","input/AsciiMath","output/CommonHTML"],
-extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js","AssistiveMML.js", "[Contrib]/a11y/accessibility-menu.js"],
-TeX: {
-extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"],
-equationNumbers: {
-autoNumber: "AMS"
-}
-}
-});
-</script>
 
 
     <div class="page__footer">
