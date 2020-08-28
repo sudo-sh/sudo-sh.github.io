@@ -86,7 +86,7 @@ This project was my final year BTech project under [Prof. Debdeep Mukhopadhyay](
 
 <img style="float: left;" src="/images/soft_computing.png" width="200" height="200" hspace="30">
 
-The group aims to develop an exoskeleton for the lower extremity of the human body consisting of actuators and feedback sensors, to impart a locomotive ability to the physically disabled people. For measuring the gait cycle collection of nodes consisting of IMU and RF module was developed.  Advised by [Prof D. K Pratihar](http://www1.iitkgp.ac.in/fac-profiles/showprofile.php?empcode=bUmdQ&depts_name=ME) and mentored by Abhishek Rudrapal (PhD Student) at Dep. ME IIT Kharagpur. 
+The group aims to develop an exoskeleton for the lower extremity of the human body consisting of actuators and feedback sensors, to impart a locomotive ability to the physically disabled people. For measuring the gait cycle collection of nodes consisting of IMU and RF module was developed.  Advised by [Prof D. K Pratihar](https://www1.iitkgp.ac.in/fac-profiles/showprofile.php?empcode=bUmdQ&depts_name=ME) and mentored by Abhishek Rudrapal (PhD Student) at Dep. ME IIT Kharagpur. 
 
 <br/><br/>
 <br/><br/>
