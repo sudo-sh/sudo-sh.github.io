@@ -10,7 +10,7 @@ locale                   : "en-US"
 title                    : "Sudarshan Sharma"
 title_separator          : "-"
 name                     : &name "Sudarshan Sharma"
-description              : &description "Senior Undergraduate at IIT Kharagpur"
+description              : &description "Graduate Research Assistant at Georgia Tech"
 url                      : "" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : ""#"https://github.com/sudo-sh/sudo-sh.github.io"
@@ -84,11 +84,11 @@ analytics:
 author:
   name             : "Sudarshan Sharma"
   avatar           : "profile.png"
-  bio              : "Senior Undergraduate, Dept. of Electronics and Electrical Communication Engineering with specialisation in Microelectronics and VLSI Design, IIT Kharagpur"
-  location         : "West Bengal, India"
+  bio              : "Graduate Research Assistant at GREEN Lab, Dept. of ECE, Georgia Institute of Technology"
+  location         : "Atlanta, US"
   employer         :
   pubmed           : #"https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
-  googlescholar    : #"https://yourfullgooglescholarurl.com"
+  googlescholar    : "https://scholar.google.com/citations?user=xcOv-28AAAAJ&hl=en"
   email            : "me@sudarshan-sh.com"
   researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
   uri              :

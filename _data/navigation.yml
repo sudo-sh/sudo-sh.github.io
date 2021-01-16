@@ -1,7 +1,11 @@
 # main links links
 main:
-  - title: "Projects"
-    url: /projects/ 
+
+  - title: "Publications"
+    url: /publications/
+
+  - title: "Experiences"
+    url: /experiences/ 
 
   # - title: "Publications"
   #   url: /publications/
@@ -20,8 +24,8 @@ main:
   #- title: "Resume"
   #  url: /resume/
     
-  - title : "Personal"
-    url: /personal/
+  # - title : "Personal"
+  #   url: /personal/
   # - title: "Guide"
   #   url: /markdown/
   - title : "Colophon"

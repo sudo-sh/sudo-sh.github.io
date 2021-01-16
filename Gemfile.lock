@@ -254,7 +254,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activesupport (>= 5.2.4.3)
   github-pages
   hawkins
   jekyll (~> 3.5)
@@ -264,4 +263,4 @@ DEPENDENCIES
   minimal-mistakes-jekyll
 
 BUNDLED WITH
-   2.1.4
+   2.2.5
