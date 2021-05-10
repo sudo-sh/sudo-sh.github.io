@@ -19,3 +19,28 @@ In December (2018), I interned as a Car Electronics Engineer at [Pix Moving](htt
 During my Sophomore years, I joined [KRSSG](https://krssg.in/index.html) and designed FPGA based circuit for soccer-playing Omni-wheel robots. I led the team for maiden participation in Robocup Nagoya Japan in (2017), Presently I am Student Advisor to the group.
 
 During my spare time I enjoy following and playing football, I am a big [FC Barcelona](https://www.fcbarcelona.com/en/) Fan. Oh wait, I have fallen in love with F1 racing and cannot miss a race weekend.
+
+
+# E-mail
+___
+
+**ssharma04 [at] gatech [dot] edu**
+
+
+# Updates
+
+___
+
+* **January 2021**
+	* I joined [GREEN Lab](https://greenlab.ece.gatech.edu/) Georgia Tech.
+
+* **Decemeber 2020**
+	* Paper titled *"Compact and Secure Discrete Gaussian Sampler based on HW/SW Co-design"* published at [ASIANHOST '20](http://asianhost.org/2020/).
+
+* **July 2020**
+	* I graduated from IIT Kharagpur with B.Tech in Electronics and Electrical Communication Engineering, M.Tech in Microelectronics and VLSI Design and Minor in Computer Science and Engineering.
+	* I was awarded the Institute Order of Merit for illustrious performance in the field of Technology during my stay at IIT Kharagpur.
+
+
+
+
