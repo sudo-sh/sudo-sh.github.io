@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-05-09T19:58:25-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Sudarshan Sharma</title><subtitle>Graduate Research Assistant at Georgia Tech</subtitle><author><name>Sudarshan Sharma</name><email>me@sudarshan-sh.com</email></author><entry><title type="html">Division in Hardware</title><link href="http://localhost:4000/posts/2020/06/division_in_hardware/" rel="alternate" type="text/html" title="Division in Hardware" /><published>2020-06-14T00:00:00-07:00</published><updated>2020-06-14T00:00:00-07:00</updated><id>http://localhost:4000/posts/2020/06/blog-post-3</id><content type="html" xml:base="http://localhost:4000/posts/2020/06/division_in_hardware/">&lt;p&gt;The pre-requisite for this post includes the knowledge of basic boolean algebra, solid background on Digital Electronics is a big plus. Majority of the content on the internet talks about the sequential architecture of the division algorithm. However, irrespective of the same idealogy it is difficult to visualise the combinatorial division circuit. The posts on combination multiplier are readily available on the internet one such post is &lt;a href=&quot;https://learn.digilentinc.com/Documents/282&quot; target=&quot;_blank&quot;&gt;Multiplier Architecture &lt;/a&gt;.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-07-16T16:32:43-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Sudarshan Sharma</title><subtitle>Graduate Research Assistant at Georgia Tech</subtitle><author><name>Sudarshan Sharma</name></author><entry><title type="html">Division in Hardware</title><link href="http://localhost:4000/posts/2020/06/division_in_hardware/" rel="alternate" type="text/html" title="Division in Hardware" /><published>2020-06-14T00:00:00-07:00</published><updated>2020-06-14T00:00:00-07:00</updated><id>http://localhost:4000/posts/2020/06/blog-post-3</id><content type="html" xml:base="http://localhost:4000/posts/2020/06/division_in_hardware/">&lt;p&gt;The pre-requisite for this post includes the knowledge of basic boolean algebra, solid background on Digital Electronics is a big plus. Majority of the content on the internet talks about the sequential architecture of the division algorithm. However, irrespective of the same idealogy it is difficult to visualise the combinatorial division circuit. The posts on combination multiplier are readily available on the internet one such post is &lt;a href=&quot;https://learn.digilentinc.com/Documents/282&quot; target=&quot;_blank&quot;&gt;Multiplier Architecture &lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;In this post, I will try to cover the concept behind the restoring and the non-restoring type division algorithms and then translate these algorithms to respective hardware architecture.&lt;/p&gt;
 
@@ -8,68 +8,67 @@
 
 &lt;p&gt;Fig:&lt;em&gt;Naive division method&lt;/em&gt;.&lt;/p&gt;
 
-&lt;p&gt;In the figure Dividend=4568, Divisor(D)=3, Quotient(q)=1522 and Remainder(R)=2. Now, the division takes four steps, the &lt;script type=&quot;math/tex&quot;&gt;i^{th}&lt;/script&gt; digit of q is denoted as &lt;script type=&quot;math/tex&quot;&gt;q_{i}&lt;/script&gt; and the partial remainder at the &lt;script type=&quot;math/tex&quot;&gt;i^{th}&lt;/script&gt; step after substraction is denoted as R(i). Assume that R(0) is the final remainder. Looking at the division once again we observe.&lt;/p&gt;
+&lt;p&gt;In the figure Dividend=4568, Divisor(D)=3, Quotient(q)=1522 and Remainder(R)=2. Now, the division takes four steps, the \(i^{th}\) digit of q is denoted as \(q_{i}\) and the partial remainder at the \(i^{th}\) step after substraction is denoted as R(i). Assume that R(0) is the final remainder. Looking at the division once again we observe.&lt;/p&gt;
 
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;4568 - 1*3*10^{3}=1568&lt;/script&gt; or R(4) - &lt;script type=&quot;math/tex&quot;&gt;q_{3}*D*10^{3}&lt;/script&gt;= R(3)&lt;/p&gt;
+&lt;p&gt;\(4568 - 1*3*10^{3}=1568\) or R(4) - \(q_{3}*D*10^{3}\)= R(3)&lt;/p&gt;
 
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;1568 - 5*3*10^{2}=0068&lt;/script&gt; or R(3) - &lt;script type=&quot;math/tex&quot;&gt;q_{2}*D*10^{2}&lt;/script&gt;= R(2)&lt;/p&gt;
+&lt;p&gt;\(1568 - 5*3*10^{2}=0068\) or R(3) - \(q_{2}*D*10^{2}\)= R(2)&lt;/p&gt;
 
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;0068 - 2*3*10^{1}=0008&lt;/script&gt; or R(2) - &lt;script type=&quot;math/tex&quot;&gt;q_{1}*D*10^{1}&lt;/script&gt;= R(1)&lt;/p&gt;
+&lt;p&gt;\(0068 - 2*3*10^{1}=0008\) or R(2) - \(q_{1}*D*10^{1}\)= R(1)&lt;/p&gt;
 
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;0008 - 1*3*10^{0}=0002&lt;/script&gt; or R(1) - &lt;script type=&quot;math/tex&quot;&gt;q_{0}*D*10^{0}&lt;/script&gt;= R(0)&lt;/p&gt;
+&lt;p&gt;\(0008 - 1*3*10^{0}=0002\) or R(1) - \(q_{0}*D*10^{0}\)= R(0)&lt;/p&gt;
 
 &lt;p&gt;R(4) is numerically equal to the dividend. Now, observing the sequence we can say that the Remainder, in general, can be expressed as:&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{equation} \label{division_gen}
+\[\begin{equation} \label{division_gen}
 
 R(i)=R(i+1) - q_{i}*D*10^{i}
 
-\end{equation}&lt;/script&gt;
+\end{equation}\]
 
-&lt;p&gt;where &lt;script type=&quot;math/tex&quot;&gt;i= n-1, n-2, ......, 1, 0&lt;/script&gt;.&lt;/p&gt;
+&lt;p&gt;where \(i= n-1, n-2, ......, 1, 0\).&lt;/p&gt;
 
-&lt;p&gt;Now, the whole purpose of introducing the naive approach is the fact that in binary-only the radix changes from 10 to 2. The inherent concept remains the same, one important questions to ask at this point is how the quotient &lt;script type=&quot;math/tex&quot;&gt;q_{i}&lt;/script&gt; is calculated? It is obvious that through observation we figure out the value of quotient at every iteration but for a machine, we need to define a methodology as an alternative to this observation. Further, this observation is nothing but a mental trial and error. We keep on checking the difference between the partial remainder (dividend in the first step) and the integer multiple of the divisor till the point we get a negative value. Once the integer multiple yielding the negative difference is obtained we choose the &lt;script type=&quot;math/tex&quot;&gt;q_{i}&lt;/script&gt; as one less than that particular integer. This is the main idea of restoring division.&lt;/p&gt;
+&lt;p&gt;Now, the whole purpose of introducing the naive approach is the fact that in binary-only the radix changes from 10 to 2. The inherent concept remains the same, one important questions to ask at this point is how the quotient \(q_{i}\) is calculated? It is obvious that through observation we figure out the value of quotient at every iteration but for a machine, we need to define a methodology as an alternative to this observation. Further, this observation is nothing but a mental trial and error. We keep on checking the difference between the partial remainder (dividend in the first step) and the integer multiple of the divisor till the point we get a negative value. Once the integer multiple yielding the negative difference is obtained we choose the \(q_{i}\) as one less than that particular integer. This is the main idea of restoring division.&lt;/p&gt;
 
 &lt;h2 id=&quot;restoring-divison&quot;&gt;Restoring Divison&lt;/h2&gt;
 
 &lt;p&gt;As discussed in the previous paragraph the restoring division also gives a positive partial remainder. The examples from here onwards will deal with radix as 2 instead of 10 as discussed in the previous paragraphs. In case of 2 as the radix, the quotient is either 0 or 1 so using \eqref{division_gen} and rewriting the equation.&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{equation} \label{radix_2_div}
+\[\begin{equation} \label{radix_2_div}
 
 R(i)=R(i+1) - q_{i}*D*2^{i}
 
-\end{equation}&lt;/script&gt;
+\end{equation}\]
 
-&lt;p&gt;We start with assuming &lt;script type=&quot;math/tex&quot;&gt;q_{i}&lt;/script&gt; as 1 so&lt;/p&gt;
+&lt;p&gt;We start with assuming \(q_{i}\) as 1 so&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;R(i)=R(i+1) - D*2^{i}&lt;/script&gt;
+\[R(i)=R(i+1) - D*2^{i}\]
 
-&lt;p&gt;Now from here onwards we define two cases based on the value of &lt;script type=&quot;math/tex&quot;&gt;R(i)&lt;/script&gt;.&lt;/p&gt;
+&lt;p&gt;Now from here onwards we define two cases based on the value of \(R(i)\).&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Case 1&lt;/strong&gt;: if &lt;script type=&quot;math/tex&quot;&gt;R(i) \geq 0&lt;/script&gt; the assumption for &lt;script type=&quot;math/tex&quot;&gt;q_{i}&lt;/script&gt;=1 was correct.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Case 1&lt;/strong&gt;: if \(R(i) \geq 0\) the assumption for \(q_{i}\)=1 was correct.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Case 2&lt;/strong&gt;: if &lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
-R(i) &lt; 0 %]]&gt;&lt;/script&gt; the assumption was wrong and we need to restore the partial remainder.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Case 2&lt;/strong&gt;: if \(R(i) &amp;lt; 0\) the assumption was wrong and we need to restore the partial remainder.&lt;/p&gt;
 
 &lt;p&gt;Let’s understand this with an example.&lt;/p&gt;
 
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;29 - 3*2^{4} = -19 \ \ q_{4}=1&lt;/script&gt; (R(4) &amp;lt; 0 : restore)&lt;/p&gt;
+&lt;p&gt;\(29 - 3*2^{4} = -19 \ \ q_{4}=1\) (R(4) &amp;lt; 0 : restore)&lt;/p&gt;
 
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;-19 + 3*2^{4}= +29 \ \ q_{4}=0&lt;/script&gt; (R(4) &lt;script type=&quot;math/tex&quot;&gt;\geq&lt;/script&gt; 0 : continue)&lt;/p&gt;
+&lt;p&gt;\(-19 + 3*2^{4}= +29 \ \ q_{4}=0\) (R(4) \(\geq\) 0 : continue)&lt;/p&gt;
 
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;29 - 3*2^{3}= +5 \ \ q_{3}=1&lt;/script&gt; (R(3) &lt;script type=&quot;math/tex&quot;&gt;\geq&lt;/script&gt; 0: continue)&lt;/p&gt;
+&lt;p&gt;\(29 - 3*2^{3}= +5 \ \ q_{3}=1\) (R(3) \(\geq\) 0: continue)&lt;/p&gt;
 
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;+5 - 3*2^{2}= -7 \ \ q_{2}=1&lt;/script&gt; (R(2) &amp;lt; 0 : restore)&lt;/p&gt;
+&lt;p&gt;\(+5 - 3*2^{2}= -7 \ \ q_{2}=1\) (R(2) &amp;lt; 0 : restore)&lt;/p&gt;
 
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;-7 + 3*2^{2}= +5 \ \ q_{2}=0&lt;/script&gt; (R(2) &lt;script type=&quot;math/tex&quot;&gt;\geq&lt;/script&gt; 0 : continue)&lt;/p&gt;
+&lt;p&gt;\(-7 + 3*2^{2}= +5 \ \ q_{2}=0\) (R(2) \(\geq\) 0 : continue)&lt;/p&gt;
 
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;+5 - 3*2^{1}= -1 \ \ q_{1}=1&lt;/script&gt; (R(1) &amp;lt; 0 : restore)&lt;/p&gt;
+&lt;p&gt;\(+5 - 3*2^{1}= -1 \ \ q_{1}=1\) (R(1) &amp;lt; 0 : restore)&lt;/p&gt;
 
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;-1 + 3*2^{1}= +5 \ \ q_{1}=0&lt;/script&gt; (R(1) &lt;script type=&quot;math/tex&quot;&gt;\geq&lt;/script&gt; 0: continue)&lt;/p&gt;
+&lt;p&gt;\(-1 + 3*2^{1}= +5 \ \ q_{1}=0\) (R(1) \(\geq\) 0: continue)&lt;/p&gt;
 
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;+5 - 3*2^{0}=+2 \ \ q_{0}=1&lt;/script&gt; (R(0) &lt;script type=&quot;math/tex&quot;&gt;\geq&lt;/script&gt; 0 : continue)&lt;/p&gt;
+&lt;p&gt;\(+5 - 3*2^{0}=+2 \ \ q_{0}=1\) (R(0) \(\geq\) 0 : continue)&lt;/p&gt;
 
-&lt;p&gt;Now using the &lt;script type=&quot;math/tex&quot;&gt;q_{i}&lt;/script&gt; values where continue keyword is used the quotient obtained is 01001 which is equivalent to 9 which should be the actual quotient. Let’s look into another example with boolean values.&lt;/p&gt;
+&lt;p&gt;Now using the \(q_{i}\) values where continue keyword is used the quotient obtained is 01001 which is equivalent to 9 which should be the actual quotient. Let’s look into another example with boolean values.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/post_3/restoring_division_binary.jpg&quot; align=&quot;middle&quot; /&gt;&lt;/p&gt;
 
@@ -81,13 +80,13 @@ R(i) &lt; 0 %]]&gt;&lt;/script&gt; the assumption was wrong and we need to resto
 
 &lt;p&gt;Fig: &lt;em&gt;Array architecture building block Restoring Divider&lt;/em&gt;.&lt;/p&gt;
 
-&lt;p&gt;The &lt;script type=&quot;math/tex&quot;&gt;final\ b_{out}&lt;/script&gt; is calculated from the block present at the Main Significant Bit (MSB). Furthermore, it is important to realise that the architecture proposed can be extended to floating-point by continuing the iterations for the sake of simplicity we only consider the integer quotient. Now with the help of the building blocks, we can construct an array architecture for restoring division which is purely combinatorial. Here for the architecture we have considered the dividend as 6 bits (&lt;script type=&quot;math/tex&quot;&gt;n_5 n_4 n_3 n_2 n_1 n_0&lt;/script&gt;), the divisor is 4 bits (&lt;script type=&quot;math/tex&quot;&gt;d_3 d_2 d_1 d_0&lt;/script&gt;), the quotient is 3 bits (&lt;script type=&quot;math/tex&quot;&gt;q_2 q_1 q_0&lt;/script&gt;) Why? To answer this first understand the assumption that the dividend and the divisor are aligned which means the MSB’s of both the binary representation has 1 as its value. So, maximum quotient can be calculated as &lt;script type=&quot;math/tex&quot;&gt;\frac{max\ dividend}{min\ divisor}&lt;/script&gt; which comes out to be &lt;script type=&quot;math/tex&quot;&gt;\frac{63}{8}&lt;/script&gt; taking the &lt;script type=&quot;math/tex&quot;&gt;log_2&lt;/script&gt; followed by the ceiling of the value we obtain 3. How about you check it out yourself?. Finally, the remainder is expressed as 4 bits (&lt;script type=&quot;math/tex&quot;&gt;r_3 r_2 r_2 r_0&lt;/script&gt;).&lt;/p&gt;
+&lt;p&gt;The \(final\ b_{out}\) is calculated from the block present at the Main Significant Bit (MSB). Furthermore, it is important to realise that the architecture proposed can be extended to floating-point by continuing the iterations for the sake of simplicity we only consider the integer quotient. Now with the help of the building blocks, we can construct an array architecture for restoring division which is purely combinatorial. Here for the architecture we have considered the dividend as 6 bits (\(n_5 n_4 n_3 n_2 n_1 n_0\)), the divisor is 4 bits (\(d_3 d_2 d_1 d_0\)), the quotient is 3 bits (\(q_2 q_1 q_0\)) Why? To answer this first understand the assumption that the dividend and the divisor are aligned which means the MSB’s of both the binary representation has 1 as its value. So, maximum quotient can be calculated as \(\frac{max\ dividend}{min\ divisor}\) which comes out to be \(\frac{63}{8}\) taking the \(log_2\) followed by the ceiling of the value we obtain 3. How about you check it out yourself?. Finally, the remainder is expressed as 4 bits (\(r_3 r_2 r_2 r_0\)).&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/post_3/array_divider_restoring.jpg&quot; align=&quot;middle&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Fig: &lt;em&gt;Array architecture Restoring Divider&lt;/em&gt;.&lt;/p&gt;
 
-&lt;p&gt;The quotient bit as seen from the figure is the inverted form of the &lt;script type=&quot;math/tex&quot;&gt;final\  b_{out}&lt;/script&gt;. Also, the initial borrow input is given as 0 which is trivial. The number of rows in the array architecture is given as &lt;script type=&quot;math/tex&quot;&gt;rows = width\ of \ dividend\ - \ width\ of \ divisor\ + \ 1&lt;/script&gt;. The number of rows corresponds directly to the width of the quotient, which can be proved intuitively using the stated assumption and the example calculation in the previous paragraph. Moreover, if the divisor and the dividend are aligned perfectly we can remove the first block in the third row from the left.&lt;/p&gt;
+&lt;p&gt;The quotient bit as seen from the figure is the inverted form of the \(final\  b_{out}\). Also, the initial borrow input is given as 0 which is trivial. The number of rows in the array architecture is given as \(rows = width\ of \ dividend\ - \ width\ of \ divisor\ + \ 1\). The number of rows corresponds directly to the width of the quotient, which can be proved intuitively using the stated assumption and the example calculation in the previous paragraph. Moreover, if the divisor and the dividend are aligned perfectly we can remove the first block in the third row from the left.&lt;/p&gt;
 
 &lt;h2 id=&quot;non-restoring-division&quot;&gt;Non-restoring Division&lt;/h2&gt;
 
@@ -95,32 +94,32 @@ R(i) &lt; 0 %]]&gt;&lt;/script&gt; the assumption was wrong and we need to resto
 
 &lt;p&gt;From the previous equation we know.&lt;/p&gt;
 
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;R(i)= R(i+1) - D*2^{i}\\&lt;/script&gt; 
+&lt;p&gt;\(R(i)= R(i+1) - D*2^{i}\\\) 
 &lt;!-- $$ Case\ 1 :\ We\ need \ to \ restore \ when \ R(i) \ &lt; \ 0 \ this \ is \ done \ by \ adding \ D*2^{i} \\$$ --&gt;
-&lt;strong&gt;Case 1&lt;/strong&gt;: We need to restore when R(i) &amp;lt; 0 this is done by adding &lt;script type=&quot;math/tex&quot;&gt;D*2^{i}&lt;/script&gt;&lt;/p&gt;
+&lt;strong&gt;Case 1&lt;/strong&gt;: We need to restore when R(i) &amp;lt; 0 this is done by adding \(D*2^{i}\)&lt;/p&gt;
 
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;R(i)= R(i) + D*2^{i} \\&lt;/script&gt;
-Now, in the next iteration we subtract &lt;script type=&quot;math/tex&quot;&gt;D*2^{i-1}&lt;/script&gt; for the assumption &lt;script type=&quot;math/tex&quot;&gt;q_{i}=1&lt;/script&gt;&lt;/p&gt;
+&lt;p&gt;\(R(i)= R(i) + D*2^{i} \\\)
+Now, in the next iteration we subtract \(D*2^{i-1}\) for the assumption \(q_{i}=1\)&lt;/p&gt;
 
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;R(i-1)= R(i) - D*2^{i-1} \\&lt;/script&gt;
-&lt;script type=&quot;math/tex&quot;&gt;R(i-1)=R(i) + D*2^{i} - D *2^{i-1}\\&lt;/script&gt;
-&lt;script type=&quot;math/tex&quot;&gt;R(i-1)=R(i) + D*2^{i-1} \\&lt;/script&gt;
+&lt;p&gt;\(R(i-1)= R(i) - D*2^{i-1} \\\)
+\(R(i-1)=R(i) + D*2^{i} - D *2^{i-1}\\\)
+\(R(i-1)=R(i) + D*2^{i-1} \\\)
 &lt;!-- $$Case\ 2:\ When\ R(i) \ \geq 0\ the \ assumption\ was \ correct \ for\ q_{i}=1\ continue.$$ --&gt;
-&lt;strong&gt;Case 2&lt;/strong&gt;: When &lt;script type=&quot;math/tex&quot;&gt;R(i) \geq 0&lt;/script&gt; the assumption was correct for &lt;script type=&quot;math/tex&quot;&gt;q_{i}=1&lt;/script&gt; continue.&lt;/p&gt;
+&lt;strong&gt;Case 2&lt;/strong&gt;: When \(R(i) \geq 0\) the assumption was correct for \(q_{i}=1\) continue.&lt;/p&gt;
 
 &lt;p&gt;The Non-restoring division algorithm doesn’t need to restore the partial remainder every time rather if the partial remainder is negative we need to add the divisor in the next iteration taking into consideration the bit shifts. To obtain this functionality with minimal hardware we need to look at the combined hardware used for addition and subtraction of binary bits. Refer to the section Binary Adder Subtractor in the post &lt;a href=&quot;https://www.electrical4u.com/binary-substractor/&quot; target=&quot;_blank&quot;&gt;Binary Subtractor &lt;/a&gt;. The combined hardware used works on the principle that the subtraction can be performed using the 2’s complement notation. According to this method first, the binary number to be subtracted is converted in 2’s complement notation by inverting its bits and adding 1 to it. Further, the 2’s complemented number is then added to another operand. Refer to this post to gain insight on the 2’s complement subtraction &lt;a href=&quot;https://www.math-only-math.com/subtraction-by-2s-complement.html&quot; target=&quot;_blank&quot;&gt;Subtraction by 2’s complement &lt;/a&gt;. Finally, the most important point to address here is the fact that when subtraction is done using the adder hardware with one input complemented and initial carry input as 1, the output is considered negative if the final carry out is 0 and positive when the final carry out is 1. This concept will be used extensively in the later sections.&lt;/p&gt;
 
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;29 - 3*2^{4} = -19 \ \ q_{4}=1&lt;/script&gt; (R(4) &amp;lt; 0: assumption wrong)&lt;/p&gt;
+&lt;p&gt;\(29 - 3*2^{4} = -19 \ \ q_{4}=1\) (R(4) &amp;lt; 0: assumption wrong)&lt;/p&gt;
 
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;-19 + 3*2^{3}= +5 \ \ q_{3}=\bar{1}&lt;/script&gt; (R(3) &lt;script type=&quot;math/tex&quot;&gt;\geq&lt;/script&gt; 0: continue)&lt;/p&gt;
+&lt;p&gt;\(-19 + 3*2^{3}= +5 \ \ q_{3}=\bar{1}\) (R(3) \(\geq\) 0: continue)&lt;/p&gt;
 
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;+5 - 3*2^{2}= -7 \ \ q_{2}=1&lt;/script&gt; (R(2) &amp;lt; 0: assumption wrong)&lt;/p&gt;
+&lt;p&gt;\(+5 - 3*2^{2}= -7 \ \ q_{2}=1\) (R(2) &amp;lt; 0: assumption wrong)&lt;/p&gt;
 
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;-7 + 3*2^{1}= -1 \ \ q_{2}=\bar{1}&lt;/script&gt; (R(1) &amp;lt; 0: assumption wrong)&lt;/p&gt;
+&lt;p&gt;\(-7 + 3*2^{1}= -1 \ \ q_{2}=\bar{1}\) (R(1) &amp;lt; 0: assumption wrong)&lt;/p&gt;
 
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;-1 + 3*2^{0}= 2 \ \ q_{1}=\bar{1}&lt;/script&gt; ( R(0) &lt;script type=&quot;math/tex&quot;&gt;\geq&lt;/script&gt; 0: continue post decimal)&lt;/p&gt;
+&lt;p&gt;\(-1 + 3*2^{0}= 2 \ \ q_{1}=\bar{1}\) ( R(0) \(\geq\) 0: continue post decimal)&lt;/p&gt;
 
-&lt;p&gt;From the example we observe that non restoring algorithm takes lesser number of iterations compared to the restoring algorithm. However as you can observe the quotient bits are not in the form of normal 0 and 1 rather in the form of 1 and &lt;script type=&quot;math/tex&quot;&gt;\bar{1}&lt;/script&gt; which has a numerial value equivalent to -1. So here the quotient obtained is &lt;script type=&quot;math/tex&quot;&gt;1 \bar{1} 1 \bar{1} \bar{1}&lt;/script&gt; numrically calculated as &lt;script type=&quot;math/tex&quot;&gt;1*2^{4} -1*2^{3} + 1*2^{2} - 2*2^{1} -1*2^{0} = 9&lt;/script&gt;.&lt;/p&gt;
+&lt;p&gt;From the example we observe that non restoring algorithm takes lesser number of iterations compared to the restoring algorithm. However as you can observe the quotient bits are not in the form of normal 0 and 1 rather in the form of 1 and \(\bar{1}\) which has a numerial value equivalent to -1. So here the quotient obtained is \(1 \bar{1} 1 \bar{1} \bar{1}\) numrically calculated as \(1*2^{4} -1*2^{3} + 1*2^{2} - 2*2^{1} -1*2^{0} = 9\).&lt;/p&gt;
 
 &lt;p&gt;Now, let’s look at another example of non-restoring division algorithm with boolean values. In the example, we will perform subtraction using the 2’s complement notation used in the combined adder subtractor circuit mentioned previously. Thus, the subtraction results with final carry out as 0 has a negative value and the subtraction with carry out as 1 has a positive value.&lt;/p&gt;
 
@@ -134,15 +133,15 @@ Now, in the next iteration we subtract &lt;script type=&quot;math/tex&quot;&gt;D
 
 &lt;p&gt;Fig: &lt;em&gt;Array architecture building block Non restoring divider&lt;/em&gt;.&lt;/p&gt;
 
-&lt;p&gt;The &lt;script type=&quot;math/tex&quot;&gt;final\ c_{out}&lt;/script&gt; is obtained through the block present at the MSB. Again, if the requirement of quotient bit is higher one can extend the architecture. Now, let’s construct the array architecture for the Non-restoring array divider with the dividend as 6 bits (&lt;script type=&quot;math/tex&quot;&gt;n_5 n_4 n_3 n_2 n_1 n_0&lt;/script&gt;), the divisor as 4 bits (&lt;script type=&quot;math/tex&quot;&gt;d_3 d_2 d_1 d_0&lt;/script&gt;), the quotient as 3 bits (&lt;script type=&quot;math/tex&quot;&gt;q_2 q_1 q_0&lt;/script&gt;) and the remainder as 4 bits (&lt;script type=&quot;math/tex&quot;&gt;r_3 r_2 r_1 r_0&lt;/script&gt;).&lt;/p&gt;
+&lt;p&gt;The \(final\ c_{out}\) is obtained through the block present at the MSB. Again, if the requirement of quotient bit is higher one can extend the architecture. Now, let’s construct the array architecture for the Non-restoring array divider with the dividend as 6 bits (\(n_5 n_4 n_3 n_2 n_1 n_0\)), the divisor as 4 bits (\(d_3 d_2 d_1 d_0\)), the quotient as 3 bits (\(q_2 q_1 q_0\)) and the remainder as 4 bits (\(r_3 r_2 r_1 r_0\)).&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/post_3/array_divider_non_restoring.jpg&quot; align=&quot;middle&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Fig: &lt;em&gt;Array architecture Non restoring Divider&lt;/em&gt;.&lt;/p&gt;
 
-&lt;p&gt;Looking at the array structure we need to address the two main points. First, in the topmost row, the value of the &lt;script type=&quot;math/tex&quot;&gt;final \ c_{out}&lt;/script&gt; is 1, this is because the first iteration is always subtraction in the non-restoring divider. Second, as observed above in the example of binary Non restoring divider the quotient bits are not of form 0 or 1 rather it is of form 1 and &lt;script type=&quot;math/tex&quot;&gt;\bar{1}&lt;/script&gt;. The conversion of to the original encoding scheme can be done after storing the 0,1 sequence of the quotient bit depending on the order since we know the first is always 1 and then if 0 appears means the next quotient bit is &lt;script type=&quot;math/tex&quot;&gt;\bar{1}&lt;/script&gt;. Moreover, if the input and the outputs are perfectly aligned then the first block in the third row from the left can be completely omitted.&lt;/p&gt;
+&lt;p&gt;Looking at the array structure we need to address the two main points. First, in the topmost row, the value of the \(final \ c_{out}\) is 1, this is because the first iteration is always subtraction in the non-restoring divider. Second, as observed above in the example of binary Non restoring divider the quotient bits are not of form 0 or 1 rather it is of form 1 and \(\bar{1}\). The conversion of to the original encoding scheme can be done after storing the 0,1 sequence of the quotient bit depending on the order since we know the first is always 1 and then if 0 appears means the next quotient bit is \(\bar{1}\). Moreover, if the input and the outputs are perfectly aligned then the first block in the third row from the left can be completely omitted.&lt;/p&gt;
 
-&lt;p&gt;Interested readers can visit the Lecture Notes of EE486 &lt;a href=&quot;https://web.stanford.edu/class/ee486/&quot; target=&quot;_blank&quot;&gt;Advanced Computer Arithmetic &lt;/a&gt; by Prof. M.J.Flynn Stanford University. Furthermore, I am thankful to Prof. A.S.Dhar for the course on Architectural Design of Integrated Circuits at IIT Kharagpur.&lt;/p&gt;</content><author><name>Sudarshan Sharma</name><email>me@sudarshan-sh.com</email></author><category term="division algorithm" /><category term="combinatorial circuit" /><category term="computer arithmetic" /><category term="restoring and non-restoring division" /><summary type="html">The pre-requisite for this post includes the knowledge of basic boolean algebra, solid background on Digital Electronics is a big plus. Majority of the content on the internet talks about the sequential architecture of the division algorithm. However, irrespective of the same idealogy it is difficult to visualise the combinatorial division circuit. The posts on combination multiplier are readily available on the internet one such post is Multiplier Architecture .</summary></entry><entry><title type="html">Writing LUT level design</title><link href="http://localhost:4000/posts/2019/09/writing_lut_level_design/" rel="alternate" type="text/html" title="Writing  LUT level design" /><published>2019-09-28T00:00:00-07:00</published><updated>2019-09-28T00:00:00-07:00</updated><id>http://localhost:4000/posts/2019/09/blog-post-2</id><content type="html" xml:base="http://localhost:4000/posts/2019/09/writing_lut_level_design/">&lt;p&gt;The pre-requisites required for this blog are Digital VLSI Design, RTL Design using Verilog and FPGA structure the knowledge of CLBs and Slices. Many a time it is required to write a LUT level design for a better overview of the design space exploration and also to get better control for design such as ring oscillators etc.&lt;/p&gt;
+&lt;p&gt;Interested readers can visit the Lecture Notes of EE486 &lt;a href=&quot;https://web.stanford.edu/class/ee486/&quot; target=&quot;_blank&quot;&gt;Advanced Computer Arithmetic &lt;/a&gt; by Prof. M.J.Flynn Stanford University. Furthermore, I am thankful to Prof. A.S.Dhar for the course on Architectural Design of Integrated Circuits at IIT Kharagpur.&lt;/p&gt;</content><author><name>Sudarshan Sharma</name></author><category term="division algorithm" /><category term="combinatorial circuit" /><category term="computer arithmetic" /><category term="restoring and non-restoring division" /><summary type="html">The pre-requisite for this post includes the knowledge of basic boolean algebra, solid background on Digital Electronics is a big plus. Majority of the content on the internet talks about the sequential architecture of the division algorithm. However, irrespective of the same idealogy it is difficult to visualise the combinatorial division circuit. The posts on combination multiplier are readily available on the internet one such post is Multiplier Architecture .</summary></entry><entry><title type="html">Writing LUT level design</title><link href="http://localhost:4000/posts/2019/09/writing_lut_level_design/" rel="alternate" type="text/html" title="Writing LUT level design" /><published>2019-09-28T00:00:00-07:00</published><updated>2019-09-28T00:00:00-07:00</updated><id>http://localhost:4000/posts/2019/09/blog-post-2</id><content type="html" xml:base="http://localhost:4000/posts/2019/09/writing_lut_level_design/">&lt;p&gt;The pre-requisites required for this blog are Digital VLSI Design, RTL Design using Verilog and FPGA structure the knowledge of CLBs and Slices. Many a time it is required to write a LUT level design for a better overview of the design space exploration and also to get better control for design such as ring oscillators etc.&lt;/p&gt;
 
 &lt;p&gt;In this blog, I will focus mostly on the details of How do we write LUT based code instead of simple Verilog syntax in the same file. It is assumed that the reader is aware of Verilog and other digital design concepts.&lt;/p&gt;
 
@@ -157,22 +156,22 @@ Now, in the next iteration we subtract &lt;script type=&quot;math/tex&quot;&gt;D
 &lt;p&gt;The code snippet is taken from the &lt;a href=&quot;https://www.xilinx.com/support/documentation/sw_manuals/xilinx2012_2/ug953-vivado-7series-libraries.pdf#page=258&quot; target=&quot;_blank&quot;&gt;Vivado Design Suite 7 Series FPGA Libraries Guide&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Verilog Instantiation Template&lt;/p&gt;
-&lt;div class=&quot;language-verilog highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// LUT6: 6-input Look-Up Table with general output
-// 7 Series
-// Xilinx HDL Libraries Guide, version 2012.2
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LUT6&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;#(&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;INIT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;64'h0000000000000000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Specify LUT Contents
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LUT6_inst&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;O&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;O&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT general output
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT input
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT input
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT input
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT input
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT input
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT input
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// End of LUT6_inst instantiation
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;language-verilog highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// LUT6: 6-input Look-Up Table with general output&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// 7 Series&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Xilinx HDL Libraries Guide, version 2012.2&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;LUT6&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;#(&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;INIT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;64'h0000000000000000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Specify LUT Contents&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LUT6_inst&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;O&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;O&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT general output&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT input&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT input&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT input&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT input&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT input&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT input&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// End of LUT6_inst instantiation&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;Fig:- This code snippet is taken from the Vivado Design Suit 7 Series FPGA&lt;/p&gt;
 
 &lt;p&gt;.INIT() stores the truth table of the 6 input logic function, with LSB on the left&lt;/p&gt;
@@ -191,22 +190,22 @@ Now, in the next iteration we subtract &lt;script type=&quot;math/tex&quot;&gt;D
 
 &lt;p&gt;Its translation to a LUT design would be&lt;/p&gt;
 &lt;div class=&quot;language-verilog highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;Verilog&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Instantiation&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Template&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// LUT6: 6-input Look-Up Table with general output
-// 7 Series
-// Xilinx HDL Libraries Guide, version 2012.2
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LUT6&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;#(&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;INIT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;64'h0000000000000007&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Specify LUT Contents
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LUT6_inst&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;O&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT general output
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT input
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT input
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT input
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT input
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT input
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT input
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// End of LUT6_inst instantiation
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;span class=&quot;c1&quot;&gt;// LUT6: 6-input Look-Up Table with general output&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// 7 Series&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Xilinx HDL Libraries Guide, version 2012.2&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;LUT6&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;#(&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;INIT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;64'h0000000000000007&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Specify LUT Contents&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LUT6_inst&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;O&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT general output&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT input&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT input&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT input&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT input&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT input&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT input&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// End of LUT6_inst instantiation&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;Output of NAND with inputs as &amp;lt;(1,1), (1,0), (0,1), (0,0)&amp;gt; is  &amp;lt;0, 1 , 1, 1&amp;gt;  which is 7(4’b0111) in hexadecimal. That is written in the  .INIT() considering the LSB and MSB ordering.&lt;/p&gt;
 
 &lt;p&gt;Inputs a and b are the I0 and I1 inputs of the LUT remaining inputs of the LUT are set to 0 as we don’t need them, y is the output written in .O().&lt;/p&gt;
@@ -217,7 +216,7 @@ Now, in the next iteration we subtract &lt;script type=&quot;math/tex&quot;&gt;D
 
 &lt;p&gt;Some of the design specification desires for the appropriate locations of these LUTs consider a &lt;a href=&quot;https://en.wikipedia.org/wiki/Physical_unclonable_function&quot; target=&quot;_blank&quot;&gt;PUF&lt;/a&gt; design. The location can be set using &lt;a href=&quot;https://www.xilinx.com/support/documentation/sw_manuals/xilinx11/cgd.pdf#page=118&quot; targer=&quot;_blank&quot;&gt;LOC constraint&lt;/a&gt; by setting Slices(LUTs are present inside the Slices) locations in the constraint file.&lt;/p&gt;
 
-&lt;hr /&gt;</content><author><name>Sudarshan Sharma</name><email>me@sudarshan-sh.com</email></author><category term="FPGA" /><category term="verilog" /><category term="rtl_programming" /><summary type="html">The pre-requisites required for this blog are Digital VLSI Design, RTL Design using Verilog and FPGA structure the knowledge of CLBs and Slices. Many a time it is required to write a LUT level design for a better overview of the design space exploration and also to get better control for design such as ring oscillators etc.</summary></entry><entry><title type="html">Setting up the Website</title><link href="http://localhost:4000/posts/2019/09/setting_up_website/" rel="alternate" type="text/html" title="Setting up the Website" /><published>2019-09-05T00:00:00-07:00</published><updated>2019-09-05T00:00:00-07:00</updated><id>http://localhost:4000/posts/2019/09/blog-post-1</id><content type="html" xml:base="http://localhost:4000/posts/2019/09/setting_up_website/">&lt;p&gt;One beautiful day after reading &lt;a href=&quot;https://www.vanschneider.com/a-love-letter-to-personal-websites&quot;&gt;A love letter to my website- DESK Magazine&lt;/a&gt; sent by my friend &lt;a href=&quot;https://www.bauva.com/&quot;&gt;Bauva.Com&lt;/a&gt;.I decided to buy a domain and build my &lt;em&gt;little corner of the internet&lt;/em&gt;; this blog is about my experience about &lt;strong&gt;my world&lt;/strong&gt; and how I perceive it to be, I will start with writing about &lt;em&gt;How I set up my website?&lt;/em&gt;, starting from hosting on GitHub pages and setting up my DNS record by buying &lt;a href=&quot;https://www.sudarshan-sh.com/&quot;&gt;sudarshan-sh.com&lt;/a&gt; for &lt;em&gt;forever and ever&lt;/em&gt;.&lt;/p&gt;
+&lt;hr /&gt;</content><author><name>Sudarshan Sharma</name></author><category term="FPGA" /><category term="verilog" /><category term="rtl_programming" /><summary type="html">The pre-requisites required for this blog are Digital VLSI Design, RTL Design using Verilog and FPGA structure the knowledge of CLBs and Slices. Many a time it is required to write a LUT level design for a better overview of the design space exploration and also to get better control for design such as ring oscillators etc.</summary></entry><entry><title type="html">Setting up the Website</title><link href="http://localhost:4000/posts/2019/09/setting_up_website/" rel="alternate" type="text/html" title="Setting up the Website" /><published>2019-09-05T00:00:00-07:00</published><updated>2019-09-05T00:00:00-07:00</updated><id>http://localhost:4000/posts/2019/09/blog-post-1</id><content type="html" xml:base="http://localhost:4000/posts/2019/09/setting_up_website/">&lt;p&gt;One beautiful day after reading &lt;a href=&quot;https://www.vanschneider.com/a-love-letter-to-personal-websites&quot;&gt;A love letter to my website- DESK Magazine&lt;/a&gt; sent by my friend &lt;a href=&quot;https://www.bauva.com/&quot;&gt;Bauva.Com&lt;/a&gt;.I decided to buy a domain and build my &lt;em&gt;little corner of the internet&lt;/em&gt;; this blog is about my experience about &lt;strong&gt;my world&lt;/strong&gt; and how I perceive it to be, I will start with writing about &lt;em&gt;How I set up my website?&lt;/em&gt;, starting from hosting on GitHub pages and setting up my DNS record by buying &lt;a href=&quot;https://www.sudarshan-sh.com/&quot;&gt;sudarshan-sh.com&lt;/a&gt; for &lt;em&gt;forever and ever&lt;/em&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;setting-up-github-pages&quot;&gt;Setting up Github Pages&lt;/h2&gt;
 
@@ -264,4 +263,4 @@ Now, in the next iteration we subtract &lt;script type=&quot;math/tex&quot;&gt;D
     })();
 &lt;/script&gt;
 &lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;https://disqus.com/?ref_noscript&quot; rel=&quot;nofollow&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt; --&gt;
-&lt;hr /&gt;</content><author><name>Sudarshan Sharma</name><email>me@sudarshan-sh.com</email></author><category term="website" /><category term="jekyll" /><category term="academicpages.github.io" /><summary type="html">One beautiful day after reading A love letter to my website- DESK Magazine sent by my friend Bauva.Com.I decided to buy a domain and build my little corner of the internet; this blog is about my experience about my world and how I perceive it to be, I will start with writing about How I set up my website?, starting from hosting on GitHub pages and setting up my DNS record by buying sudarshan-sh.com for forever and ever.</summary></entry></feed>
+&lt;hr /&gt;</content><author><name>Sudarshan Sharma</name></author><category term="website" /><category term="jekyll" /><category term="academicpages.github.io" /><summary type="html">One beautiful day after reading A love letter to my website- DESK Magazine sent by my friend Bauva.Com.I decided to buy a domain and build my little corner of the internet; this blog is about my experience about my world and how I perceive it to be, I will start with writing about How I set up my website?, starting from hosting on GitHub pages and setting up my DNS record by buying sudarshan-sh.com for forever and ever.</summary></entry></feed>

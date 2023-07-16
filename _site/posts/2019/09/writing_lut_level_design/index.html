@@ -159,13 +159,7 @@
             <li class="masthead__menu-item"><a href="http://localhost:4000/publications/">Publications</a></li>
           
             
-            <li class="masthead__menu-item"><a href="http://localhost:4000/experiences/">Experiences</a></li>
-          
-            
             <li class="masthead__menu-item"><a href="http://localhost:4000/blog/">Blog</a></li>
-          
-            
-            <li class="masthead__menu-item"><a href="http://localhost:4000/colophon/">Colophon</a></li>
           
         </ul>
         <ul class="hidden-links hidden"></ul>
@@ -193,7 +187,7 @@
 
   <div class="author__avatar">
     
-    	<img src="http://localhost:4000/images/profile.png" class="author__avatar" alt="Sudarshan Sharma">
+    	<img src="http://localhost:4000/images/sudo_web.jpg" class="author__avatar" alt="Sudarshan Sharma">
     
   </div>
 
@@ -210,8 +204,6 @@
       
       
       
-      
-        <li><a href="mailto:me@sudarshan-sh.com"><i class="fas fa-fw fa-envelope" aria-hidden="true"></i> Email</a></li>
       
       
        
@@ -303,22 +295,22 @@
 <p>The code snippet is taken from the <a href="https://www.xilinx.com/support/documentation/sw_manuals/xilinx2012_2/ug953-vivado-7series-libraries.pdf#page=258" target="_blank">Vivado Design Suite 7 Series FPGA Libraries Guide</a></p>
 
 <p>Verilog Instantiation Template</p>
-<div class="language-verilog highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// LUT6: 6-input Look-Up Table with general output
-// 7 Series
-// Xilinx HDL Libraries Guide, version 2012.2
-</span><span class="n">LUT6</span> <span class="p">#(</span>
-<span class="p">.</span><span class="n">INIT</span><span class="p">(</span><span class="mh">64'h0000000000000000</span><span class="p">)</span> <span class="c1">// Specify LUT Contents
-</span><span class="p">)</span> <span class="n">LUT6_inst</span> <span class="p">(</span>
-<span class="p">.</span><span class="n">O</span><span class="p">(</span><span class="n">O</span><span class="p">),</span> <span class="c1">// LUT general output
-</span><span class="p">.</span><span class="n">I0</span><span class="p">(</span><span class="n">I0</span><span class="p">),</span> <span class="c1">// LUT input
-</span><span class="p">.</span><span class="n">I1</span><span class="p">(</span><span class="n">I1</span><span class="p">),</span> <span class="c1">// LUT input
-</span><span class="p">.</span><span class="n">I2</span><span class="p">(</span><span class="n">I2</span><span class="p">),</span> <span class="c1">// LUT input
-</span><span class="p">.</span><span class="n">I3</span><span class="p">(</span><span class="n">I3</span><span class="p">),</span> <span class="c1">// LUT input
-</span><span class="p">.</span><span class="n">I4</span><span class="p">(</span><span class="n">I4</span><span class="p">),</span> <span class="c1">// LUT input
-</span><span class="p">.</span><span class="n">I5</span><span class="p">(</span><span class="n">I5</span><span class="p">)</span> <span class="c1">// LUT input
-</span><span class="p">);</span>
-<span class="c1">// End of LUT6_inst instantiation
-</span></code></pre></div></div>
+<div class="language-verilog highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// LUT6: 6-input Look-Up Table with general output</span>
+<span class="c1">// 7 Series</span>
+<span class="c1">// Xilinx HDL Libraries Guide, version 2012.2</span>
+<span class="n">LUT6</span> <span class="p">#(</span>
+<span class="p">.</span><span class="n">INIT</span><span class="p">(</span><span class="mh">64'h0000000000000000</span><span class="p">)</span> <span class="c1">// Specify LUT Contents</span>
+<span class="p">)</span> <span class="n">LUT6_inst</span> <span class="p">(</span>
+<span class="p">.</span><span class="n">O</span><span class="p">(</span><span class="n">O</span><span class="p">),</span> <span class="c1">// LUT general output</span>
+<span class="p">.</span><span class="n">I0</span><span class="p">(</span><span class="n">I0</span><span class="p">),</span> <span class="c1">// LUT input</span>
+<span class="p">.</span><span class="n">I1</span><span class="p">(</span><span class="n">I1</span><span class="p">),</span> <span class="c1">// LUT input</span>
+<span class="p">.</span><span class="n">I2</span><span class="p">(</span><span class="n">I2</span><span class="p">),</span> <span class="c1">// LUT input</span>
+<span class="p">.</span><span class="n">I3</span><span class="p">(</span><span class="n">I3</span><span class="p">),</span> <span class="c1">// LUT input</span>
+<span class="p">.</span><span class="n">I4</span><span class="p">(</span><span class="n">I4</span><span class="p">),</span> <span class="c1">// LUT input</span>
+<span class="p">.</span><span class="n">I5</span><span class="p">(</span><span class="n">I5</span><span class="p">)</span> <span class="c1">// LUT input</span>
+<span class="p">);</span>
+<span class="c1">// End of LUT6_inst instantiation</span>
+</code></pre></div></div>
 <p>Fig:- This code snippet is taken from the Vivado Design Suit 7 Series FPGA</p>
 
 <p>.INIT() stores the truth table of the 6 input logic function, with LSB on the left</p>
@@ -337,22 +329,22 @@
 
 <p>Its translation to a LUT design would be</p>
 <div class="language-verilog highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Verilog</span> <span class="n">Instantiation</span> <span class="n">Template</span>
-<span class="c1">// LUT6: 6-input Look-Up Table with general output
-// 7 Series
-// Xilinx HDL Libraries Guide, version 2012.2
-</span><span class="n">LUT6</span> <span class="p">#(</span>
-<span class="p">.</span><span class="n">INIT</span><span class="p">(</span><span class="mh">64'h0000000000000007</span><span class="p">)</span> <span class="c1">// Specify LUT Contents
-</span><span class="p">)</span> <span class="n">LUT6_inst</span> <span class="p">(</span>
-<span class="p">.</span><span class="n">O</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="c1">// LUT general output
-</span><span class="p">.</span><span class="n">I0</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="c1">// LUT input
-</span><span class="p">.</span><span class="n">I1</span><span class="p">(</span><span class="n">b</span><span class="p">),</span> <span class="c1">// LUT input
-</span><span class="p">.</span><span class="n">I2</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="c1">// LUT input
-</span><span class="p">.</span><span class="n">I3</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="c1">// LUT input
-</span><span class="p">.</span><span class="n">I4</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="c1">// LUT input
-</span><span class="p">.</span><span class="n">I5</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1">// LUT input
-</span><span class="p">);</span>
-<span class="c1">// End of LUT6_inst instantiation
-</span></code></pre></div></div>
+<span class="c1">// LUT6: 6-input Look-Up Table with general output</span>
+<span class="c1">// 7 Series</span>
+<span class="c1">// Xilinx HDL Libraries Guide, version 2012.2</span>
+<span class="n">LUT6</span> <span class="p">#(</span>
+<span class="p">.</span><span class="n">INIT</span><span class="p">(</span><span class="mh">64'h0000000000000007</span><span class="p">)</span> <span class="c1">// Specify LUT Contents</span>
+<span class="p">)</span> <span class="n">LUT6_inst</span> <span class="p">(</span>
+<span class="p">.</span><span class="n">O</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="c1">// LUT general output</span>
+<span class="p">.</span><span class="n">I0</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="c1">// LUT input</span>
+<span class="p">.</span><span class="n">I1</span><span class="p">(</span><span class="n">b</span><span class="p">),</span> <span class="c1">// LUT input</span>
+<span class="p">.</span><span class="n">I2</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="c1">// LUT input</span>
+<span class="p">.</span><span class="n">I3</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="c1">// LUT input</span>
+<span class="p">.</span><span class="n">I4</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="c1">// LUT input</span>
+<span class="p">.</span><span class="n">I5</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1">// LUT input</span>
+<span class="p">);</span>
+<span class="c1">// End of LUT6_inst instantiation</span>
+</code></pre></div></div>
 <p>Output of NAND with inputs as &lt;(1,1), (1,0), (0,1), (0,0)&gt; is  &lt;0, 1 , 1, 1&gt;  which is 7(4’b0111) in hexadecimal. That is written in the  .INIT() considering the LSB and MSB ordering.</p>
 
 <p>Inputs a and b are the I0 and I1 inputs of the LUT remaining inputs of the LUT are set to 0 as we don’t need them, y is the output written in .O().</p>
@@ -451,9 +443,9 @@
 <!-- end custom footer snippets -->
 
         
-<p align="center">&copy; <i> Sudarshan Sharma 2021 | All Rights Reserved. </p>
+<!-- <p align="center">&copy; <i> Sudarshan Sharma 2023 | All Rights Reserved. </p> -->
 
-<!-- <p>&copy; Sudarshan Sharma 2021 | All Rights Reserved. </p>
+<!-- <p>&copy; Sudarshan Sharma 2023 | All Rights Reserved. </p>
  -->
 <!--
 
@@ -472,7 +464,7 @@
   </ul>
 </div>
 
-<div class="page__footer-copyright">&copy; 2021 Sudarshan Sharma. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/academicpages/academicpages.github.io">AcademicPages</a>, a fork of <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>-->
+<div class="page__footer-copyright">&copy; 2023 Sudarshan Sharma. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/academicpages/academicpages.github.io">AcademicPages</a>, a fork of <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>-->
 
         
       </footer>

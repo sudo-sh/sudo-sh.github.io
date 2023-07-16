@@ -159,13 +159,7 @@
             <li class="masthead__menu-item"><a href="http://localhost:4000/publications/">Publications</a></li>
           
             
-            <li class="masthead__menu-item"><a href="http://localhost:4000/experiences/">Experiences</a></li>
-          
-            
             <li class="masthead__menu-item"><a href="http://localhost:4000/blog/">Blog</a></li>
-          
-            
-            <li class="masthead__menu-item"><a href="http://localhost:4000/colophon/">Colophon</a></li>
           
         </ul>
         <ul class="hidden-links hidden"></ul>
@@ -193,7 +187,7 @@
 
   <div class="author__avatar">
     
-    	<img src="http://localhost:4000/images/profile.png" class="author__avatar" alt="Sudarshan Sharma">
+    	<img src="http://localhost:4000/images/sudo_web.jpg" class="author__avatar" alt="Sudarshan Sharma">
     
   </div>
 
@@ -210,8 +204,6 @@
       
       
       
-      
-        <li><a href="mailto:me@sudarshan-sh.com"><i class="fas fa-fw fa-envelope" aria-hidden="true"></i> Email</a></li>
       
       
        
@@ -271,7 +263,7 @@
 
 
   
-	  10 minute read
+	  12 minute read
 	
 </p>
           
@@ -298,68 +290,67 @@
 
 <p>Fig:<em>Naive division method</em>.</p>
 
-<p>In the figure Dividend=4568, Divisor(D)=3, Quotient(q)=1522 and Remainder(R)=2. Now, the division takes four steps, the <script type="math/tex">i^{th}</script> digit of q is denoted as <script type="math/tex">q_{i}</script> and the partial remainder at the <script type="math/tex">i^{th}</script> step after substraction is denoted as R(i). Assume that R(0) is the final remainder. Looking at the division once again we observe.</p>
+<p>In the figure Dividend=4568, Divisor(D)=3, Quotient(q)=1522 and Remainder(R)=2. Now, the division takes four steps, the \(i^{th}\) digit of q is denoted as \(q_{i}\) and the partial remainder at the \(i^{th}\) step after substraction is denoted as R(i). Assume that R(0) is the final remainder. Looking at the division once again we observe.</p>
 
-<p><script type="math/tex">4568 - 1*3*10^{3}=1568</script> or R(4) - <script type="math/tex">q_{3}*D*10^{3}</script>= R(3)</p>
+<p>\(4568 - 1*3*10^{3}=1568\) or R(4) - \(q_{3}*D*10^{3}\)= R(3)</p>
 
-<p><script type="math/tex">1568 - 5*3*10^{2}=0068</script> or R(3) - <script type="math/tex">q_{2}*D*10^{2}</script>= R(2)</p>
+<p>\(1568 - 5*3*10^{2}=0068\) or R(3) - \(q_{2}*D*10^{2}\)= R(2)</p>
 
-<p><script type="math/tex">0068 - 2*3*10^{1}=0008</script> or R(2) - <script type="math/tex">q_{1}*D*10^{1}</script>= R(1)</p>
+<p>\(0068 - 2*3*10^{1}=0008\) or R(2) - \(q_{1}*D*10^{1}\)= R(1)</p>
 
-<p><script type="math/tex">0008 - 1*3*10^{0}=0002</script> or R(1) - <script type="math/tex">q_{0}*D*10^{0}</script>= R(0)</p>
+<p>\(0008 - 1*3*10^{0}=0002\) or R(1) - \(q_{0}*D*10^{0}\)= R(0)</p>
 
 <p>R(4) is numerically equal to the dividend. Now, observing the sequence we can say that the Remainder, in general, can be expressed as:</p>
 
-<script type="math/tex; mode=display">\begin{equation} \label{division_gen}
+\[\begin{equation} \label{division_gen}
 
 R(i)=R(i+1) - q_{i}*D*10^{i}
 
-\end{equation}</script>
+\end{equation}\]
 
-<p>where <script type="math/tex">i= n-1, n-2, ......, 1, 0</script>.</p>
+<p>where \(i= n-1, n-2, ......, 1, 0\).</p>
 
-<p>Now, the whole purpose of introducing the naive approach is the fact that in binary-only the radix changes from 10 to 2. The inherent concept remains the same, one important questions to ask at this point is how the quotient <script type="math/tex">q_{i}</script> is calculated? It is obvious that through observation we figure out the value of quotient at every iteration but for a machine, we need to define a methodology as an alternative to this observation. Further, this observation is nothing but a mental trial and error. We keep on checking the difference between the partial remainder (dividend in the first step) and the integer multiple of the divisor till the point we get a negative value. Once the integer multiple yielding the negative difference is obtained we choose the <script type="math/tex">q_{i}</script> as one less than that particular integer. This is the main idea of restoring division.</p>
+<p>Now, the whole purpose of introducing the naive approach is the fact that in binary-only the radix changes from 10 to 2. The inherent concept remains the same, one important questions to ask at this point is how the quotient \(q_{i}\) is calculated? It is obvious that through observation we figure out the value of quotient at every iteration but for a machine, we need to define a methodology as an alternative to this observation. Further, this observation is nothing but a mental trial and error. We keep on checking the difference between the partial remainder (dividend in the first step) and the integer multiple of the divisor till the point we get a negative value. Once the integer multiple yielding the negative difference is obtained we choose the \(q_{i}\) as one less than that particular integer. This is the main idea of restoring division.</p>
 
 <h2 id="restoring-divison">Restoring Divison</h2>
 
 <p>As discussed in the previous paragraph the restoring division also gives a positive partial remainder. The examples from here onwards will deal with radix as 2 instead of 10 as discussed in the previous paragraphs. In case of 2 as the radix, the quotient is either 0 or 1 so using \eqref{division_gen} and rewriting the equation.</p>
 
-<script type="math/tex; mode=display">\begin{equation} \label{radix_2_div}
+\[\begin{equation} \label{radix_2_div}
 
 R(i)=R(i+1) - q_{i}*D*2^{i}
 
-\end{equation}</script>
+\end{equation}\]
 
-<p>We start with assuming <script type="math/tex">q_{i}</script> as 1 so</p>
+<p>We start with assuming \(q_{i}\) as 1 so</p>
 
-<script type="math/tex; mode=display">R(i)=R(i+1) - D*2^{i}</script>
+\[R(i)=R(i+1) - D*2^{i}\]
 
-<p>Now from here onwards we define two cases based on the value of <script type="math/tex">R(i)</script>.</p>
+<p>Now from here onwards we define two cases based on the value of \(R(i)\).</p>
 
-<p><strong>Case 1</strong>: if <script type="math/tex">R(i) \geq 0</script> the assumption for <script type="math/tex">q_{i}</script>=1 was correct.</p>
+<p><strong>Case 1</strong>: if \(R(i) \geq 0\) the assumption for \(q_{i}\)=1 was correct.</p>
 
-<p><strong>Case 2</strong>: if <script type="math/tex">% <![CDATA[
-R(i) < 0 %]]></script> the assumption was wrong and we need to restore the partial remainder.</p>
+<p><strong>Case 2</strong>: if \(R(i) &lt; 0\) the assumption was wrong and we need to restore the partial remainder.</p>
 
 <p>Let’s understand this with an example.</p>
 
-<p><script type="math/tex">29 - 3*2^{4} = -19 \ \ q_{4}=1</script> (R(4) &lt; 0 : restore)</p>
+<p>\(29 - 3*2^{4} = -19 \ \ q_{4}=1\) (R(4) &lt; 0 : restore)</p>
 
-<p><script type="math/tex">-19 + 3*2^{4}= +29 \ \ q_{4}=0</script> (R(4) <script type="math/tex">\geq</script> 0 : continue)</p>
+<p>\(-19 + 3*2^{4}= +29 \ \ q_{4}=0\) (R(4) \(\geq\) 0 : continue)</p>
 
-<p><script type="math/tex">29 - 3*2^{3}= +5 \ \ q_{3}=1</script> (R(3) <script type="math/tex">\geq</script> 0: continue)</p>
+<p>\(29 - 3*2^{3}= +5 \ \ q_{3}=1\) (R(3) \(\geq\) 0: continue)</p>
 
-<p><script type="math/tex">+5 - 3*2^{2}= -7 \ \ q_{2}=1</script> (R(2) &lt; 0 : restore)</p>
+<p>\(+5 - 3*2^{2}= -7 \ \ q_{2}=1\) (R(2) &lt; 0 : restore)</p>
 
-<p><script type="math/tex">-7 + 3*2^{2}= +5 \ \ q_{2}=0</script> (R(2) <script type="math/tex">\geq</script> 0 : continue)</p>
+<p>\(-7 + 3*2^{2}= +5 \ \ q_{2}=0\) (R(2) \(\geq\) 0 : continue)</p>
 
-<p><script type="math/tex">+5 - 3*2^{1}= -1 \ \ q_{1}=1</script> (R(1) &lt; 0 : restore)</p>
+<p>\(+5 - 3*2^{1}= -1 \ \ q_{1}=1\) (R(1) &lt; 0 : restore)</p>
 
-<p><script type="math/tex">-1 + 3*2^{1}= +5 \ \ q_{1}=0</script> (R(1) <script type="math/tex">\geq</script> 0: continue)</p>
+<p>\(-1 + 3*2^{1}= +5 \ \ q_{1}=0\) (R(1) \(\geq\) 0: continue)</p>
 
-<p><script type="math/tex">+5 - 3*2^{0}=+2 \ \ q_{0}=1</script> (R(0) <script type="math/tex">\geq</script> 0 : continue)</p>
+<p>\(+5 - 3*2^{0}=+2 \ \ q_{0}=1\) (R(0) \(\geq\) 0 : continue)</p>
 
-<p>Now using the <script type="math/tex">q_{i}</script> values where continue keyword is used the quotient obtained is 01001 which is equivalent to 9 which should be the actual quotient. Let’s look into another example with boolean values.</p>
+<p>Now using the \(q_{i}\) values where continue keyword is used the quotient obtained is 01001 which is equivalent to 9 which should be the actual quotient. Let’s look into another example with boolean values.</p>
 
 <p><img src="/images/post_3/restoring_division_binary.jpg" align="middle" /></p>
 
@@ -371,13 +362,13 @@ R(i) < 0 %]]></script> the assumption was wrong and we need to restore the parti
 
 <p>Fig: <em>Array architecture building block Restoring Divider</em>.</p>
 
-<p>The <script type="math/tex">final\ b_{out}</script> is calculated from the block present at the Main Significant Bit (MSB). Furthermore, it is important to realise that the architecture proposed can be extended to floating-point by continuing the iterations for the sake of simplicity we only consider the integer quotient. Now with the help of the building blocks, we can construct an array architecture for restoring division which is purely combinatorial. Here for the architecture we have considered the dividend as 6 bits (<script type="math/tex">n_5 n_4 n_3 n_2 n_1 n_0</script>), the divisor is 4 bits (<script type="math/tex">d_3 d_2 d_1 d_0</script>), the quotient is 3 bits (<script type="math/tex">q_2 q_1 q_0</script>) Why? To answer this first understand the assumption that the dividend and the divisor are aligned which means the MSB’s of both the binary representation has 1 as its value. So, maximum quotient can be calculated as <script type="math/tex">\frac{max\ dividend}{min\ divisor}</script> which comes out to be <script type="math/tex">\frac{63}{8}</script> taking the <script type="math/tex">log_2</script> followed by the ceiling of the value we obtain 3. How about you check it out yourself?. Finally, the remainder is expressed as 4 bits (<script type="math/tex">r_3 r_2 r_2 r_0</script>).</p>
+<p>The \(final\ b_{out}\) is calculated from the block present at the Main Significant Bit (MSB). Furthermore, it is important to realise that the architecture proposed can be extended to floating-point by continuing the iterations for the sake of simplicity we only consider the integer quotient. Now with the help of the building blocks, we can construct an array architecture for restoring division which is purely combinatorial. Here for the architecture we have considered the dividend as 6 bits (\(n_5 n_4 n_3 n_2 n_1 n_0\)), the divisor is 4 bits (\(d_3 d_2 d_1 d_0\)), the quotient is 3 bits (\(q_2 q_1 q_0\)) Why? To answer this first understand the assumption that the dividend and the divisor are aligned which means the MSB’s of both the binary representation has 1 as its value. So, maximum quotient can be calculated as \(\frac{max\ dividend}{min\ divisor}\) which comes out to be \(\frac{63}{8}\) taking the \(log_2\) followed by the ceiling of the value we obtain 3. How about you check it out yourself?. Finally, the remainder is expressed as 4 bits (\(r_3 r_2 r_2 r_0\)).</p>
 
 <p><img src="/images/post_3/array_divider_restoring.jpg" align="middle" /></p>
 
 <p>Fig: <em>Array architecture Restoring Divider</em>.</p>
 
-<p>The quotient bit as seen from the figure is the inverted form of the <script type="math/tex">final\  b_{out}</script>. Also, the initial borrow input is given as 0 which is trivial. The number of rows in the array architecture is given as <script type="math/tex">rows = width\ of \ dividend\ - \ width\ of \ divisor\ + \ 1</script>. The number of rows corresponds directly to the width of the quotient, which can be proved intuitively using the stated assumption and the example calculation in the previous paragraph. Moreover, if the divisor and the dividend are aligned perfectly we can remove the first block in the third row from the left.</p>
+<p>The quotient bit as seen from the figure is the inverted form of the \(final\  b_{out}\). Also, the initial borrow input is given as 0 which is trivial. The number of rows in the array architecture is given as \(rows = width\ of \ dividend\ - \ width\ of \ divisor\ + \ 1\). The number of rows corresponds directly to the width of the quotient, which can be proved intuitively using the stated assumption and the example calculation in the previous paragraph. Moreover, if the divisor and the dividend are aligned perfectly we can remove the first block in the third row from the left.</p>
 
 <h2 id="non-restoring-division">Non-restoring Division</h2>
 
@@ -385,32 +376,32 @@ R(i) < 0 %]]></script> the assumption was wrong and we need to restore the parti
 
 <p>From the previous equation we know.</p>
 
-<p><script type="math/tex">R(i)= R(i+1) - D*2^{i}\\</script> 
+<p>\(R(i)= R(i+1) - D*2^{i}\\\) 
 <!-- $$ Case\ 1 :\ We\ need \ to \ restore \ when \ R(i) \ < \ 0 \ this \ is \ done \ by \ adding \ D*2^{i} \\$$ -->
-<strong>Case 1</strong>: We need to restore when R(i) &lt; 0 this is done by adding <script type="math/tex">D*2^{i}</script></p>
+<strong>Case 1</strong>: We need to restore when R(i) &lt; 0 this is done by adding \(D*2^{i}\)</p>
 
-<p><script type="math/tex">R(i)= R(i) + D*2^{i} \\</script>
-Now, in the next iteration we subtract <script type="math/tex">D*2^{i-1}</script> for the assumption <script type="math/tex">q_{i}=1</script></p>
+<p>\(R(i)= R(i) + D*2^{i} \\\)
+Now, in the next iteration we subtract \(D*2^{i-1}\) for the assumption \(q_{i}=1\)</p>
 
-<p><script type="math/tex">R(i-1)= R(i) - D*2^{i-1} \\</script>
-<script type="math/tex">R(i-1)=R(i) + D*2^{i} - D *2^{i-1}\\</script>
-<script type="math/tex">R(i-1)=R(i) + D*2^{i-1} \\</script>
+<p>\(R(i-1)= R(i) - D*2^{i-1} \\\)
+\(R(i-1)=R(i) + D*2^{i} - D *2^{i-1}\\\)
+\(R(i-1)=R(i) + D*2^{i-1} \\\)
 <!-- $$Case\ 2:\ When\ R(i) \ \geq 0\ the \ assumption\ was \ correct \ for\ q_{i}=1\ continue.$$ -->
-<strong>Case 2</strong>: When <script type="math/tex">R(i) \geq 0</script> the assumption was correct for <script type="math/tex">q_{i}=1</script> continue.</p>
+<strong>Case 2</strong>: When \(R(i) \geq 0\) the assumption was correct for \(q_{i}=1\) continue.</p>
 
 <p>The Non-restoring division algorithm doesn’t need to restore the partial remainder every time rather if the partial remainder is negative we need to add the divisor in the next iteration taking into consideration the bit shifts. To obtain this functionality with minimal hardware we need to look at the combined hardware used for addition and subtraction of binary bits. Refer to the section Binary Adder Subtractor in the post <a href="https://www.electrical4u.com/binary-substractor/" target="_blank">Binary Subtractor </a>. The combined hardware used works on the principle that the subtraction can be performed using the 2’s complement notation. According to this method first, the binary number to be subtracted is converted in 2’s complement notation by inverting its bits and adding 1 to it. Further, the 2’s complemented number is then added to another operand. Refer to this post to gain insight on the 2’s complement subtraction <a href="https://www.math-only-math.com/subtraction-by-2s-complement.html" target="_blank">Subtraction by 2’s complement </a>. Finally, the most important point to address here is the fact that when subtraction is done using the adder hardware with one input complemented and initial carry input as 1, the output is considered negative if the final carry out is 0 and positive when the final carry out is 1. This concept will be used extensively in the later sections.</p>
 
-<p><script type="math/tex">29 - 3*2^{4} = -19 \ \ q_{4}=1</script> (R(4) &lt; 0: assumption wrong)</p>
+<p>\(29 - 3*2^{4} = -19 \ \ q_{4}=1\) (R(4) &lt; 0: assumption wrong)</p>
 
-<p><script type="math/tex">-19 + 3*2^{3}= +5 \ \ q_{3}=\bar{1}</script> (R(3) <script type="math/tex">\geq</script> 0: continue)</p>
+<p>\(-19 + 3*2^{3}= +5 \ \ q_{3}=\bar{1}\) (R(3) \(\geq\) 0: continue)</p>
 
-<p><script type="math/tex">+5 - 3*2^{2}= -7 \ \ q_{2}=1</script> (R(2) &lt; 0: assumption wrong)</p>
+<p>\(+5 - 3*2^{2}= -7 \ \ q_{2}=1\) (R(2) &lt; 0: assumption wrong)</p>
 
-<p><script type="math/tex">-7 + 3*2^{1}= -1 \ \ q_{2}=\bar{1}</script> (R(1) &lt; 0: assumption wrong)</p>
+<p>\(-7 + 3*2^{1}= -1 \ \ q_{2}=\bar{1}\) (R(1) &lt; 0: assumption wrong)</p>
 
-<p><script type="math/tex">-1 + 3*2^{0}= 2 \ \ q_{1}=\bar{1}</script> ( R(0) <script type="math/tex">\geq</script> 0: continue post decimal)</p>
+<p>\(-1 + 3*2^{0}= 2 \ \ q_{1}=\bar{1}\) ( R(0) \(\geq\) 0: continue post decimal)</p>
 
-<p>From the example we observe that non restoring algorithm takes lesser number of iterations compared to the restoring algorithm. However as you can observe the quotient bits are not in the form of normal 0 and 1 rather in the form of 1 and <script type="math/tex">\bar{1}</script> which has a numerial value equivalent to -1. So here the quotient obtained is <script type="math/tex">1 \bar{1} 1 \bar{1} \bar{1}</script> numrically calculated as <script type="math/tex">1*2^{4} -1*2^{3} + 1*2^{2} - 2*2^{1} -1*2^{0} = 9</script>.</p>
+<p>From the example we observe that non restoring algorithm takes lesser number of iterations compared to the restoring algorithm. However as you can observe the quotient bits are not in the form of normal 0 and 1 rather in the form of 1 and \(\bar{1}\) which has a numerial value equivalent to -1. So here the quotient obtained is \(1 \bar{1} 1 \bar{1} \bar{1}\) numrically calculated as \(1*2^{4} -1*2^{3} + 1*2^{2} - 2*2^{1} -1*2^{0} = 9\).</p>
 
 <p>Now, let’s look at another example of non-restoring division algorithm with boolean values. In the example, we will perform subtraction using the 2’s complement notation used in the combined adder subtractor circuit mentioned previously. Thus, the subtraction results with final carry out as 0 has a negative value and the subtraction with carry out as 1 has a positive value.</p>
 
@@ -424,13 +415,13 @@ Now, in the next iteration we subtract <script type="math/tex">D*2^{i-1}</script
 
 <p>Fig: <em>Array architecture building block Non restoring divider</em>.</p>
 
-<p>The <script type="math/tex">final\ c_{out}</script> is obtained through the block present at the MSB. Again, if the requirement of quotient bit is higher one can extend the architecture. Now, let’s construct the array architecture for the Non-restoring array divider with the dividend as 6 bits (<script type="math/tex">n_5 n_4 n_3 n_2 n_1 n_0</script>), the divisor as 4 bits (<script type="math/tex">d_3 d_2 d_1 d_0</script>), the quotient as 3 bits (<script type="math/tex">q_2 q_1 q_0</script>) and the remainder as 4 bits (<script type="math/tex">r_3 r_2 r_1 r_0</script>).</p>
+<p>The \(final\ c_{out}\) is obtained through the block present at the MSB. Again, if the requirement of quotient bit is higher one can extend the architecture. Now, let’s construct the array architecture for the Non-restoring array divider with the dividend as 6 bits (\(n_5 n_4 n_3 n_2 n_1 n_0\)), the divisor as 4 bits (\(d_3 d_2 d_1 d_0\)), the quotient as 3 bits (\(q_2 q_1 q_0\)) and the remainder as 4 bits (\(r_3 r_2 r_1 r_0\)).</p>
 
 <p><img src="/images/post_3/array_divider_non_restoring.jpg" align="middle" /></p>
 
 <p>Fig: <em>Array architecture Non restoring Divider</em>.</p>
 
-<p>Looking at the array structure we need to address the two main points. First, in the topmost row, the value of the <script type="math/tex">final \ c_{out}</script> is 1, this is because the first iteration is always subtraction in the non-restoring divider. Second, as observed above in the example of binary Non restoring divider the quotient bits are not of form 0 or 1 rather it is of form 1 and <script type="math/tex">\bar{1}</script>. The conversion of to the original encoding scheme can be done after storing the 0,1 sequence of the quotient bit depending on the order since we know the first is always 1 and then if 0 appears means the next quotient bit is <script type="math/tex">\bar{1}</script>. Moreover, if the input and the outputs are perfectly aligned then the first block in the third row from the left can be completely omitted.</p>
+<p>Looking at the array structure we need to address the two main points. First, in the topmost row, the value of the \(final \ c_{out}\) is 1, this is because the first iteration is always subtraction in the non-restoring divider. Second, as observed above in the example of binary Non restoring divider the quotient bits are not of form 0 or 1 rather it is of form 1 and \(\bar{1}\). The conversion of to the original encoding scheme can be done after storing the 0,1 sequence of the quotient bit depending on the order since we know the first is always 1 and then if 0 appears means the next quotient bit is \(\bar{1}\). Moreover, if the input and the outputs are perfectly aligned then the first block in the third row from the left can be completely omitted.</p>
 
 <p>Interested readers can visit the Lecture Notes of EE486 <a href="https://web.stanford.edu/class/ee486/" target="_blank">Advanced Computer Arithmetic </a> by Prof. M.J.Flynn Stanford University. Furthermore, I am thankful to Prof. A.S.Dhar for the course on Architectural Design of Integrated Circuits at IIT Kharagpur.</p>
 
@@ -524,9 +515,9 @@ Now, in the next iteration we subtract <script type="math/tex">D*2^{i-1}</script
 <!-- end custom footer snippets -->
 
         
-<p align="center">&copy; <i> Sudarshan Sharma 2021 | All Rights Reserved. </p>
+<!-- <p align="center">&copy; <i> Sudarshan Sharma 2023 | All Rights Reserved. </p> -->
 
-<!-- <p>&copy; Sudarshan Sharma 2021 | All Rights Reserved. </p>
+<!-- <p>&copy; Sudarshan Sharma 2023 | All Rights Reserved. </p>
  -->
 <!--
 
@@ -545,7 +536,7 @@ Now, in the next iteration we subtract <script type="math/tex">D*2^{i-1}</script
   </ul>
 </div>
 
-<div class="page__footer-copyright">&copy; 2021 Sudarshan Sharma. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/academicpages/academicpages.github.io">AcademicPages</a>, a fork of <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>-->
+<div class="page__footer-copyright">&copy; 2023 Sudarshan Sharma. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/academicpages/academicpages.github.io">AcademicPages</a>, a fork of <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>-->
 
         
       </footer>

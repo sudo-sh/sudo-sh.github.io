@@ -4,8 +4,25 @@ main:
   - title: "Publications"
     url: /publications/
 
-  - title: "Experiences"
-    url: /experiences/ 
+  - title: "Blog"
+    url: /blog/
+    
+ 
+  # - title : "Colophon"
+  #   url: /colophon/
+
+
+  #Old
+
+ #- title: "Resume"
+  #  url: /resume/
+    
+  # - title : "Personal"
+  #   url: /personal/
+  # - title: "Guide"
+  #   url: /markdown/
+   # - title: "Experiences"
+  #   url: /experiences/ 
 
   # - title: "Publications"
   #   url: /publications/
@@ -17,16 +34,3 @@ main:
     
   # - title: "Portfolio"
   #   url: /portfolio/
-        
-  - title: "Blog"
-    url: /blog/
-    
-  #- title: "Resume"
-  #  url: /resume/
-    
-  # - title : "Personal"
-  #   url: /personal/
-  # - title: "Guide"
-  #   url: /markdown/
-  - title : "Colophon"
-    url: /colophon/
