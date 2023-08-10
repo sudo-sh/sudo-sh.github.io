@@ -41,7 +41,7 @@ ____
 
 # Under Review
 
-### S Sharma, B Kang and S Mukhopadhyay, HamQ: Hamming Weight-based Energy Aware Quantization of TinyML Models for Analog Compute-In-Memory.
+### S Sharma<sup>*</sup>, B Kang<sup>*</sup>,  NV Kidambi and S Mukhopadhyay, HamQ: Hamming Weight-based Energy Aware Quantization of TinyML Models for Analog Compute-In-Memory.
 
 ### H Kumar, B Chakraborty, S Sharma and S Mukhopadhyay, Compact and Secure Generic Discrete Gaussian Sampler based on HW/SW Co-design.
 <a href="https://arxiv.org/abs/2206.12447" target="_blank"><i class="fa fa-file-pdf-o" style="font-size:35px;color:CornflowerBlue"></i></a>
