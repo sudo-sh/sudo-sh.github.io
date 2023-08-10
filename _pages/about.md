@@ -59,7 +59,7 @@ In addition, I had the incredible opportunity to be a VDEC Summer (2018) Researc
 - Academic Email: **ssharma04 [at] gatech [dot] edu**
 - Personal Email: **me [at] sudarshan-sh [dot] com**
 
-## Updates
+<!-- ## Updates
 
 * **January 2021**
   - Joined [GREEN Lab](https://greenlab.ece.gatech.edu/) at Georgia Tech.
@@ -69,4 +69,4 @@ In addition, I had the incredible opportunity to be a VDEC Summer (2018) Researc
 
 * **July 2020**
   - Graduated from IIT Kharagpur with B.Tech in Electronics and Electrical Communication Engineering, M.Tech in Microelectronics and VLSI Design, and a Minor in Computer Science and Engineering.
-  - Awarded the Institute Order of Merit for illustrious performance in the field of Technology during my stay at IIT Kharagpur.
+  - Awarded the Institute Order of Merit for illustrious performance in the field of Technology during my stay at IIT Kharagpur. -->

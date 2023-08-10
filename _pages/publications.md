@@ -24,8 +24,9 @@ redirect_from:
 
 ____
 
-### [ESSCIRC '23](https://www.esscirc-essderc2023.org/) S Sharma et al., AFE-CIM: A Current-Domain Compute-In-Memory Macro for Analog-to-Feature Extraction.
+### [Sensors '23](https://2023.ieee-sensorsconference.org/) S Sharma, U Kamal, J Tong, T Krishna and S Mukhopadhyay, SNATCH: Stealing Neural Network Architecture From ML Accelerator in Intelligent Sensors.
 
+### [ESSCIRC '23](https://www.esscirc-essderc2023.org/) S Sharma<sup>*</sup> , WC Wang<sup>*</sup> , C DeLude, M Lee, NM Rahman, NV Kidambi, J Romberg and S Mukhopadhyay, AFE-CIM: A Current-Domain Compute-In-Memory Macro for Analog-to-Feature Extraction.
 
 ## 2020
 
@@ -40,9 +41,9 @@ ____
 
 # Under Review
 
-### S Sharma et al., SNATCH: Stealing Neural Network Architecture From ML Accelerator in Intelligent Sensors.
-
 ### S Sharma, B Kang and S Mukhopadhyay, HamQ: Hamming Weight-based Energy Aware Quantization of TinyML Models for Analog Compute-In-Memory.
 
 ### H Kumar, B Chakraborty, S Sharma and S Mukhopadhyay, Compact and Secure Generic Discrete Gaussian Sampler based on HW/SW Co-design.
 <a href="https://arxiv.org/abs/2206.12447" target="_blank"><i class="fa fa-file-pdf-o" style="font-size:35px;color:CornflowerBlue"></i></a>
+
+<sup>*</sup> equal contributions
