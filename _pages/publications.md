@@ -18,11 +18,23 @@ redirect_from:
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
+## 2024
 
+____
+
+
+### [RWW '24](https://www.radiowirelessweek.org) NM Rahman, S Sharma, C DeLude, WC Wang, J Romberg, and S Mukhopadhyay, BeamCIM: A Compute-In-Memory based Broadband Beamforming Accelerator using Linear Embedding.
 
 ## 2023
 
 ____
+
+
+### [IIRW '23](https://www.iirw.org) S Zhang, WC Wang, S Sharma, and S Mukhopadhyay, Analysis of Effects of Aging on the Accuracy of Analog Computing-In-Memory Computation.
+
+### [IEDM '23](https://www.ieee-iedm.org) WC Wang, R Saligram, S Sharma, M Lee, A Gaidhane, Y Cao, A Raychowdhury, S Datta, and S Mukhopadhyay, Cool-CIM: Cryogenic Operation of Analog Compute-In-Memory for Improved Power-efficiency.
+
+### [Sensors '23](https://2023.ieee-sensorsconference.org/) M Lee, S Sharma, WC Wang and S Mukhopadhyay Energy-Efficient Sensor Platform using Reliable Analog-to-Feature Extraction.
 
 ### [Sensors '23](https://2023.ieee-sensorsconference.org/) S Sharma, U Kamal, J Tong, T Krishna and S Mukhopadhyay, SNATCH: Stealing Neural Network Architecture From ML Accelerator in Intelligent Sensors.
 
@@ -39,11 +51,19 @@ ____
 
 ____
 
-# Under Review
 
-### S Sharma<sup>*</sup>, B Kang<sup>*</sup>,  NV Kidambi and S Mukhopadhyay, HamQ: Hamming Weight-based Energy Aware Quantization of TinyML Models for Analog Compute-In-Memory.
+# Journals
 
-### H Kumar, B Chakraborty, S Sharma and S Mukhopadhyay, Compact and Secure Generic Discrete Gaussian Sampler based on HW/SW Co-design.
+## 2023
+
+____
+
+
+### [TIFS '23](https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=10206) H Kumar, B Chakraborty, S Sharma and S Mukhopadhyay, XMD: An Expansive Hardware-telemetry based Malware Detector to enhance Endpoint Detection.
 <a href="https://arxiv.org/abs/2206.12447" target="_blank"><i class="fa fa-file-pdf-o" style="font-size:35px;color:CornflowerBlue"></i></a>
+
+### (Under Review) S Sharma<sup>*</sup>, B Kang<sup>*</sup>,  NV Kidambi and S Mukhopadhyay, HamQ: Hamming Weight-based Energy Aware Quantization of TinyML Models for Analog Compute-In-Memory. 
+
+
 
 <sup>*</sup> equal contributions
