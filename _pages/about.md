@@ -59,6 +59,9 @@ In addition, I had the incredible opportunity to be a VDEC Summer (2018) Researc
 - Academic Email: **ssharma04 [at] gatech [dot] edu**
 - Personal Email: **me [at] sudarshan-sh [dot] com**
 
+## Updates
+- **I am looking for an Internship next Summer (May 2024 - August 2024) in the areas of Architecture, Security or Hardware.**
+
 <!-- ## Updates
 
 * **January 2021**
