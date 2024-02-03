@@ -60,7 +60,7 @@ In addition, I had the incredible opportunity to be a VDEC Summer (2018) Researc
 - Personal Email: **me [at] sudarshan-sh [dot] com**
 
 ## Updates
-- **I am looking for an Internship next Summer (May 2024 - August 2024) in the areas of HW/SW Co-Design,HW Architecture and Security.**
+- **I am looking for an Internship next Summer (May 2024 - August 2024) in the areas of HW/SW Co-Design, HW Architecture and Security.**
 
 <!-- ## Updates
 
