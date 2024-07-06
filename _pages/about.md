@@ -45,7 +45,7 @@ ___
 
 # Hi there! 👋
 
-I am a PhD student at [GREEN Lab](https://greenlab.ece.gatech.edu/), [Georgia Tech](https://www.gatech.edu/), supervised by [Prof. Saibal Mukhopadhyay](https://www.ece.gatech.edu/faculty-staff-directory/saibal-mukhopadhyay). Prior to this, I completed a Dual Degree (B.Tech + M.Tech) in Microelectronics and VLSI Design from the department of ECE, [IIT Kharagpur](https://www.iitkgp.ac.in/) in 2020. During my senior year, I conducted research at [SEAL Lab](https://cse.iitkgp.ac.in/resgrp/seal/) under the guidance of [Prof. Debdeep Mukhopadhyay](https://sites.google.com/view/debdeepmukhopadhyay/home). 
+I am a PhD student at [GREEN Lab](https://greenlab.ece.gatech.edu/), [Georgia Tech](https://www.gatech.edu/), advised by [Prof. Saibal Mukhopadhyay](https://www.ece.gatech.edu/faculty-staff-directory/saibal-mukhopadhyay). Prior to this, I completed a Dual Degree (B.Tech + M.Tech) in Microelectronics and VLSI Design from the department of ECE, [IIT Kharagpur](https://www.iitkgp.ac.in/) in 2020. During my senior year, I conducted research at [SEAL Lab](https://cse.iitkgp.ac.in/resgrp/seal/) under the guidance of [Prof. Debdeep Mukhopadhyay](https://sites.google.com/view/debdeepmukhopadhyay/home). 
 
 In addition, I had the incredible opportunity to be a VDEC Summer (2018) Research Intern at [FUJITA Lab](https://www.cad.t.u-tokyo.ac.jp/en/) under the mentorship of Prof. Masahiro Fujita at The University of Tokyo. Furthermore, I have also interned at Intel Security Research (2022), Qualcomm Bangalore Design Center (2019), and [Pix Moving](https://www.pixmoving.com/) (2019).
 
