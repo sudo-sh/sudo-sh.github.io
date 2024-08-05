@@ -52,15 +52,28 @@ In addition, I had the incredible opportunity to be a VDEC Summer (2018) Researc
 
 ## Current Research Interests
 - Hardware Accelerators (HW/SW Co-design)
+  - Radar Processing Pipelines
+  - NP-Hard Optimization Problems
 - Efficient AI
+  - ML model quantization/compression
+  - Compute-In-Memory friendly ML/Signal processing
 - Hardware/Sensor Security
+  - Side Channel Attacks on ML/Crypto
+
+Please send me an email if you want to collaborate.
 
 ## Contact Me
-- Academic Email: **ssharma04 [at] gatech [dot] edu**
+- Academic Email: **ssharma497 [at] gatech [dot] edu**
 - Personal Email: **me [at] sudarshan-sh [dot] com**
 
 ## Updates
-- **I am looking for an Internship in the areas of HW/SW Co-Design, HW Architecture. If you have an opening, please send me an email requesting CV.**
+- **~~I am looking for an Internship in the areas of HW/SW Co-Design, HW Architecture. If you have an opening, please send me an email requesting CV.~~**
+- I will be interning at AMD, San Jose, CA in the AI Frameworks team during Fall 2024.
+
+
+
+
+
 
 <!-- ## Updates
 
