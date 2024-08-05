@@ -23,9 +23,10 @@ redirect_from:
 ____
 
 ### [DATE '24](https://www.date-conference.com) M Lee, S Sharma, WC Wang, H Kumawat, NM Rahman and S Mukhopadhyay, Cognitive Sensing for Energy-Efficient Edge Intelligence.
-
+<a href="https://ieeexplore.ieee.org/abstract/document/10546823" target="_blank"><i class="fa fa-file-pdf-o" style="font-size:35px;color:CornflowerBlue"></i></a>
 ### [IMS '24](https://ims-ieee.org) S Sharma<sup>*</sup>, H Kumawat<sup>*</sup> and S Mukhopadhyay, ChirpNet: Noise-Resilient Sequential Chirp based Radar Processing for Object Detection. 
-
+<a href="https://ieeexplore.ieee.org/abstract/document/10600387" target="_blank"><i class="fa fa-file-pdf-o" style="font-size:35px;color:CornflowerBlue"></i></a>
+<a href="https://github.com/sudo-sh/ChirpNet" target="_blank"><i class="fa fa-github" style="font-size:35px;color:CornflowerBlue"></i></a>
 ### [RWW '24](https://www.radiowirelessweek.org) NM Rahman, S Sharma, C DeLude, WC Wang, J Romberg, and S Mukhopadhyay, BeamCIM: A Compute-In-Memory based Broadband Beamforming Accelerator using Linear Embedding.
 <a href="https://ieeexplore.ieee.org/abstract/document/10438565" target="_blank"><i class="fa fa-file-pdf-o" style="font-size:35px;color:CornflowerBlue"></i></a>
 
