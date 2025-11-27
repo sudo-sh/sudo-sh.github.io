@@ -8,81 +8,30 @@ redirect_from:
   - /about.html
 ---
 
-<!-- Hi! I am a Graduate Research Assistant at [GREEN Lab](https://greenlab.ece.gatech.edu/), [Georgia Tech](https://www.gatech.edu/) adviced by [Prof. Saibal Mukhopadhyay](https://www.ece.gatech.edu/faculty-staff-directory/saibal-mukhopadhyay). Previously, I graduated with a Dual Degree (B.Tech + M.Tech) in Microelectronics and VLSI Design from the department of Electronics and Electrical Communication Engineering, [IIT Kharagpur](https://www.iitkgp.ac.in/), India. I worked as a Student Researcher at [SEAL Lab](https://cse.iitkgp.ac.in/resgrp/seal/), Dept. of CSE, IIT Kharagpur under the guidance of [Prof. Debdeep Mukhopadhyay](https://sites.google.com/view/debdeepmukhopadhyay/home) during my senior year. I am particularly interested in the field of
-
-
-# E-mail
-___
-**Hardware/Sensor Security, Hardware Accelerators and Applied ML**. 
-
-
-
-# E-mail
-___
-
-Academic - **ssharma04 [at] gatech [dot] edu**
-
-Personal - **me [at] sudarshan-sh [dot] com**
-
-
-# Updates
-
-___
-
-* **January 2021**
-	* I joined [GREEN Lab](https://greenlab.ece.gatech.edu/) Georgia Tech.
-
-* **Decemeber 2020**
-	* Paper titled *"Compact and Secure Discrete Gaussian Sampler based on HW/SW Co-design"* published at [ASIANHOST '20](http://asianhost.org/2020/).
-
-* **July 2020**
-	* I graduated from IIT Kharagpur with B.Tech in Electronics and Electrical Communication Engineering, M.Tech in Microelectronics and VLSI Design and Minor in Computer Science and Engineering.
-	* I was awarded the Institute Order of Merit for illustrious performance in the field of Technology during my stay at IIT Kharagpur.
-
-
- -->
-
 
 # Hi there! 👋
 
-I am a PhD student at [GREEN Lab](https://greenlab.ece.gatech.edu/), [Georgia Tech](https://www.gatech.edu/), advised by [Prof. Saibal Mukhopadhyay](https://www.ece.gatech.edu/faculty-staff-directory/saibal-mukhopadhyay). Prior to this, I completed a Dual Degree (B.Tech + M.Tech) in Microelectronics and VLSI Design from the department of ECE, [IIT Kharagpur](https://www.iitkgp.ac.in/) in 2020. During my senior year, I conducted research at [SEAL Lab](https://cse.iitkgp.ac.in/resgrp/seal/) under the guidance of [Prof. Debdeep Mukhopadhyay](https://sites.google.com/view/debdeepmukhopadhyay/home). 
+I am a Machine Learning Engineer in the **Platform Architecture** organization at [ Apple](https://www.apple.com/). I was a PhD student in Electrical and Computer Engineering at [Georgia Institute of Technology](https://www.gatech.edu/), advised by [Prof. Saibal Mukhopadhyay](https://www.ece.gatech.edu/faculty-staff-directory/saibal-mukhopadhyay) as part of the [GREEN Lab](https://greenlab.ece.gatech.edu/).
 
-In addition, I had the incredible opportunity to be a VDEC Summer (2018) Research Intern at [FUJITA Lab](https://www.cad.t.u-tokyo.ac.jp/en/) under the mentorship of Prof. Masahiro Fujita at The University of Tokyo. Furthermore, I have also interned at Intel Security Research (2022), Qualcomm Bangalore Design Center (2019), and [Pix Moving](https://www.pixmoving.com/) (2019).
+Before that, I studied **Microelectronics and VLSI Design** through a **Dual Degree (B.Tech + M.Tech)** at the Department of Electronics and Electrical Communication Engineering, [IIT Kharagpur](https://www.iitkgp.ac.in/). During my undergraduate studies, I worked closely with [Prof. Debdeep Mukhopadhyay](https://sites.google.com/view/debdeepmukhopadhyay/home) at the [SEAL Lab](https://cse.iitkgp.ac.in/resgrp/seal/), where I completed both my Bachelor’s and Master’s theses, focusing on hardware and system security.
+
+Throughout my academic journey, I have had the opportunity to intern and collaborate with leading industry and research organizations, including [The University of Tokyo](https://www.u-tokyo.ac.jp/en/) (Fujita Lab), [Qualcomm](https://www.qualcomm.com/), [Pix Moving](https://www.pixmoving.com/), [Intel](https://www.intel.com/), and [AMD](https://www.amd.com/).
+
+---
+
+## Research & Technical Focus
+
+I am a system researcher with breadth spanning **ML algorithms** (applied mathematics), **AI frameworks** (model optimization toolkits), and **embedded systems**, along with deep proficiency in **HW/SW co-design**, **hardware accelerators**, and **computer architecture**. 
+
+My PhD research delves into **ML-HW co-design for sensor processing pipelines**. I have experience with multiple **tapeouts** covering the full spectrum from algorithm to architecture, design, chip bring-up, and testing. In addition, I have also worked on **security research** during my Bachelor's and Master's theses.
+
 
 
 ## Current Research Interests
 - Hardware Accelerators (HW/SW Co-design)
-  - Radar Processing Pipelines
-  - NP-Hard Optimization Problems
 - Efficient AI
-  - ML model quantization/compression
-  - Compute-In-Memory friendly ML/Signal processing
-- Hardware/Sensor Security
-  - Side Channel Attacks on ML/Crypto
 
-Please send me an email if you want to collaborate.
 
 ## Contact Me
 - Academic Email: **ssharma497 [at] gatech [dot] edu**
 - Personal Email: **me [at] sudarshan-sh [dot] com**
-
-## Updates
-- **~~I am looking for an Internship in the areas of HW/SW Co-Design, HW Architecture. If you have an opening, please send me an email requesting CV.~~**
-- I will be interning at AMD, San Jose, CA in the AI Frameworks team during Fall 2024.
-
-
-
-
-
-
-<!-- ## Updates
-
-* **January 2021**
-  - Joined [GREEN Lab](https://greenlab.ece.gatech.edu/) at Georgia Tech.
-
-* **December 2020**
-  - Published paper titled "Compact and Secure Discrete Gaussian Sampler based on HW/SW Co-design" at [ASIANHOST '20](http://asianhost.org/2020/).
-
-* **July 2020**
-  - Graduated from IIT Kharagpur with B.Tech in Electronics and Electrical Communication Engineering, M.Tech in Microelectronics and VLSI Design, and a Minor in Computer Science and Engineering.
-  - Awarded the Institute Order of Merit for illustrious performance in the field of Technology during my stay at IIT Kharagpur. -->

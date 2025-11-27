@@ -33,3 +33,4 @@ group :jekyll_plugins do
   gem 'hawkins'
   gem 'jemoji'
 end
+gem 'webrick', '1.8.1'

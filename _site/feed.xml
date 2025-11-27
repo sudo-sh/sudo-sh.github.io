@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-05-13T21:43:13-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Sudarshan Sharma</title><subtitle>Graduate Research Assistant at Georgia Tech</subtitle><author><name>Sudarshan Sharma</name></author><entry><title type="html">Division in Hardware</title><link href="http://localhost:4000/posts/2020/06/division_in_hardware/" rel="alternate" type="text/html" title="Division in Hardware" /><published>2020-06-14T00:00:00-07:00</published><updated>2020-06-14T00:00:00-07:00</updated><id>http://localhost:4000/posts/2020/06/blog-post-3</id><content type="html" xml:base="http://localhost:4000/posts/2020/06/division_in_hardware/">&lt;p&gt;The pre-requisite for this post includes the knowledge of basic boolean algebra, solid background on Digital Electronics is a big plus. Majority of the content on the internet talks about the sequential architecture of the division algorithm. However, irrespective of the same idealogy it is difficult to visualise the combinatorial division circuit. The posts on combination multiplier are readily available on the internet one such post is &lt;a href=&quot;https://learn.digilentinc.com/Documents/282&quot; target=&quot;_blank&quot;&gt;Multiplier Architecture &lt;/a&gt;.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-11-26T22:14:52-08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Sudarshan Sharma</title><subtitle>Graduate Research Assistant at Georgia Tech</subtitle><author><name>Sudarshan Sharma</name></author><entry><title type="html">Division in Hardware</title><link href="http://localhost:4000/posts/2020/06/division_in_hardware/" rel="alternate" type="text/html" title="Division in Hardware" /><published>2020-06-14T00:00:00-07:00</published><updated>2020-06-14T00:00:00-07:00</updated><id>http://localhost:4000/posts/2020/06/blog-post-3</id><content type="html" xml:base="http://localhost:4000/posts/2020/06/division_in_hardware/">&lt;p&gt;The pre-requisite for this post includes the knowledge of basic boolean algebra, solid background on Digital Electronics is a big plus. Majority of the content on the internet talks about the sequential architecture of the division algorithm. However, irrespective of the same idealogy it is difficult to visualise the combinatorial division circuit. The posts on combination multiplier are readily available on the internet one such post is &lt;a href=&quot;https://learn.digilentinc.com/Documents/282&quot; target=&quot;_blank&quot;&gt;Multiplier Architecture &lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;In this post, I will try to cover the concept behind the restoring and the non-restoring type division algorithms and then translate these algorithms to respective hardware architecture.&lt;/p&gt;
 
@@ -160,7 +160,7 @@ Now, in the next iteration we subtract \(D*2^{i-1}\) for the assumption \(q_{i}=
 &lt;span class=&quot;c1&quot;&gt;// 7 Series&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;// Xilinx HDL Libraries Guide, version 2012.2&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;LUT6&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;#(&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;INIT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;64'h0000000000000000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Specify LUT Contents&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;INIT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;64&apos;h0000000000000000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Specify LUT Contents&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LUT6_inst&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;O&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;O&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT general output&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT input&lt;/span&gt;
@@ -194,7 +194,7 @@ Now, in the next iteration we subtract \(D*2^{i-1}\) for the assumption \(q_{i}=
 &lt;span class=&quot;c1&quot;&gt;// 7 Series&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;// Xilinx HDL Libraries Guide, version 2012.2&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;LUT6&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;#(&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;INIT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;64'h0000000000000007&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Specify LUT Contents&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;INIT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;64&apos;h0000000000000007&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Specify LUT Contents&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LUT6_inst&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;O&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT general output&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// LUT input&lt;/span&gt;
@@ -249,16 +249,16 @@ Now, in the next iteration we subtract \(D*2^{i-1}\) for the assumption \(q_{i}=
      */
     /*
     var disqus_config = function () {
-        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page&apos;s canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page&apos;s unique identifier variable
     };
     */
-    (function() {  // DON'T EDIT BELOW THIS LINE
-        var d = document, s = d.createElement('script');
+    (function() {  // DON&apos;T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement(&apos;script&apos;);
         
-        s.src = 'https://sudarshan-sh.disqus.com/embed.js';
+        s.src = &apos;https://sudarshan-sh.disqus.com/embed.js&apos;;
         
-        s.setAttribute('data-timestamp', +new Date());
+        s.setAttribute(&apos;data-timestamp&apos;, +new Date());
         (d.head || d.body).appendChild(s);
     })();
 &lt;/script&gt;
