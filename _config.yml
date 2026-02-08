@@ -10,114 +10,46 @@ locale                   : "en-US"
 title                    : "Sudarshan Sharma"
 title_separator          : "-"
 name                     : &name "Sudarshan Sharma"
-description              : &description "Graduate Research Assistant at Georgia Tech"
-url                      : "" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
-baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : ""#"https://github.com/sudo-sh/sudo-sh.github.io"
-teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
-breadcrumbs              : false # true, false (default)
+description              : &description "MLE @ Apple"
+url                      : ""
+baseurl                  : ""
+repository               : ""
+teaser                   :
+breadcrumbs              : false
 words_per_minute         : 160
 future                   : false
-read_more                : "enabled" # if enabled, adds "Read more" links to excerpts
-talkmap_link             : false #change to true to add link to talkmap on talks page
+read_more                : "enabled"
+talkmap_link             : false
 comments:
-  provider               : "disqus" # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "custom"
-  disqus:                 
+  provider               : "disqus"
+  disqus:
     shortname            : "sudarshan-sh"
-  discourse:
-    server               : # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
-  facebook:
-    appid                :
-    num_posts            : # 5 (default)
-    colorscheme          : "dark" # "light" (default), "dark"
-staticman:
-  allowedFields          : ['name', 'email', 'url', 'message']
-  branch                 : "gh-pages" # "master", "gh-pages"
-  commitMessage          : "New comment."
-  filename               : comment-{@timestamp}
-  format                 : "yml"
-  moderation             : true
-  path                   : "_data/comments/{options.slug}"
-  requiredFields         : ['name', 'email', 'message']
-  transforms:
-    email                : "md5"
-  generatedFields:
-    date:
-      type               : "date"
-      options:
-        format           : "iso8601" # "iso8601" (default), "timestamp-seconds", "timestamp-milliseconds"
 atom_feed:
   theme                  : minimal-mistakes-jekyll
-  minimal_mistakes_skin  : "neon" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum" "sunrise"
+  minimal_mistakes_skin  : "neon"
+  path                   :
 
-  path                   : # blank (default) uses feed.xml
 # SEO Related
 google_site_verification :
 bing_site_verification   :
 alexa_site_verification  :
 yandex_site_verification :
 
-# Social Sharing
-twitter:
-  username               : &twitter
-facebook:
-  username               :
-  app_id                 :
-  publisher              :
-og_image                 :  # Open Graph/Twitter default site image
-# For specifying social profiles
-# - https://developers.google.com/structured-data/customize/social-profiles
-social:
-  type                   : # Person or Organization (defaults to Person)
-  name                   : # If the user or organization name differs from the site's name
-  links: # An array of links to social media profiles
-
-
 # Analytics
 analytics:
-  provider               :  "google-universal" # false (default), "google", "google-universal", "custom"
+  provider               : "google-universal"
   google:
-    tracking_id          :  "UA-153167721-1"
-
+    tracking_id          : "UA-153167721-1"
 
 # Site Author
 author:
   name             : "Sudarshan Sharma"
   avatar           : "sudo_barcelona.jpeg"
-  bio              : "MLE @ Apple "
+  bio              : "MLE @ Apple"
   location         : "Mountain View, CA, US"
-  employer         :
-  pubmed           : #"https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
   googlescholar    : "https://scholar.google.com/citations?user=xcOv-28AAAAJ&hl=en"
-  email            : 
-  researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
-  uri              :
-  bitbucket        :
-  codepen          :
-  dribbble         :
-  flickr           :
-  facebook         :
-  foursquare       :
   github           : "sudo-sh"
-  google_plus      :
-  keybase          :
-  instagram        :
-  impactstory      :
-  lastfm           :
   linkedin         : "sudarshan-sh"
-  orcid            : 
-  pinterest        :
-  soundcloud       :
-  stackoverflow    : 
-  steam            :
-  tumblr           :
-  twitter          : 
-  vine             :
-  weibo            :
-  xing             :
-  youtube          :
-  wikipedia        :
-
 
 # Reading Files
 include:
@@ -177,16 +109,7 @@ kramdown:
 
 # Collections
 collections:
-  teaching:
-    output: true
-    permalink: /:collection/:path/
-  # publications:
-  #   output: true
-  #   permalink: /:collection/:path/
   portfolio:
-    output: true
-    permalink: /:collection/:path/
-  talks:
     output: true
     permalink: /:collection/:path/
 
@@ -211,24 +134,6 @@ defaults:
     values:
       layout: single
       author_profile: true
-  # _teaching
-  - scope:
-      path: ""
-      type: teaching
-    values:
-      layout: single
-      author_profile: true
-      share: true
-      comments: true
-  # _publications
-  # - scope:
-  #     path: ""
-  #     type: publications
-  #   values:
-  #     layout: single
-  #     author_profile: true
-  #     share: true
-  #     comments: true
   # _portfolio
   - scope:
       path: ""
@@ -238,38 +143,24 @@ defaults:
       author_profile: true
       share: true
       comment: true
-  # _talks
-  - scope:
-      path: ""
-      type: talks
-    values:
-      layout: talk
-      author_profile: true
-      share: true
 
 # Sass/SCSS
 sass:
   sass_dir: _sass
-  style: compressed # https://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
-
+  style: compressed
 
 # Outputting
 permalink: /:categories/:title/
-# paginate: 5 # amount of posts to show
-# paginate_path: /page:num/
-timezone: America/Los_Angeles # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: America/Los_Angeles
 
-
-#Plugins
+# Plugins
 plugins:
   - jekyll-paginate
-  # - jekyll-sitemap
   - jekyll-seo-tag
   - jekyll-gist
   - jemoji
   - jekyll-feed
   - jekyll-redirect-from
-# mimic GitHub Pages with --safe
 whitelist:
   - jekyll-paginate
   - jekyll-sitemap
@@ -277,38 +168,15 @@ whitelist:
   - jekyll-feed
   - jemoji
 
-
 # Archives
-#  Type
-#  - GitHub Pages compatible archive pages built with Liquid ~> type: liquid (default)
-#  - Jekyll Archives plugin archive pages ~> type: jekyll-archives
-#  Path (examples)
-#  - Archive page should exist at path when using Liquid method or you can
-#    expect broken links (especially with breadcrumbs enabled)
-#  - <base_path>/tags/my-awesome-tag/index.html ~> path: /tags/
-#  - <base_path/categories/my-awesome-category/index.html ~> path: /categories/
-#  - <base_path/my-awesome-category/index.html ~> path: /
 category_archive:
   type: liquid
   path: /categories/
 tag_archive:
   type: liquid
   path: /tags/
-# https://github.com/jekyll/jekyll-archives
-# jekyll-archives:
-#   enabled:
-#     - categories
-#     - tags
-#   layouts:
-#     category: archive-taxonomy
-#     tag: archive-taxonomy
-#   permalinks:
-#     category: /categories/:name/
-#     tag: /tags/:name/
-
 
 # HTML Compression
-# - https://jch.penibelst.de/
 compress_html:
   clippings: all
   ignore:

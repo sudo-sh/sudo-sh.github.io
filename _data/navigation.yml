@@ -1,36 +1,7 @@
-# main links links
+# main links
 main:
-
   - title: "Publications"
     url: /publications/
 
   - title: "Blog"
     url: /blog/
-    
- 
-  # - title : "Colophon"
-  #   url: /colophon/
-
-
-  #Old
-
- #- title: "Resume"
-  #  url: /resume/
-    
-  # - title : "Personal"
-  #   url: /personal/
-  # - title: "Guide"
-  #   url: /markdown/
-   # - title: "Experiences"
-  #   url: /experiences/ 
-
-  # - title: "Publications"
-  #   url: /publications/
-
-     
-
-  # - title: "Teaching"
-  # #   url: /teaching/    
-    
-  # - title: "Portfolio"
-  #   url: /portfolio/

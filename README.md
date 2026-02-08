@@ -1,7 +1,46 @@
-A Github Pages template for academic websites. This was forked (then detached) by [Stuart Geiger](https://github.com/staeiou) from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/), which is © 2016 Michael Rose and released under the MIT License. See LICENSE.md and then modified accordingly by Sudarshan Sharma.
+# sudarshan-sh.com
 
-I think I've got things running smoothly and fixed some major bugs, but feel free to file issues or make pull requests if you want to improve the generic template / theme.
+Personal website of Sudarshan Sharma — Machine Learning Engineer at Apple.
 
-Run using: bundle exec jekyll serve 2>/dev/null to supress the warning with new ruby versions.
+Built with Jekyll using the Minimal Mistakes theme, hosted on GitHub Pages.
 
-See more info at https://academicpages.github.io/
+## Live Site
+
+[www.sudarshan-sh.com](https://www.sudarshan-sh.com)
+
+## Local Development
+
+**Prerequisites:** Ruby, Bundler, Node.js
+
+```bash
+# Install dependencies
+bundle install
+npm install
+
+# Serve locally
+bundle exec jekyll serve
+
+# JS asset rebuilds
+npm run build:js    # one-time uglify
+npm run watch:js    # watch mode
+```
+
+## Project Structure
+
+```
+_config.yml       # Site settings, author profile, plugins
+_pages/           # Static pages (about.md = homepage, publications, blog)
+_posts/           # Blog posts (YYYY-MM-DD-slug.md)
+_includes/        # Reusable HTML partials
+_layouts/         # Page layout templates
+_sass/            # SCSS source files
+_data/            # Navigation and author metadata
+assets/           # CSS, JS, and fonts
+images/           # Static images
+files/            # PDFs (research papers)
+```
+
+## License
+
+Based on [Minimal Mistakes](https://github.com/mmistakes/minimal-mistakes) Jekyll theme, MIT License.
+Forked from [AcademicPages](https://github.com/academicpages/academicpages.github.io).
