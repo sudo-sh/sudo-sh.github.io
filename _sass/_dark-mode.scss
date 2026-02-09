@@ -1,0 +1,684 @@
+/* ==========================================================================
+   Dark Mode
+   ========================================================================== */
+
+/*
+   Slider toggle
+   ========================================================================== */
+
+.masthead__menu {
+  position: relative;
+}
+
+.theme-toggle {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.theme-toggle__input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.theme-toggle__track {
+  display: block;
+  width: 2.5rem;
+  height: 1.375rem;
+  border-radius: 1rem;
+  background: #d0d5db;
+  position: relative;
+  transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.theme-toggle__knob {
+  position: absolute;
+  top: 0.1875rem;
+  left: 0.1875rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              background 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-toggle__icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+.theme-toggle__sun {
+  color: #f59e0b;
+  opacity: 1;
+}
+
+.theme-toggle__moon {
+  color: #94a3b8;
+  opacity: 0.5;
+}
+
+/* Checked (dark mode) state — knob slides right */
+.theme-toggle__input:checked ~ .theme-toggle__track {
+  background: #3a3a5a;
+
+  .theme-toggle__knob {
+    transform: translateX(1.125rem);
+    background: #1a1a2e;
+  }
+}
+
+/* Checked — sun dims, moon lights up */
+.theme-toggle__input:checked ~ .theme-toggle__sun {
+  opacity: 0.35;
+  color: #94a3b8;
+}
+
+.theme-toggle__input:checked ~ .theme-toggle__moon {
+  opacity: 1;
+  color: #a5b4fc;
+}
+
+/* Hover glow on track */
+.theme-toggle:hover .theme-toggle__track {
+  box-shadow: 0 0 0 2px rgba(122, 130, 136, 0.25);
+}
+
+.theme-toggle:hover .theme-toggle__input:checked ~ .theme-toggle__track {
+  box-shadow: 0 0 0 2px rgba(165, 180, 252, 0.3);
+}
+
+/* Focus ring for accessibility */
+.theme-toggle__input:focus-visible ~ .theme-toggle__track {
+  outline: 2px solid #52adc8;
+  outline-offset: 2px;
+}
+
+/*
+   Dark theme overrides
+   ========================================================================== */
+
+[data-theme="dark"] {
+
+  /* --- Base elements --- */
+  body {
+    background-color: #1a1a2e;
+    color: #e0e0e8;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #e8e8f0;
+  }
+
+  a {
+    color: #ff6b6b;
+
+    &:visited {
+      color: #ff8585;
+    }
+
+    &:hover {
+      color: #ff9999;
+    }
+  }
+
+  blockquote {
+    border-left-color: #4a4a6a;
+    color: #b0b0c8;
+  }
+
+  hr {
+    border-top-color: #2a2a4a;
+  }
+
+  u, ins {
+    border-bottom-color: #e0e0e8;
+  }
+
+  abbr[title],
+  abbr[data-original-title] {
+    border-bottom-color: #e0e0e8;
+  }
+
+  figcaption {
+    color: #a0a0b8;
+
+    a {
+      border-bottom-color: #4a4a6a;
+
+      &:hover {
+        color: #e0e0e8;
+        border-bottom-color: #e0e0e8;
+      }
+    }
+  }
+
+  /* --- Inline code --- */
+  p > code,
+  a > code,
+  li > code,
+  figcaption > code,
+  td > code {
+    background: #1e1e3a;
+    border-color: #2a2a4a;
+    color: #e0e0e8;
+  }
+
+  /* --- Masthead --- */
+  .masthead {
+    border-bottom-color: #2a2a4a;
+  }
+
+  .greedy-nav {
+    background: #1a1a2e;
+
+    a {
+      color: #b0b0c8;
+
+      &:hover {
+        color: #e0e0e8;
+      }
+    }
+
+    .visible-links a:before {
+      background: #4a4a6a;
+    }
+
+    button {
+      background-color: #2a2a4a;
+    }
+
+    .hidden-links {
+      background: #16213e;
+      border-color: #2a2a4a;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+      &:before {
+        border-color: #2a2a4a transparent;
+      }
+
+      &:after {
+        border-color: #16213e transparent;
+      }
+
+      li {
+        border-bottom-color: #2a2a4a;
+      }
+
+      a:hover {
+        background: #1e2a4a;
+      }
+    }
+  }
+
+  /* --- Social icons (sidebar & footer) --- */
+  .social-icons {
+    .fa,
+    .fas,
+    .far,
+    .fal,
+    .fab {
+      color: #b0b0c8;
+    }
+
+    .fa-github,
+    .fa-github-alt,
+    .fa-github-square {
+      color: #c9d1d9;
+    }
+
+    .fa-linkedin,
+    .fa-linkedin-square {
+      color: #5cacee;
+    }
+
+    .fa-twitter,
+    .fa-twitter-square {
+      color: #6cbfee;
+    }
+
+    .fa-facebook,
+    .fa-facebook-square {
+      color: #7b96c8;
+    }
+
+    .fa-map-marker {
+      color: #ff6b6b;
+    }
+
+    .fa-graduation-cap {
+      color: #8be9fd;
+    }
+  }
+
+  /* --- Sidebar / Author profile --- */
+  .author__avatar img {
+    border-color: #2a2a4a;
+  }
+
+  .author__urls {
+    background: #16213e;
+    border-color: #2a2a4a;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+    &:before {
+      border-color: #2a2a4a transparent;
+    }
+
+    &:after {
+      border-color: #16213e transparent;
+    }
+
+    a {
+      color: #b0b0c8;
+
+      &:hover {
+        color: #e0e0e8;
+      }
+    }
+
+    @media (min-width: 58.125em) {
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+    }
+  }
+
+  .author__name {
+    color: #e0e0e8;
+  }
+
+  .author__bio {
+    color: #b0b0c8;
+  }
+
+  /* --- Page content --- */
+  .page__content {
+    h2 {
+      border-bottom-color: #2a2a4a;
+    }
+
+    a {
+      color: #ff6b6b;
+
+      &:hover {
+        color: #ff9999;
+      }
+    }
+  }
+
+  .page__meta {
+    color: #8080a0;
+  }
+
+  .page__taxonomy-item {
+    border-color: #3a3a5a;
+    color: #b0b0c8;
+
+    &:hover {
+      color: #ff6b6b;
+    }
+  }
+
+  .page__share {
+    border-top-color: #2a2a4a;
+  }
+
+  .page__comments-title {
+    border-top-color: #2a2a4a;
+  }
+
+  .page__comments-form {
+    background: #16213e;
+  }
+
+  .page__related {
+    border-top-color: #2a2a4a;
+  }
+
+  .comment:not(:last-child) {
+    border-bottom-color: #2a2a4a;
+  }
+
+  .comment__avatar {
+    border-color: #2a2a4a;
+  }
+
+  /* --- Footer --- */
+  .page__footer {
+    background-color: #121228;
+    border-top-color: #2a2a4a;
+    color: #8080a0;
+
+    .fas, .fab, .far, .fal {
+      color: #8080a0;
+    }
+  }
+
+  /* --- Navigation --- */
+  .nav__list .active {
+    background: #2a2a4a;
+  }
+
+  .nav__sub-title {
+    border-bottom-color: #2a2a4a;
+  }
+
+  .breadcrumbs {
+    color: #8080a0;
+  }
+
+  /* --- Table of Contents --- */
+  .toc {
+    background-color: #16213e;
+    border-color: #2a2a4a;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  .toc__menu a {
+    color: #a0a0b8;
+    border-bottom-color: #2a2a4a;
+
+    &:hover {
+      color: #e0e0e8;
+      background: #1e2a4a;
+    }
+  }
+
+  /* --- Pagination --- */
+  .pagination li a {
+    color: #a0a0b8;
+    border-color: #3a3a5a;
+
+    &:hover {
+      color: #ff6b6b;
+    }
+
+    &.current {
+      color: #fff;
+      background: #3a3a5a;
+    }
+
+    &.disabled {
+      color: #5a5a7a;
+    }
+  }
+
+  .pagination--pager {
+    color: #a0a0b8;
+    border-color: #3a3a5a;
+
+    &:hover {
+      color: #ff6b6b;
+    }
+
+    &.disabled {
+      color: #5a5a7a;
+    }
+  }
+
+  .page__content + .pagination,
+  .page__meta + .pagination,
+  .page__share + .pagination,
+  .page__comments + .pagination {
+    border-top-color: #2a2a4a;
+  }
+
+  /* --- Buttons --- */
+  .btn {
+    background-color: #2a2a4a;
+    color: #e0e0e8;
+
+    &:hover {
+      background-color: #3a3a5a;
+    }
+
+    &--inverse {
+      background-color: transparent;
+      color: #e0e0e8;
+      border: 1px solid #4a4a6a;
+    }
+  }
+
+  /* --- Notices --- */
+  .notice {
+    background-color: rgba(122, 130, 136, 0.15);
+    color: #e0e0e8;
+  }
+
+  .notice--primary {
+    background-color: rgba(122, 130, 136, 0.15);
+    color: #e0e0e8;
+  }
+
+  .notice--info {
+    background-color: rgba(82, 173, 200, 0.15);
+    color: #e0e0e8;
+  }
+
+  .notice--warning {
+    background-color: rgba(248, 148, 6, 0.15);
+    color: #e0e0e8;
+  }
+
+  .notice--success {
+    background-color: rgba(98, 196, 98, 0.15);
+    color: #e0e0e8;
+  }
+
+  .notice--danger {
+    background-color: rgba(238, 95, 91, 0.15);
+    color: #e0e0e8;
+  }
+
+  /* --- Code / Syntax highlighting (Solarized Dark) --- */
+  div.highlighter-rouge,
+  figure.highlight {
+    background-color: #1e1e3a;
+    border-color: #2a2a4a;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+
+    &:before {
+      background-color: #2a2a4a;
+      color: #8080a0;
+    }
+
+    .highlight {
+      color: #e0e0e8;
+    }
+  }
+
+  .highlight .c  { color: #6272a4 } /* Comment */
+  .highlight .err { color: #e0e0e8 } /* Error */
+  .highlight .g  { color: #e0e0e8 } /* Generic */
+  .highlight .k  { color: #8be9fd } /* Keyword */
+  .highlight .l  { color: #e0e0e8 } /* Literal */
+  .highlight .n  { color: #e0e0e8 } /* Name */
+  .highlight .o  { color: #ff79c6 } /* Operator */
+  .highlight .x  { color: #ffb86c } /* Other */
+  .highlight .p  { color: #e0e0e8 } /* Punctuation */
+  .highlight .cm { color: #6272a4 } /* Comment.Multiline */
+  .highlight .cp { color: #ff79c6 } /* Comment.Preproc */
+  .highlight .c1 { color: #6272a4 } /* Comment.Single */
+  .highlight .cs { color: #6272a4 } /* Comment.Special */
+  .highlight .gd { color: #ff5555 } /* Generic.Deleted */
+  .highlight .ge { color: #e0e0e8; font-style: italic } /* Generic.Emph */
+  .highlight .gr { color: #ff5555 } /* Generic.Error */
+  .highlight .gh { color: #ffb86c } /* Generic.Heading */
+  .highlight .gi { color: #50fa7b } /* Generic.Inserted */
+  .highlight .go { color: #e0e0e8 } /* Generic.Output */
+  .highlight .gp { color: #e0e0e8 } /* Generic.Prompt */
+  .highlight .gs { color: #e0e0e8; font-weight: bold } /* Generic.Strong */
+  .highlight .gu { color: #ffb86c } /* Generic.Subheading */
+  .highlight .gt { color: #e0e0e8 } /* Generic.Traceback */
+  .highlight .kc { color: #bd93f9 } /* Keyword.Constant */
+  .highlight .kd { color: #8be9fd } /* Keyword.Declaration */
+  .highlight .kn { color: #ff79c6 } /* Keyword.Namespace */
+  .highlight .kp { color: #8be9fd } /* Keyword.Pseudo */
+  .highlight .kr { color: #8be9fd } /* Keyword.Reserved */
+  .highlight .kt { color: #ffb86c } /* Keyword.Type */
+  .highlight .ld { color: #e0e0e8 } /* Literal.Date */
+  .highlight .m  { color: #bd93f9 } /* Literal.Number */
+  .highlight .s  { color: #f1fa8c } /* Literal.String */
+  .highlight .na { color: #50fa7b } /* Name.Attribute */
+  .highlight .nb { color: #8be9fd } /* Name.Builtin */
+  .highlight .nc { color: #8be9fd } /* Name.Class */
+  .highlight .no { color: #bd93f9 } /* Name.Constant */
+  .highlight .nd { color: #50fa7b } /* Name.Decorator */
+  .highlight .ni { color: #ffb86c } /* Name.Entity */
+  .highlight .ne { color: #ff5555 } /* Name.Exception */
+  .highlight .nf { color: #50fa7b } /* Name.Function */
+  .highlight .nl { color: #e0e0e8 } /* Name.Label */
+  .highlight .nn { color: #e0e0e8 } /* Name.Namespace */
+  .highlight .nx { color: #e0e0e8 } /* Name.Other */
+  .highlight .py { color: #e0e0e8 } /* Name.Property */
+  .highlight .nt { color: #ff79c6 } /* Name.Tag */
+  .highlight .nv { color: #8be9fd } /* Name.Variable */
+  .highlight .ow { color: #ff79c6 } /* Operator.Word */
+  .highlight .w  { color: #e0e0e8 } /* Text.Whitespace */
+  .highlight .mf { color: #bd93f9 } /* Literal.Number.Float */
+  .highlight .mh { color: #bd93f9 } /* Literal.Number.Hex */
+  .highlight .mi { color: #bd93f9 } /* Literal.Number.Integer */
+  .highlight .mo { color: #bd93f9 } /* Literal.Number.Oct */
+  .highlight .sb { color: #f1fa8c } /* Literal.String.Backtick */
+  .highlight .sc { color: #f1fa8c } /* Literal.String.Char */
+  .highlight .sd { color: #6272a4 } /* Literal.String.Doc */
+  .highlight .s2 { color: #f1fa8c } /* Literal.String.Double */
+  .highlight .se { color: #ffb86c } /* Literal.String.Escape */
+  .highlight .sh { color: #f1fa8c } /* Literal.String.Heredoc */
+  .highlight .si { color: #f1fa8c } /* Literal.String.Interpol */
+  .highlight .sx { color: #f1fa8c } /* Literal.String.Other */
+  .highlight .sr { color: #ff5555 } /* Literal.String.Regex */
+  .highlight .s1 { color: #f1fa8c } /* Literal.String.Single */
+  .highlight .ss { color: #f1fa8c } /* Literal.String.Symbol */
+  .highlight .bp { color: #8be9fd } /* Name.Builtin.Pseudo */
+  .highlight .vc { color: #8be9fd } /* Name.Variable.Class */
+  .highlight .vg { color: #8be9fd } /* Name.Variable.Global */
+  .highlight .vi { color: #8be9fd } /* Name.Variable.Instance */
+  .highlight .il { color: #bd93f9 } /* Literal.Number.Integer.Long */
+
+  /* --- Tables --- */
+  table {
+    border-color: #2a2a4a;
+
+    th, td {
+      border-color: #2a2a4a;
+    }
+
+    th {
+      background-color: #16213e;
+      color: #e0e0e8;
+    }
+
+    tr:nth-child(even) {
+      background-color: rgba(22, 33, 62, 0.5);
+    }
+  }
+
+  .highlight table td {
+    border: none;
+    background: transparent;
+  }
+
+  /* --- Forms --- */
+  input, textarea, select {
+    background-color: #16213e;
+    border-color: #2a2a4a;
+    color: #e0e0e8;
+  }
+
+  /* --- Utilities --- */
+  .well {
+    background-color: #16213e;
+    border-color: #2a2a4a;
+  }
+
+  /* --- Archive --- */
+  .archive__item-teaser {
+    border-color: #2a2a4a;
+  }
+
+  /* --- Navicon (hamburger menu) --- */
+  .navicon {
+    background: #e0e0e8;
+
+    &:before,
+    &:after {
+      background: #e0e0e8;
+    }
+  }
+
+  /* --- Modal --- */
+  .modal {
+    background: #16213e;
+    border-color: #2a2a4a;
+  }
+
+  .modal__actions {
+    border-top-color: #2a2a4a;
+  }
+
+  .show-modal:before {
+    background-color: rgba(26, 26, 46, 0.85);
+  }
+
+  /* --- Footnotes --- */
+  .footnote,
+  .footnotes {
+    color: #8080a0;
+  }
+
+  a.reversefootnote {
+    color: #a0a0b8;
+  }
+
+  /* --- Screen reader focus --- */
+  .screen-reader-text:focus,
+  .screen-reader-shortcut:focus {
+    background: #16213e;
+    color: #e0e0e8;
+  }
+
+  /* --- Selection color --- */
+  ::selection {
+    background: rgba(255, 107, 107, 0.3);
+    color: #fff;
+  }
+
+  ::-moz-selection {
+    background: rgba(255, 107, 107, 0.3);
+    color: #fff;
+  }
+
+  /* --- Scrollbar --- */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #1a1a2e;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #3a3a5a;
+    border-radius: 4px;
+
+    &:hover {
+      background: #4a4a6a;
+    }
+  }
+}

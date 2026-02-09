@@ -17,7 +17,6 @@ Before that, I studied **Microelectronics and VLSI Design** through a **Dual Deg
 
 Throughout my academic journey, I have had the opportunity to intern and collaborate with leading industry and research organizations, including [The University of Tokyo](https://www.u-tokyo.ac.jp/en/) (Fujita Lab), [Qualcomm](https://www.qualcomm.com/), [Pix Moving](https://www.pixmoving.com/), [Intel](https://www.intel.com/), and [AMD](https://www.amd.com/).
 
----
 
 ## Research & Technical Focus
 

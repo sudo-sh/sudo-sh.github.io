@@ -50,7 +50,6 @@ assets/
   js/                # JavaScript (source + minified)
   fonts/             # Font files
 images/              # Static images and icons
-files/               # PDFs (research papers, downloadables)
 ```
 
 ## Key Files
@@ -59,7 +58,6 @@ files/               # PDFs (research papers, downloadables)
 |------|---------|
 | `_config.yml` | All site-wide settings, author profile, collection definitions, plugin list |
 | `_pages/about.md` | **Homepage** (permalink: `/`). Main profile and bio content |
-| `_pages/publications.md` | Publications listing page |
 | `_data/navigation.yml` | Top navigation menu structure |
 | `assets/css/main.scss` | CSS entry point (imports theme + custom overrides) |
 | `CNAME` | Custom domain configuration |
@@ -68,9 +66,8 @@ files/               # PDFs (research papers, downloadables)
 
 - **Blog posts** go in `_posts/` with filename format `YYYY-MM-DD-slug.md`
 - **Front matter** typically includes: `title`, `date`, `permalink`, `tags`, `author_profile`, `comments`, `share`, `related`
-- **Navigation** is defined in `_data/navigation.yml` (currently: Publications, Blog)
+- **Navigation** is defined in `_data/navigation.yml` (currently: Blog)
 - **Portfolio** collection is configured in `_config.yml` with `output: true`
-- **PDFs** for papers are stored in `files/`
 - **Images** go in `images/`
 
 ## Theme Customizations
@@ -88,5 +85,4 @@ jekyll-feed, jekyll-seo-tag, jemoji, jekyll-redirect-from, jekyll-gist, jekyll-p
 
 - The `_site/` directory is the build output (gitignored, auto-generated)
 - The about page (`_pages/about.md`) serves as the homepage
-- Publications are inline in `_pages/publications.md` (not a Jekyll collection)
 - Vendor directory and `.bundle/` are gitignored
